@@ -39,46 +39,47 @@
     </style>
 </head>
 <body class="font-sans antialiased text-gray-800">
-  <!-- Header/Navigation -->
-  <header class="bg-white shadow-md sticky top-0 z-50 h-16">
-    <div class="container mx-auto px-4 py-3 flex justify-between items-center h-full">
-      <div class="flex items-center">
-        <a href="#" class="flex items-center">
-          <i class="fas fa-flower text-3xl text-[#006A4E] mr-2"></i>
-          <span class="text-2xl font-bold text-[#006A4E]">ROSE PHARMACEUTICALS</span>
-        </a>
-      </div>
-      <nav class="hidden md:flex space-x-8">
-        <a href="#home" class="text-[#006A4E] font-medium hover:text-[#006A4E] transition">Home</a>
-        <a href="#services" class="text-gray-600 hover:text-[#006A4E] transition">Products</a>
-        <a href="#services" class="text-gray-600 hover:text-[#006A4E] transition">categories</a>
-        <a href="#about" class="text-gray-600 hover:text-[#006A4E] transition">About Us</a>
-        <a href="contact.html" class="text-gray-600 hover:text-[#006A4E] transition">Contact</a>
-        <a href="privacypolicy.html" class="text-gray-600 hover:text-[#006A4E] transition">Privacy policy</a>
-      </nav>
-      <div class="md:hidden">
-        <button id="mobile-menu-button" class="text-gray-600 hover:text-[#006A4E] focus:outline-none">
-          <i class="fas fa-bars text-2xl"></i>
-        </button>
-      </div>
-    </div>
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white py-2 px-4 shadow-lg">
-      <a href="#home" class="block py-2 text-[#006A4E] font-medium">Home</a>
-      <a href="#services" class="block py-2 text-gray-600 hover:text-[#006A4E]">Services</a>
-      <a href="#brands" class="block py-2 text-gray-600 hover:text-[#006A4E]">categories</a>
-      <a href="#about" class="block py-2 text-gray-600 hover:text-[#006A4E]">About Us</a>
-      <a href="contact.html" class="block py-2 text-gray-600 hover:text-[#006A4E]">Contact</a>
-    </div>
-  </header>
 
-  <!-- Hero Section -->
-  <section class="pt-16 h-screen relative">
-  <div class="w-screen h-screen flex justify-center relative overflow-hidden shadow-2xl">
-    <!-- Single background image -->
-    <img src="public/assets/images/home page 1.png" class="absolute inset-0 w-full h-full object-contain" alt="Banner Image" />
+<!-- Header -->
+<header class="bg-white shadow-md sticky top-0 z-50 h-16">
+  <div class="container mx-auto px-4 py-3 flex justify-between items-center h-full">
+    <div class="flex items-center">
+      <a href="#" class="flex items-center">
+        <i class="fas fa-flower text-3xl text-[#006A4E] mr-2"></i>
+        <span class="text-2xl font-bold text-[#006A4E]">ROSE PHARMACEUTICALS</span>
+      </a>
+    </div>
+    <nav class="hidden md:flex space-x-8">
+      <a href="#home" class="text-[#006A4E] font-medium hover:text-[#006A4E] transition">Home</a>
+      <a href="#services" class="text-gray-600 hover:text-[#006A4E] transition">Products</a>
+      <a href="#categories" class="text-gray-600 hover:text-[#006A4E] transition">Categories</a>
+      <a href="#about" class="text-gray-600 hover:text-[#006A4E] transition">About Us</a>
+      <a href="contact.html" class="text-gray-600 hover:text-[#006A4E] transition">Contact</a>
+      <a href="privacypolicy.html" class="text-gray-600 hover:text-[#006A4E] transition">Privacy policy</a>
+    </nav>
+    <div class="md:hidden">
+      <button id="mobile-menu-button" class="text-gray-600 hover:text-[#006A4E] focus:outline-none">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+    </div>
+  </div>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white py-2 px-4 shadow-lg">
+    <a href="#home" class="block py-2 text-[#006A4E] font-medium">Home</a>
+    <a href="#services" class="block py-2 text-gray-600 hover:text-[#006A4E]">Products</a>
+    <a href="#categories" class="block py-2 text-gray-600 hover:text-[#006A4E]">Categories</a>
+    <a href="#about" class="block py-2 text-gray-600 hover:text-[#006A4E]">About Us</a>
+    <a href="contact.html" class="block py-2 text-gray-600 hover:text-[#006A4E]">Contact</a>
+    <a href="privacypolicy.html" class="block py-2 text-gray-600 hover:text-[#006A4E]">Privacy policy</a>
+  </div>
+</header>
 
+<!-- Hero Section -->
+<section id="home" class="relative h-screen">
+  <div class="w-screen h-full flex justify-center relative overflow-hidden shadow-2xl">
+    <img src="assets/images/home page 1.png" class="absolute inset-0 w-full h-full object-contain" alt="Banner Image" />
     <!-- Optional dark overlay -->
+    <!--<div class="absolute inset-0 bg-black bg-opacity-20"></div>-->
   </div>
 </section>
 
