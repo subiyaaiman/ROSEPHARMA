@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy - Rose Pharmaceuticals</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <style>
+    .hero-gradient {
+      background: linear-gradient(135deg, #006A4E 0%, #3b825f 100%);
+    }
+    a {
+      color: #006A4E;
+      text-decoration: underline;
+    }
+    a:hover {
+      color: #004733;
+    }
+    #chatbot {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      width: 20rem;
+      height: 24rem;
+      background: white;
+      box-shadow: 0 10px 15px -3px rgba(0, 106, 78, 0.3);
+      border-radius: 0.75rem;
+      display: flex;
+      flex-direction: column;
+    }
+    #chatbot .header {
+      background-color: #006A4E;
+      color: white;
+      padding: 0.75rem 1rem;
+      font-weight: 700;
+    }
+    #chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0.75rem 1rem;
+      font-size: 0.875rem;
+    }
+    #chat-input {
+      flex: 1;
+      border: none;
+      padding: 0.5rem 1rem;
+      outline: none;
+    }
+    #chat-send-btn {
+      background-color: #006A4E;
+      color: white;
+      padding: 0 1rem;
+      cursor: pointer;
+    }
+    #chat-send-btn:hover {
+      background-color: #004733;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Gradient Header -->
+  <section class="hero-gradient py-12 px-4 text-white text-center">
+    <h1 class="text-4xl font-bold mb-2">Privacy Policy</h1>
+    <p class="text-lg">Effective Date: August 9, 2025</p>
+  </section>
+
+  <section class="bg-gray-50 py-16 px-4">
+    <div class="max-w-4xl mx-auto space-y-6 text-gray-700">
+
+      <p>
+        At <strong>Rose Pharmaceuticals and Healthcare Pvt. Ltd.</strong>, we respect and value your privacy. This Privacy Policy outlines how we collect, use, protect, and disclose your personal information when you interact with our website, request product information, or engage with our third-party nutraceutical manufacturing services, including protein powders, syrups, capsules, sachets, and custom formulations.
+      </p>
+
+      <p>
+        By using our website and services, you agree to the practices described in this policy. Please take a moment to review the following information:
+      </p>
+
+      <h2 class="text-2xl font-semibold mt-8">1. Information We Collect</h2>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Personal Information:</strong> Name, email address, phone number, company name, and other details provided when filling out inquiries or registration forms.</li>
+        <li><strong>Non-Personal Information:</strong> Browser type, device information, IP address, and browsing data collected through cookies and analytics.</li>
+        <li><strong>Cookies and Tracking Technologies:</strong> Used to improve user experience and site functionality. Users may disable cookies but this may limit usability.</li>
+      </ul>
+
+      <h2 class="text-2xl font-semibold mt-8">2. How We Use Your Information</h2>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>To Provide Services:</strong> Processing inquiries, managing orders, and supporting our nutraceutical manufacturing services.</li>
+        <li><strong>To Improve User Experience:</strong> Personalizing content and analyzing traffic for better site performance.</li>
+        <li><strong>Marketing and Communication:</strong> Sending information about our products, updates, and offers. You may unsubscribe at any time.</li>
+        <li><strong>Compliance and Legal:</strong> To comply with laws and regulations as required.</li>
+      </ul>
+
+      <h2 class="text-2xl font-semibold mt-8">3. Sharing Your Information</h2>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Service Providers:</strong> Trusted third-party vendors assisting in service delivery.</li>
+        <li><strong>Legal Obligations:</strong> When legally required, such as court orders or regulatory requests.</li>
+        <li><strong>Business Transactions:</strong> In the event of mergers, acquisitions, or transfers.</li>
+      </ul>
+
+      <h2 class="text-2xl font-semibold mt-8">4. Data Security</h2>
+      <p>We employ industry-standard security measures including encryption and access controls to safeguard your personal information. However, no online transmission can be guaranteed as completely secure.</p>
+
+      <h2 class="text-2xl font-semibold mt-8">5. Your Rights</h2>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Access, correction, or deletion of your personal data upon request.</li>
+        <li>Opt-out from marketing communications.</li>
+      </ul>
+
+      <h2 class="text-2xl font-semibold mt-8">6. Third-Party Links</h2>
+      <p>Our website may include links to third-party sites which have their own privacy policies. We do not control or accept responsibility for such policies.</p>
+
+      <h2 class="text-2xl font-semibold mt-8">7. Children's Privacy</h2>
+      <p>We do not intentionally collect personal data from children under the age of 13. If discovered, such data will be deleted immediately.</p>
+
+      <h2 class="text-2xl font-semibold mt-8">8. Changes to This Privacy Policy</h2>
+      <p>We reserve the right to update this Privacy Policy. Any changes will be posted on this page with an updated effective date.</p>
+
+      <h2 class="text-2xl font-semibold mt-8">Contact Us</h2>
+      <p>If you have any questions about this Privacy Policy or your data, please contact us at <a href="mailto:support@rosepharma.in">support@rosepharma.in</a>.</p>
+
+      <div class="mt-8 text-center">
+        <a href="index.html" 
+          class="inline-block px-6 py-3 text-white font-semibold rounded-lg shadow-lg hover:opacity-90 transition duration-200 hero-gradient">
+          ← Back to Home
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+ 
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById("chat-input");
+      const msg = input.value.trim();
+      if (!msg) return;
+
+      const chatBox = document.getElementById("chat-messages");
+      chatBox.innerHTML += `<div class="text-right mb-2"><span class="bg-green-100 px-2 py-1 rounded">${msg}</span></div>`;
+
+      // Simulate AI backend response
+      setTimeout(() => {
+        chatBox.innerHTML += `<div class="text-left mb-2"><span class="bg-gray-200 px-2 py-1 rounded">You asked: "${msg}". We'll assist you shortly!</span></div>`;
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }, 800);
+
+      input.value = "";
+    }
+  </script>
+
+</body>
+</html>

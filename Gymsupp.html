@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gym Supplements - Rose Pharmaceuticals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+      color: #1f2937;
+    }
+    .hero-gradient {
+      background: linear-gradient(135deg, #006A4E 0%, #3b825f 100%);
+    }
+    .hero-section {
+      padding: 60px 20px;
+      text-align: center;
+      color: white;
+    }
+    .hero-section h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    .hero-section p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .content-section {
+      padding: 60px 20px;
+    }
+    .content-container {
+      max-width: 1100px;
+      margin: auto;
+      text-align: center;
+    }
+    h2 {
+      color: #006A4E;
+      margin-bottom: 20px;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+    .product-card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+    .product-card img {
+      max-height: 250px;
+      object-fit: contain;
+      margin: auto;
+    }
+    .product-card h3 {
+      margin: 15px 0 10px 0;
+      font-size: 1.2rem;
+      color: #006A4E;
+    }
+    .product-card p {
+      font-size: 0.95rem;
+      color: #374151;
+      line-height: 1.5;
+      flex-grow: 1;
+    }
+    .cta-button {
+      display: inline-block;
+      padding: 14px 28px;
+      background: #006A4E;
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-top: 20px;
+      transition: background 0.3s ease;
+    }
+    .cta-button:hover {
+      background: #004733;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero-gradient hero-section">
+    <div class="hero-content">
+      <h1>Gym Supplements</h1>
+      <p>Premium Sports Nutrition Supplements
+      Our gym supplement range is specially designed to fuel your workouts, enhance recovery, and support muscle growth. From high-quality whey proteins to advanced pre-workouts and amino blends, every product is formulated with performance and purity in mind.</p>
+    </div>
+  </section>
+
+  <!-- Brands Section -->
+  <section id="brands" style="padding:60px 20px; background:#f9fafb;">
+    <div class="content-container">
+      <h2>Specialized Product Categories</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <img src="public/assets/images/gym supplement.png" alt="Gym Supplements" />
+          <h3>Gym Supplements</h3>
+          <p>*Whey Iso Con / Iso Gold – 100% whey protein isolate & concentrate blend for lean muscle growth and faster recovery.</p>
+          <p>*Advanced Mass Gainer – High-calorie formula with 54g protein + 25 essential nutrients to build size and strength.</p>
+          <p>*Super Creatine – Micronized creatine for explosive power, endurance, and improved performance.</p>
+          <p>*Pre-Workout – Boosts energy, focus, and stamina with a powerful blend of L-Arginine, Citrulline, Caffeine, and vitamins.</p>
+          <p>*Aminos (EAA + BCAA) – Essential amino acids for faster recovery, hydration, and reduced fatigue.</p>
+          <p>*Collagen Peptide – Supports joint health, skin, and overall recovery with added vitamins and bioactive ingredients.</p>
+        </div>
+      </div>
+      <div style="margin-top:50px;">
+        <p class="text-lg text-gray-600 mb-6">Contact us to learn more about our products</p>
+        <a href="contact.html" class="cta-button">Contact Us to Verify</a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

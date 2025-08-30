@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Business Solutions | Printer Guide</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <style>
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9fafb;
+  color: #111827;
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.hero-gradient h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.hero-gradient p {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.content {
+  padding: 50px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.content h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #1e3a8a;
+}
+
+.content p {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  font-size: 1rem;
+  color: #374151;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+  padding: 25px 20px;
+  flex: 1 1 280px;
+  max-width: 300px;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  color: #1e3a8a;
+  font-size: 1.1rem;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #4b5563;
+}
+</style>
+
+
+  <section class="hero-gradient">
+    <h1>Printer Business Solutions</h1>
+    <p>Customized fleet management and support solutions designed for businesses of every size.</p>
+  </section>
+
+  <section class="content">
+    <h2>Why Choose Our Business Solutions?</h2>
+    <p>
+      Managing a fleet of printers across departments or locations can be challenging. Our tailored business solutions help reduce costs, boost productivity, and simplify print management with real-time monitoring, automated supplies delivery, and professional support.
+    </p>
+
+    <div class="card-container">
+      <div class="card">
+        <h3>✔ Fleet Management</h3>
+        <p>Monitor usage, track toner levels, and receive alerts to avoid downtime with our smart printer monitoring tools.</p>
+      </div>
+      <div class="card">
+        <h3>✔ Managed Print Services</h3>
+        <p>We handle everything from device setup to scheduled maintenance and reporting, reducing your admin burden.</p>
+      </div>
+      <div class="card">
+        <h3>✔ Enterprise Support</h3>
+        <p>Get priority support, expert consultations, and service-level agreements tailored to your business needs.</p>
+      </div>
+    </div>
+  </section>
+  <div class="mt-8 text-center">
+    <a href="index.html" 
+       class="inline-block px-6 py-3 text-white font-semibold rounded-lg shadow-lg hover:opacity-90 transition duration-200 hero-gradient">
+        ← Back to Home
+    </a>
+</div>
+<div id="chatbot" class="fixed bottom-6 right-6 bg-white shadow-xl rounded-lg w-80 h-96 flex flex-col">
+  <div class="bg-blue-600 text-white p-3 font-bold">PrinterSupport Chat</div>
+  <div id="chat-messages" class="flex-1 overflow-y-auto p-3 text-sm"></div>
+  <div class="flex border-t">
+    <input id="chat-input" type="text" placeholder="Ask me about setup..." 
+           class="flex-1 p-2 outline-none">
+    <button onclick="sendMessage()" class="bg-blue-600 text-white px-4">Send</button>
+  </div>
+</div>
+
+<script>
+function sendMessage() {
+    const input = document.getElementById("chat-input");
+    const msg = input.value;
+    if (!msg) return;
+
+    const chatBox = document.getElementById("chat-messages");
+    chatBox.innerHTML += `<div class="text-right mb-2"><span class="bg-blue-100 px-2 py-1 rounded">${msg}</span></div>`;
+    
+    // Here you can connect to an AI backend (OpenAI API, Dialogflow, etc.)
+    // For demo, we just echo
+    setTimeout(() => {
+        chatBox.innerHTML += `<div class="text-left mb-2"><span class="bg-gray-200 px-2 py-1 rounded">You asked: ${msg}. I’ll help you with setup/troubleshooting!</span></div>`;
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }, 800);
+
+    input.value = "";
+}
+</script>
+
+</body>
+</html>
