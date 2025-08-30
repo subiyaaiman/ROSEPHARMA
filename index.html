@@ -36,6 +36,12 @@
                 transform: translateY(-10px);
             }
         }
+  picture img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
     </style>
 </head>
 <body class="font-sans antialiased text-gray-800">
@@ -75,11 +81,17 @@
 </header>
 
 <!-- Hero Section -->
-<section id="home" class="relative min-h-[60vh] md:h-screen">
-  <div class="w-screen h-full flex justify-center relative overflow-hidden shadow-2xl">
-    <img src="public/assets/images/home page 1.png" class="absolute inset-0 w-full h-full object-contain" alt="Banner Image" />
-  </div>
-</section>
+<!-- Responsive Banner -->
+<picture>
+  <!-- Mobile -->
+  <source media="(max-width: 767px)" srcset="banner_1080x450.png">
+  <!-- Laptop / Medium -->
+  <source media="(max-width: 1366px)" srcset="banner_1366x560.png">
+  <!-- Desktop / Large -->
+  <img src="home page 1.png" alt="Nutraceutical Manufacturing Banner" style="width:100%; height:auto;">
+</picture>
+
+
 
 
 
