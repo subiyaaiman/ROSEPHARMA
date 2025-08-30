@@ -154,12 +154,12 @@
 <script src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
 <script>
   (function(){
-    emailjs.init('_DN2qzgKO3Q2e6CBB'); // Replace with your EmailJS user/public key
+    emailjs.init('yvbihcWkPi1QZcGei'); // Replace with your EmailJS user/public key
   })();
 
   document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault();
-    emailjs.sendForm('service_h4c6dvm', 'template_8rhelv7', this)
+    emailjs.sendForm('service_xm9eecq', 'template_v2xmbmy', this)
     .then(function() {
       alert('Message sent successfully!');
       document.getElementById('contact-form').reset();
