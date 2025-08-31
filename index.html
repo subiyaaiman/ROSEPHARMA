@@ -47,8 +47,8 @@
 <body class="font-sans antialiased text-gray-800">
 
 <!-- Header -->
-<header class="bg-white shadow-md sticky top-0 z-50">
-  <div class="container mx-auto px-4 py-3 flex justify-between items-center h-16">
+<header class="bg-white shadow-md sticky top-0 z-50 h-16 flex items-center">
+  <div class="container mx-auto px-4 flex justify-between items-center w-full">
     <a href="#" class="flex items-center">
       <i class="fas fa-flower text-3xl text-[#006A4E] mr-2"></i>
       <span class="text-2xl font-bold text-[#006A4E]">ROSE PHARMACEUTICALS</span>
@@ -70,22 +70,14 @@
 </header>
 
 <!-- Hero Banner -->
-<section id="home" class="relative w-full h-[calc(100vh-4rem)]"> 
-  <!-- 100vh minus header height (4rem = h-16) -->
+<section id="home" class="w-full h-[calc(100vh-4rem)]"> 
+  <!-- Full screen minus header (h-16 = 4rem) -->
   <img src="public/assets/images/home page 1.png" 
        alt="Banner Image"
-       class="absolute inset-0 w-full h-full object-cover"/>
+       class="w-full h-full object-cover block"/>
 </section>
 
-
-
-
-
-
-
-
-
-  <script>
+<script>
     document.addEventListener('DOMContentLoaded', () => {
       const slides = document.querySelectorAll('.slide');
       const dotsContainer = document.getElementById('slideshow-dots');
