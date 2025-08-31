@@ -69,12 +69,298 @@
   </div>
 </header>
 
-<!-- Hero Banner -->
-<section id="home" class="relative w-full h-screen">
-  <img src="laptop (1).png" 
-       alt="Banner Image"
-       class="absolute inset-0 w-full h-full object-cover"/>
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nutraceutical Manufacturing Partner</title>
+    <style>
+        /* Reset & base */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f6f8f1; /* light greenish-white */
+            color: #14421F;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        /* Text section */
+        .text-content {
+            flex: 1;
+            max-width: 50%;
+        }
+
+        .text-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: #14421F;
+        }
+
+        .text-content p.subline {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #444;
+            margin-bottom: 2rem;
+        }
+
+        /* Button style */
+        .btn-primary {
+            background-color: #1e4f26;
+            color: white;
+            font-weight: 700;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #126419;
+        }
+
+        /* Icons & captions */
+        .features {
+            display: flex;
+            gap: 2rem;
+            color: #165320;
+            font-weight: 600;
+            font-size: 1rem;
+            align-items: center;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Icon styles */
+        svg {
+            width: 24px;
+            height: 24px;
+            fill: #165320;
+            flex-shrink: 0;
+        }
+
+        /* Right side product images */
+        .products {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            justify-content: flex-end;
+            max-width: 45%;
+        }
+
+        .product-container {
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            gap: 0.8rem;
+        }
+
+        /* Images */
+        .product-image {
+            max-height: 200px;
+            object-fit: contain;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(20, 66, 31, 0.15);
+            background: white;
+        }
+
+        .protein-powder {
+            width: 140px;
+            height: 220px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(20, 66, 31, 0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            font-weight: 700;
+            color: #165320;
+            font-size: 1.2rem;
+            user-select: none;
+        }
+
+        .protein-powder-cap {
+            width: 100%;
+            height: 25px;
+            background: #1e4f26;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            margin-bottom: 0.5rem;
+        }
+
+        .syrup-bottle {
+            width: 70px;
+            height: 160px;
+            background: #591f07;
+            border-radius: 6px;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(20, 66, 31, 0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #165320;
+            font-weight: 700;
+            font-size: 1rem;
+            padding-top: 40px;
+            user-select: none;
+        }
+
+        .syrup-cap {
+            width: 50px;
+            height: 20px;
+            background: white;
+            border-radius: 3px;
+            position: absolute;
+            top: 10px;
+        }
+
+        /* Powder scoop and pills */
+        .powder-scoop {
+            background: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(20, 66, 31, 0.15);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.5rem;
+            color: #966;
+            user-select: none;
+            position: relative;
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+
+        .powder-text {
+            position: absolute;
+            top: 45%;
+            left: 20%;
+            color: #baa87a;
+            font-weight: 600;
+            font-size: 1.8rem;
+        }
+
+        .pill-blister {
+            background: white;
+            padding: 12px 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(20, 66, 31, 0.15);
+            display: flex;
+            gap: 6px;
+            flex-wrap: nowrap;
+        }
+
+        .pill {
+            width: 20px;
+            height: 35px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: inset 0 0 6px #ccc;
+            border: 1px solid #ccc;
+            position: relative;
+        }
+
+        /* Light leaf background */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: url('https://cdn-icons-png.flaticon.com/512/415/415228.png') no-repeat top right;
+            background-size: 300px 300px;
+            opacity: 0.05;
+        }
+    </style>
+</head>
+
+    <div class="container">
+        <div class="text-content">
+            <h1>Your Trusted<br />Nutraceutical Manufacturing Partner</h1>
+            <p class="subline">Specializing in Protein Powders <br />• Syrups • Capsules</p>
+            <a href="#" class="btn-primary">Start Your Brand Today</a>
+            <div class="features">
+                <div class="feature-item">
+                    <!-- Flask icon -->
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M5 21h14v-2H5v2zm11-18H8v8l3 5h4l3-5V3zM10 9V5h4v4h2v2h-8v-2h2z" />
+                    </svg>
+                    Lab-tested
+                </div>
+                <div class="feature-item">
+                    <!-- Leaf icon -->
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 2C8 2 5 7 5 11c0 4.7 3.7 7.5 7 9v-5l-3-3 4-4v-3z" />
+                    </svg>
+                    Natural
+                </div>
+                <div class="feature-item">
+                    <!-- Home icon -->
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 3l10 9h-3v9H9v-6H6v6H3v-9H0L12 3z" />
+                    </svg>
+                    GMP Certified
+                </div>
+            </div>
+        </div>
+
+        <div class="products" aria-label="Product images">
+            <div class="product-image" style="width:70px; height:130px; background: #a8d5a1; border-radius: 4px; box-shadow: inset 0 0 5px #70a04f;"></div>
+            <div class="powder-scoop">
+                <span style="position:absolute; bottom: 10px; left: 12px; color:#a79b87; font-size: 0.8rem; font-weight: 600;">Protein Powder Scoop</span>
+                <svg width="50" height="50" viewBox="0 0 64 64" fill="#cdbb9d" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="20" r="14" />
+                </svg>
+            </div>
+            <div class="protein-powder" role="img" aria-label="Protein Powder container">
+                <div class="protein-powder-cap"></div>
+                <div>PROTEIN<br />POWDER</div>
+            </div>
+
+            <div class="syrup-bottle" role="img" aria-label="Syrup bottle">
+                <div class="syrup-cap"></div>
+                SYRUP
+            </div>
+
+            <div class="pill-blister" aria-label="Capsule blister pack">
+                <div class="pill"></div>
+                <div class="pill"></div>
+                <div class="pill"></div>
+                <div class="pill"></div>
+                <div class="pill"></div>
+                <div class="pill"></div>
+            </div>
+        </div>
+    </div>
 
 
 <script>
