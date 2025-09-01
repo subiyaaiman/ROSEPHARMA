@@ -75,23 +75,33 @@
 <section id="home" class="hero">
   <div class="overlay"></div>
 
-  <div class="hero-content">
-    <h1>Rose Pharmaceutical & Healthcare</h1>
-    <p class="tagline">Your Trusted Partner in <span>Third-Party Manufacturing</span></p>
-    <p class="description">
-      We specialize in manufacturing high-quality Nutraceuticals, Supplements & Healthcare Products, 
-      ensuring innovation, compliance, and global standards since 2008.
-    </p>
+  <div class="hero-container">
+    
+    <!-- Left Content -->
+    <div class="hero-text">
+      <h1>Rose Pharmaceutical & Healthcare</h1>
+      <p class="tagline">Trusted Partner in <span>Third-Party Manufacturing</span></p>
+      <p class="description">
+        We deliver world-class Nutraceuticals, Supplements & Healthcare Products 
+        with a commitment to <strong>quality, compliance, and innovation</strong> since 2008.
+      </p>
 
-    <!-- CTA Button -->
-    <a href="#contact" class="cta-btn">Contact Us Today</a>
+      <!-- CTA Button -->
+      <a href="#contact" class="cta-btn">Contact Us Today</a>
 
-    <!-- Trust Badges -->
-    <div class="badges">
-      <span>✔ ISO Certified</span>
-      <span>✔ GMP Approved</span>
-      <span>✔ Export Quality</span>
+      <!-- Trust Badges -->
+      <div class="badges">
+        <span>✔ ISO Certified</span>
+        <span>✔ GMP Approved</span>
+        <span>✔ Export Quality</span>
+      </div>
     </div>
+
+    <!-- Right Side Product Mockup -->
+    <div class="hero-image">
+      <img src="/assets/images/product-mockup.png" alt="Pharma Products">
+    </div>
+
   </div>
 </section>
 
@@ -99,39 +109,47 @@
 <style>
 .hero {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
-  background: linear-gradient(to right, #ffffff 40%, #e6f5ec 100%),
-              url('/assets/images/pharma-lab-bg.jpg') center/cover no-repeat;
+  background: linear-gradient(to right, #ffffff 50%, #e6f5ec 100%);
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #1b4332;
   font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
 }
 
 .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.7); /* keeps text readable */
+  background: rgba(255, 255, 255, 0.6);
 }
 
-.hero-content {
+.hero-container {
   position: relative;
   z-index: 2;
-  max-width: 800px;
-  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+  gap: 30px;
 }
 
-.hero h1 {
+.hero-text {
+  flex: 1 1 50%;
+  max-width: 550px;
+}
+
+.hero-text h1 {
   font-size: 3rem;
   font-weight: 700;
   color: #2d6a4f;
 }
 
 .tagline {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   margin: 15px 0;
   color: #081c15;
 }
@@ -167,7 +185,6 @@
   margin-top: 20px;
   display: flex;
   gap: 15px;
-  justify-content: center;
   flex-wrap: wrap;
 }
 .badges span {
@@ -178,8 +195,18 @@
   font-size: 0.9rem;
   font-weight: 600;
 }
-</style>
 
+.hero-image {
+  flex: 1 1 40%;
+  text-align: center;
+}
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+</style>
 
 
 
