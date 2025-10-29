@@ -9,44 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Custom CSS */
-        .hero-container {
-  display: flex;
-  justify-content: center;  /* centers all banners horizontally */
-  align-items: stretch;     /* makes them equal height */
-  gap: 20px;                /* space between banners */
-  flex-wrap: wrap;          /* ensures responsiveness on small screens */
-  padding: 20px;
-}
 
-.hero-banner {
-  flex: 1;
-  min-width: 300px;         /* ensures they don’t get too small */
-  background: #f8f8f8;
-  padding: 20px;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.hero-content h1 {
-  color: #006A4E;
-  font-size: 1.5rem;
-}
-
-.cta-btn {
-  display: inline-block;
-  background: #006A4E;
-  color: white;
-  padding: 10px 20px;
-  margin-top: 10px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background 0.3s ease;
-}
-
-.cta-btn:hover {
-  background: #009E67;
-}
 
         .hero-gradient {
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
@@ -239,19 +202,43 @@
 }
 
 /* CTA Button */
+        .hero-container {
+  display: flex;
+  justify-content: center;  /* centers all banners horizontally */
+  align-items: stretch;     /* makes them equal height */
+  gap: 20px;                /* space between banners */
+  flex-wrap: wrap;          /* ensures responsiveness on small screens */
+  padding: 20px;
+}
+
+.hero-banner {
+  flex: 1;
+  min-width: 300px;         /* ensures they don’t get too small */
+  background: #f8f8f8;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.hero-content h1 {
+  color: #006A4E;
+  font-size: 1.5rem;
+}
+
 .cta-btn {
   display: inline-block;
-  padding: 16px 34px;
-  background-color: #006d38;
-  color: #fff;
-  font-size: 1.1rem;
-  font-weight: 600;
+  background: #006A4E;
+  color: white;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 8px;
   text-decoration: none;
-  border-radius: 10px;
-  transition: 0.3s ease-in-out;
+  transition: background 0.3s ease;
 }
+
 .cta-btn:hover {
-  background-color: #004d25;
+  background: #009E67;
 }
 
 /* Features */
