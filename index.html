@@ -75,14 +75,31 @@
 <div class="slideshow-container">
 
   <section class="hero-banner active" style="background-image: url('banner1.jpg');">
-    <div class="hero-content">
-      <h1>Your Trusted<br> Nutraceutical Manufacturing Partner</h1>
-      <p class="subtitle">Specializing in Protein Powders • Syrups • Capsules</p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfltbFJhnfkMDyru2q32OaqLgt0O3zHM9FIB6XGIvO_sTaKAg/viewform" 
+      <div class="hero-content">
+    <h1>Your Trusted<br> Nutraceutical Manufacturing Partner</h1>
+    <p class="subtitle">
+      Specializing in Protein Powders • Syrups • Capsules
+    </p>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSfltbFJhnfkMDyru2q32OaqLgt0O3zHM9FIB6XGIvO_sTaKAg/viewform" 
          class="cta-btn" target="_blank">
          Start Your Brand Today
       </a>
+    <!-- Features with simple SVG icons -->
+    <div class="features">
+      <div class="feature-item">
+        <svg width="20" height="20" fill="#006d38" viewBox="0 0 24 24"><path d="M9 16.17l-3.5-3.5L4 14.17 9 19l12-12-1.41-1.41z"/></svg>
+        <span>Lab-tested</span>
+      </div>
+      <div class="feature-item">
+        <svg width="20" height="20" fill="#006d38" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+        <span>Natural</span>
+      </div>
+      <div class="feature-item">
+        <svg width="20" height="20" fill="#006d38" viewBox="0 0 24 24"><path d="M12 2l9 4-9 16-9-16z"/></svg>
+        <span>GMP Certified</span>
+      </div>
     </div>
+  </div>
   </section>
 
   <section class="hero-banner" style="background-image: url('banner2.jpg');">
@@ -259,7 +276,7 @@ body {
     }
 
     // Auto slide every 5 seconds
-    setInterval(nextSlide, 5000);
+    setInterval(nextSlide, 3000);
     
     document.addEventListener('DOMContentLoaded', () => {
       const slides = document.querySelectorAll('.slide');
