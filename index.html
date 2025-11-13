@@ -7,123 +7,159 @@
     <meta name="description" content="Professional printer repair and support services across the USA for all major printer brands including HP, Epson, Canon, Brother, and more.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* Custom CSS */
-
-
-        .hero-gradient {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-        }
-        .printer-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        .service-card:hover .service-icon {
-            transform: scale(1.1);
-        }
-        .testimonial-card {
-            transition: all 0.3s ease;
-        }
-        .testimonial-card:hover {
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        .animate-bounce-slow {
-            animation: bounce-slow 3s infinite;
-        }
-        @keyframes bounce-slow {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-  picture img {
-    display: block;
+    <!-- REPLACE YOUR CURRENT HERO WITH THIS -->
+<style>
+  /* Responsive hero that preserves the exact image and shows it nicely on all viewports */
+  .site-hero {
+    position: relative;
     width: 100%;
-    height: auto;
-    object-fit: cover;
+    min-height: 64vh;              /* desktop-ish height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
   }
- 
 
-    </style>
-</head>
-<body class="font-sans antialiased text-gray-800">
+  /* Use background image for best cover behavior (change path if needed) */
+  .site-hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: url("public/assets/images/perfect.png"); /* <-- update path if needed */
+    background-size: cover;              /* ensures image fills area */
+    background-repeat: no-repeat;
+    background-position: center center;  /* adjust focal point here if necessary */
+    filter: brightness(0.46);            /* darken slightly for readable text */
+    transition: filter .25s ease;
+  }
 
-<!-- Header -->
-<header class="bg-white shadow-md sticky top-0 z-50 h-16 flex items-center">
-  <div class="container mx-auto px-4 flex justify-between items-center w-full">
-    <!-- Logo -->
-    <a href="#" class="flex items-center">
-      <i class="fas fa-flower text-3xl text-[#006A4E] mr-2"></i>
-      <span class="text-2xl font-bold text-[#006A4E]">ROSE PHARMACEUTICALS</span>
-    </a>
+  /* Optional: if you prefer using <img> instead, see alternate below */
+  .site-hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.32) 100%);
+    pointer-events: none;
+  }
 
-    <!-- Desktop Nav -->
-  <nav class="hidden md:flex space-x-8">
-  <a href="#home" class="text-gray-600 font-medium hover:text-[#006A4E] transition">Home</a>
-  <a href="Third party m brochure.pdf" class="text-gray-600 font-medium hover:text-[#006A4E] transition" target="_blank">Third Party</a>
-  <a href="gymsupplementsfranchise.pdf" class="text-gray-600 font-medium hover:text-[#006A4E] transition" target="_blank">Franchise</a>
-  <a href="pcdpharmafranchise.pdf" class="text-gray-600 font-medium hover:text-[#006A4E] transition" target="_blank">PCD</a>
-  <a href="contact.html" class="text-gray-600 font-medium hover:text-[#006A4E] transition">Contact</a>
-  <a href="privacypolicy.html" class="text-gray-600 font-medium hover:text-[#006A4E] transition">Privacy Policy</a>
-</nav>
+  .site-hero__content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1100px;
+    padding: 28px;
+    text-align: center;
+    color: #fff;
+  }
 
+  .hero-kicker {
+    display:inline-block;
+    background: rgba(255,255,255,0.06);
+    padding:8px 14px;
+    border-radius:999px;
+    margin-bottom:12px;
+    font-weight:700;
+    letter-spacing:0.01em;
+  }
 
-    <!-- Mobile Menu Button -->
-    <div class="md:hidden">
-      <button id="mobile-menu-button" class="text-gray-600 hover:text-[#006A4E] focus:outline-none">
-        <i id="menu-icon" class="fas fa-bars text-2xl"></i>
-      </button>
+  /* fluid heading that scales down on mobile */
+  .hero-title {
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.02;
+    color: #fff;
+    text-shadow: 0 6px 22px rgba(0,0,0,0.45);
+
+    /* clamp(min, preferred, max) keeps headings responsive */
+    font-size: clamp(1.8rem, 6.5vw, 3.4rem);
+  }
+
+  .hero-sub {
+    margin-top:10px;
+    color: rgba(255,255,255,0.95);
+    max-width: 820px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: clamp(.95rem, 2.2vw, 1.15rem);
+    line-height: 1.45;
+    text-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  }
+
+  .hero-cta { margin-top: 18px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+
+  .btn {
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 700;
+    text-decoration: none;
+    display:inline-block;
+  }
+  .btn--primary { background:#006A4E; color:#fff; }
+  .btn--ghost { background:transparent; color:#fff; border:2px solid rgba(255,255,255,0.18); }
+
+  /* Mobile polish: reduce hero height and increase readability */
+  @media (max-width: 767px) {
+    .site-hero { min-height: 54vh; padding-top: 6vh; padding-bottom: 6vh; }
+    .hero-title { font-size: clamp(1.6rem, 9.5vw, 2.6rem); line-height: 1.05; }
+    .site-hero__bg { background-position: center 25%; /* move focal point up/down for mobile if needed */ }
+    .site-hero__content { padding: 20px; }
+  }
+
+  /* If you want the headline to occupy less vertical space on very narrow phones */
+  @media (max-width: 420px) {
+    .hero-title { font-size: clamp(1.45rem, 10.5vw, 2.2rem); }
+    .hero-sub { font-size: .95rem; }
+  }
+
+  /* For reduced-motion users */
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+
+<header class="site-hero" role="banner" aria-label="Hero — Rose Pharmaceuticals">
+  <div class="site-hero__bg" aria-hidden="true"></div>
+  <div class="site-hero__overlay" aria-hidden="true"></div>
+
+  <div class="site-hero__content">
+    <div class="hero-kicker">Gym Supplements Franchise</div>
+
+    <h1 class="hero-title">Your Trusted<br>Nutraceutical Manufacturing Partner</h1>
+
+    <p class="hero-sub">
+      “Every product we create carries a promise of care, purity, and trust.”
+      <br>
+      Specializing in Protein Powders • Syrups • Capsules • Custom Formulations
+    </p>
+
+    <div class="hero-cta" role="group" aria-label="Primary actions">
+      <a class="btn btn--primary" href="https://docs.google.com/forms/..." target="_blank" rel="noopener">Start Your Brand Today</a>
+      <a class="btn btn--ghost" href="contact.html">Contact</a>
     </div>
   </div>
 </header>
 
-<!-- Sidebar Menu (Mobile) -->
-<div id="mobile-menu" class="fixed top-0 right-0 h-full w-2/3 max-w-xs bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-50">
-  <div class="flex justify-between items-center p-4 border-b">
-    <span class="text-xl font-semibold text-[#006A4E]">Menu</span>
-    <button id="close-menu" class="text-gray-600 hover:text-[#006A4E]">
-      <i class="fas fa-times text-2xl"></i>
-    </button>
-  </div>
-
-<div class="flex flex-col p-4 space-y-4">
-  <a href="#home" class="text-gray-600 font-medium hover:text-[#006A4E] transition">Home</a>
-  <a href="third party m.pdf" class="text-gray-600 font-medium hover:text-[#006A4E] transition" target="_blank">Third Party</a>
-  <a href="gymsupplementsfranchise.pdf" class="text-gray-600 font-medium hover:text-[#006A4E] transition" target="_blank">Franchise</a>
-  <a href="pcdpharmafranchise.pdf" class="text-gray-600 font-medium hover:text-[#006A4E] transition" target="_blank">PCD</a>
-  <a href="contact.html" class="text-gray-600 font-medium hover:text-[#006A4E] transition">Contact</a>
-  <a href="privacypolicy.html" class="text-gray-600 font-medium hover:text-[#006A4E] transition">Privacy Policy</a>
-</div>
-
-</div>
-
-<!-- Overlay -->
-<div id="overlay" class="hidden fixed inset-0 bg-black bg-opacity-40 z-40"></div>
-
-<!-- JS Toggle -->
+<!-- tiny script: adjust focal point automatically if needed based on screen aspect -->
 <script>
-  const menuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const closeMenu = document.getElementById('close-menu');
-  const overlay = document.getElementById('overlay');
-  const menuIcon = document.getElementById('menu-icon');
-
-  menuButton.addEventListener('click', () => {
-    mobileMenu.classList.remove('translate-x-full');
-    overlay.classList.remove('hidden');
-  });
-
-  closeMenu.addEventListener('click', () => {
-    mobileMenu.classList.add('translate-x-full');
-    overlay.classList.add('hidden');
-  });
-
-  overlay.addEventListener('click', () => {
-    mobileMenu.classList.add('translate-x-full');
-    overlay.classList.add('hidden');
-  });
+  (function(){
+    // If you find the most important part of the image is being cropped on mobile,
+    // change the background-position dynamically (optional).
+    function adaptBG() {
+      const bg = document.querySelector('.site-hero__bg');
+      if (!bg) return;
+      const w = window.innerWidth;
+      if (w < 420) {
+        // nudge up on very small devices
+        bg.style.backgroundPosition = 'center 20%';
+      } else if (w < 768) {
+        bg.style.backgroundPosition = 'center 25%';
+      } else {
+        bg.style.backgroundPosition = 'center center';
+      }
+    }
+    window.addEventListener('resize', adaptBG);
+    adaptBG();
+  })();
 </script>
 
 <!-- Font Awesome -->
