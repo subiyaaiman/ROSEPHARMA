@@ -3,131 +3,261 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>On-Site Repairs - Printer Guide</title>
+  <title>Capsules - Rose Pharmaceuticals</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <style>
+    :root{
+      --blue-900: #0B3D91;
+      --blue-700: #1B4DBB;
+      --blue-800-hover: #082E6F;
+      --muted: #f8fafc;
+      --text: #1f2937;
+      --card-shadow: rgba(11,61,145,0.06);
+    }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+    }
+
+    html,body { height: 100%; }
     body {
       margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #f8fafc;
-      color: #1f2937;
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: var(--muted);
+      color: var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height: 1.6;
     }
+
+    /* HERO */
     .hero-gradient {
-      background: linear-gradient(135deg, #006A4E 0%, #3b825f 100%);
+      background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-700) 100%);
     }
     .hero-section {
       padding: 60px 20px;
       text-align: center;
       color: white;
+      position: relative;
+      overflow: hidden;
     }
+
     .hero-section h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
+      font-size: 2.4rem;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: -0.6px;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeInUp 700ms cubic-bezier(.2,.9,.2,1) forwards;
+      animation-delay: 120ms;
     }
+
     .hero-section p {
-      font-size: 1.2rem;
-      opacity: 0.9;
-      max-width: 700px;
+      font-size: 1.03rem;
+      max-width: 920px;
       margin: 0 auto;
+      color: rgba(255,255,255,0.95);
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeInUp 700ms cubic-bezier(.2,.9,.2,1) forwards;
+      animation-delay: 260ms;
+      line-height: 1.6;
     }
-    .content-section {
-      padding: 60px 20px;
+
+    .hero-underline {
+      width: 92px;
+      height: 6px;
+      border-radius: 8px;
+      margin: 18px auto 22px auto;
+      background: linear-gradient(90deg, rgba(255,255,255,0.95), rgba(255,255,255,0.3));
+      box-shadow: 0 8px 24px rgba(11,61,145,0.08);
+      opacity: 0;
+      transform: translateY(8px);
+      animation: fadeInUp 700ms cubic-bezier(.2,.9,.2,1) forwards;
+      animation-delay: 320ms;
     }
+
+    /* CONTENT */
     .content-container {
       max-width: 1100px;
       margin: auto;
+      padding: 60px 20px;
       text-align: center;
     }
+
     h2 {
-      color: #006A4E;
-      margin-bottom: 20px;
+      color: var(--blue-900);
+      margin-bottom: 10px;
+      font-size: 1.6rem;
+      font-weight: 700;
+      opacity: 0;
+      transform: translateY(8px);
+      animation: fadeInUp 700ms cubic-bezier(.2,.9,.2,1) forwards;
+      animation-delay: 120ms;
     }
+    .h2-sep {
+      height: 4px;
+      width: 140px;
+      background: linear-gradient(90deg, var(--blue-900), var(--blue-700));
+      border-radius: 8px;
+      margin: 12px auto 28px auto;
+      box-shadow: 0 8px 20px rgba(11,61,145,0.10);
+      opacity: 0;
+      transform: translateY(8px);
+      animation: fadeInUp 700ms cubic-bezier(.2,.9,.2,1) forwards;
+      animation-delay: 200ms;
+    }
+
     .product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-      margin-top: 40px;
+      gap: 24px;
+      margin-top: 24px;
     }
+
     .product-card {
       background: white;
       padding: 20px;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      text-align: center;
+      box-shadow: 0 10px 30px var(--card-shadow);
+      text-align: left;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
       height: 100%;
+      transition: transform .32s cubic-bezier(.2,.9,.2,1), box-shadow .32s ease;
+      will-change: transform;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeInUp 600ms cubic-bezier(.2,.9,.2,1) forwards;
     }
+    .product-card:nth-child(1){ animation-delay: 240ms; }
+    .product-card:nth-child(2){ animation-delay: 320ms; }
+    .product-card:nth-child(3){ animation-delay: 400ms; }
+
+    .product-card:hover {
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 22px 48px rgba(11,61,145,0.10);
+    }
+
     .product-card img {
-      max-height: 180px;
-      object-fit: contain;
-      margin: auto;
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+      background: linear-gradient(180deg, rgba(11,61,145,0.02), rgba(27,77,187,0.02));
+      margin-bottom: 14px;
+      transition: transform .45s cubic-bezier(.2,.9,.2,1), box-shadow .45s ease;
     }
+    .product-card:hover img {
+      transform: scale(1.04) translateY(-4px);
+      box-shadow: 0 14px 36px rgba(11,61,145,0.08);
+    }
+
     .product-card h3 {
-      margin: 15px 0 10px 0;
-      font-size: 1.2rem;
-      color: #006A4E;
+      margin: 8px 0 10px 0;
+      font-size: 1.12rem;
+      color: var(--blue-900);
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      font-weight: 600;
     }
+    .product-card h3 i {
+      color: var(--blue-700);
+      font-size: 1rem;
+      width: 28px;
+      text-align: center;
+      display: inline-block;
+    }
+
     .product-card p {
       font-size: 0.95rem;
       color: #374151;
-      line-height: 1.5;
-      flex-grow: 1;
+      line-height: 1.6;
+      margin: 8px 0;
     }
+
+    .cta-wrap { margin-top: 32px; text-align:center; }
     .cta-button {
       display: inline-block;
-      padding: 14px 28px;
-      background: #006A4E;
+      padding: 12px 22px;
+      background: var(--blue-900);
       color: white;
-      font-weight: 600;
+      font-weight: 700;
+      border-radius: 10px;
       text-decoration: none;
-      border-radius: 8px;
-      transition: background 0.3s ease;
-      margin-top: 20px;
+      transition: background .18s ease, transform .12s ease;
     }
-    .cta-button:hover {
-      background: #004733;
+    .cta-button:hover { background: var(--blue-800-hover); transform: translateY(-3px); }
+
+    .muted-note { color: #475569; margin-bottom: 14px; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
+
+    @media (max-width: 880px) {
+      .hero-section { padding: 48px 16px; }
+      .hero-section h1 { font-size: 1.9rem; }
+      .product-card img { height: 140px; }
+      .h2-sep { width: 96px; }
+    }
+
+    /* Accessibility focus */
+    .product-card:focus-within { outline: 3px solid rgba(11,61,145,0.08); outline-offset: 4px; }
+    a:focus { outline: 3px solid rgba(11,61,145,0.12); outline-offset: 2px; }
   </style>
 </head>
 <body>
 
   <!-- Hero Section -->
-  <section class="hero-gradient hero-section">
+  <section class="hero-gradient hero-section" aria-labelledby="hero-heading">
     <div class="hero-content">
-      <h1>Capsules</h1>
+      <h1 id="hero-heading">Capsules</h1>
+      <div class="hero-underline" aria-hidden="true"></div>
       <p>Precision-manufactured capsules and tablets designed for high-quality nutritional supplements and health products.</p>
     </div>
   </section>
 
   <!-- Brands Section -->
-  <section id="brands" style="padding:60px 20px; background:#f9fafb;">
+  <section id="brands" style="padding:40px 20px; background:#f9fafb;">
     <div class="content-container">
       <h2>Specialized Product Categories</h2>
+      <div class="h2-sep" aria-hidden="true"></div>
 
       <!-- Grid -->
-      <div class="product-grid">
-        <div class="product-card">
-          <img src="public/assets/images/multivitamin multimineral capsule.jpg" alt="Multivitamin">
-          <h3>Multivitamin</h3>
-          <p>Our Multivitamin Capsules are scientifically formulated to provide a balanced blend of essential vitamins and minerals that support daily health, energy, and immunity.Manufactured in a GMP-certified facility High-quality raw materials for maximum effectiveness Custom formulations and packaging available Reliable third-party manufacturing solutions.</p>
+      <div class="product-grid" role="list">
+        <div class="product-card" role="listitem" tabindex="0">
+          <img src="public/assets/images/multivitamin multimineral capsule.jpg" alt="Multivitamin Capsules">
+          <h3><i class="fa-solid fa-capsules" aria-hidden="true"></i>Multivitamin</h3>
+          <p><strong>Multivitamin Capsules</strong></p>
+          <p>Our Multivitamin Capsules are scientifically formulated to provide a balanced blend of essential vitamins and minerals that support daily health, energy, and immunity. Manufactured in a GMP-certified facility using high-quality raw materials. Custom formulations and packaging are available — reliable third-party manufacturing solutions.</p>
         </div>
-        <div class="product-card">
-          <img src="public/assets/images/VIT D3.jpg" alt="Vitamin D3">
-          <h3>Vitamin D3</h3>
-          <p>Our Vitamin D3 Capsules are designed to support strong bones, teeth, and overall immunity by improving calcium absorption in the body.Made with premium-grade Vitamin D3 Ensures accurate dosage and high bioavailability GMP-certified and quality tested Available in custom strengths & pack sizes</p>
+
+        <div class="product-card" role="listitem" tabindex="0">
+          <img src="public/assets/images/VIT D3.jpg" alt="Vitamin D3 Capsules">
+          <h3><i class="fa-solid fa-sun" aria-hidden="true"></i>Vitamin D3</h3>
+          <p><strong>Vitamin D3 Capsules</strong></p>
+          <p>Designed to support strong bones, teeth, and overall immunity by improving calcium absorption. Made with premium-grade Vitamin D3 for accurate dosage and high bioavailability. GMP-certified and quality tested. Available in custom strengths & pack sizes.</p>
         </div>
-        <div class="product-card">
-          <img src="public/assets/images/Moringa.jpg" alt="Moringa">
-          <h3>Moringa</h3>
-          <p>Our Moringa Capsules are made from pure Moringa oleifera leaf extract, rich in vitamins, minerals, antioxidants, and amino acids. They boost energy, immunity, and support metabolism — manufactured in a GMP-certified facility for maximum safety and bioavailability.</p>
+
+        <div class="product-card" role="listitem" tabindex="0">
+          <img src="public/assets/images/Moringa.jpg" alt="Moringa Capsules">
+          <h3><i class="fa-solid fa-seedling" aria-hidden="true"></i>Moringa</h3>
+          <p><strong>Moringa Capsules</strong></p>
+          <p>Our Moringa Capsules are made from pure Moringa oleifera leaf extract — rich in vitamins, minerals, antioxidants, and amino acids. They boost energy, immunity, and support metabolism. Manufactured in a GMP-certified facility for maximum safety and bioavailability.</p>
         </div>
       </div>
 
       <!-- CTA -->
-      <div style="margin-top:50px;">
-        <p class="text-lg text-gray-600 mb-6">Contact us to know more about the products</p>
+      <div class="cta-wrap">
+        <p class="muted-note">Contact us to know more about the products</p>
         <a href="contact.html" class="cta-button">Contact Us to Verify</a>
       </div>
     </div>
