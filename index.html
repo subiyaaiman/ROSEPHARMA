@@ -133,331 +133,349 @@
 
 <!-- ===================== CLEAN MANUAL SLIDER ===================== -->
 
+<!-- ===================== PREMIUM SLIDER: AUTO + MANUAL + FADE + THUMBNAILS ===================== -->
 <style>
-  .slider-container {
+  /* Container */
+  .premium-slider {
     position: relative;
     width: 100%;
     height: 100vh;
     overflow: hidden;
+    background: #fff;
   }
 
-  .slider-wrapper {
-    display: flex;
-    transition: transform 0.6s ease-in-out;
-    height: 100%;
-  }
-
-  .slide {
-    min-width: 100%;
-    height: 100%;
+  /* Slides wrapper is positioned; slides stacked for fade */
+  .premium-slide {
+    position: absolute;
+    inset: 0;
     background-size: cover;
     background-position: center;
-    position: relative;
-  }
-
-  /* Content on banners */
-  .slide-content {
-    position: absolute;
-    top: 50%;
-    left: 10%;
-    transform: translateY(-50%);
-    color: #0B3D91;
-    max-width: 650px;
-  }
-
-  .slide-content h1 {
-    font-size: 3.2rem;
-    font-weight: 700;
-    line-height: 1.3;
-    margin-bottom: 16px;
-    color: #0B3D91;
-  }
-
-  .slide-content p {
-    font-size: 1.3rem;
-    color: #222;
-    margin-bottom: 25px;
-  }
-
-  .cta-btnBanner {
-    display: inline-block;
-    background: #0B3D91;
-    color: white;
-    padding: 12px 28px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.3s ease;
-  }
-
-  .cta-btnBanner:hover {
-    background: #1E6EFF;
-  }
-
-  /* Navigation arrows */
-  .slider-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255,255,255,0.75);
-    backdrop-filter: blur(6px);
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
+    opacity: 0;
+    transform: scale(1.01);
+    transition: opacity 800ms ease, transform 800ms ease;
     display: flex;
     align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 22px;
-    color: #0B3D91;
-    z-index: 20;
-    transition: 0.3s;
   }
 
-  .slider-arrow:hover {
-    background: white;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  .premium-slide.active {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 2;
   }
 
-  #prevSlide { left: 20px; }
-  #nextSlide { right: 20px; }
-
-  /* Slider dots */
-  .slider-dots {
+  /* Overlay content */
+  .premium-content {
     position: absolute;
-    bottom: 25px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 8px;
+    left: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 680px;
+    color: #062A60;
+    z-index: 5;
   }
 
-  .slider-dots div {
-    width: 12px;
-    height: 12px;
-    background: #bbb;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: 0.3s;
+  .premium-content h1 {
+    margin: 0 0 12px 0;
+    font-size: clamp(1.8rem, 4vw, 3.2rem);
+    line-height: 1.12;
+    color: #0B3D91;
+    font-weight: 700;
   }
 
-  .slider-dots .active {
+  .premium-content p {
+    margin: 0 0 20px 0;
+    font-size: clamp(1rem, 2.2vw, 1.25rem);
+    color: #222;
+  }
+
+  .premium-cta {
+    display: inline-block;
     background: #0B3D91;
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 8px 20px rgba(11,61,145,0.14);
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+
+  .premium-cta:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(11,61,145,0.18); }
+
+  /* Arrows: modern circular */
+  .premium-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    z-index: 10;
+    background: rgba(255,255,255,0.9);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    transition: transform .12s ease, background .12s ease;
+    color: #0B3D91;
+    border: none;
+  }
+
+  .premium-button:hover { transform: translateY(-3px) scale(1.02); background: #fff; }
+
+  .premium-prev { left: 18px; }
+  .premium-next { right: 18px; }
+
+  /* Play/pause compact control */
+  .premium-playpause {
+    position: absolute;
+    right: 88px;
+    bottom: 28px;
+    z-index: 12;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.95);
+    display: grid;
+    place-items: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    cursor: pointer;
+    color: #0B3D91;
+    font-size: 18px;
+  }
+
+  .premium-playpause:hover { transform: translateY(-3px); }
+
+  /* Dots/thumbnail strip */
+  .premium-thumbs {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 18px;
+    z-index: 12;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 6px;
+    background: rgba(255,255,255,0.80);
+    border-radius: 999px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  }
+
+  .premium-thumb {
+    width: 84px;
+    height: 52px;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+  }
+
+  .premium-thumb img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .premium-thumb:hover { transform: translateY(-4px) scale(1.02); }
+  .premium-thumb.active { border-color: #0B3D91; box-shadow: 0 10px 26px rgba(11,61,145,0.12); }
+
+  /* Accessibility focus */
+  .premium-button:focus, .premium-playpause:focus, .premium-thumb:focus { outline: 3px solid rgba(11,61,145,0.12); outline-offset: 2px; }
+
+  /* Mobile adjustments */
+  @media (max-width: 900px) {
+    .premium-content { left: 6%; right: 6%; max-width: 86%; }
+    .premium-content h1 { font-size: 2rem; }
+    .premium-thumb { width: 64px; height: 40px; }
+    .premium-button { width: 48px; height: 48px; }
+    .premium-playpause { right: 18px; bottom: 18px; }
   }
 </style>
 
-<div class="slider-container">
-  
-  <!-- Wrapper -->
-  <div class="slider-wrapper" id="sliderWrapper">
+<div class="premium-slider" role="region" aria-label="Main banner slider" id="premiumSlider">
 
-    <!-- SLIDE 1 -->
-    <div class="slide" style="background-image:url('page1.png');">
-      <div class="slide-content">
-        <h1>Your Trusted<br>Nutraceutical Manufacturing Partner</h1>
-        <p>Specializing in Protein Powders • Syrups • Capsules</p>
-        <a href="#" class="cta-btnBanner">Start Your Brand Today</a>
-      </div>
+  <!-- Slides (fade stack) -->
+  <div class="premium-slide active" data-index="0" style="background-image:url('page1.png');" role="group" aria-roledescription="slide" aria-label="Slide 1 of 3">
+    <div class="premium-content">
+      <h1>Your Trusted<br>Nutraceutical Manufacturing Partner</h1>
+      <p>Specializing in Protein Powders • Syrups • Capsules</p>
+      <a class="premium-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSfltbFJhnfkMDyru2q32OaqLgt0O3zHM9FIB6XGIvO_sTaKAg/viewform" target="_blank">Start Your Brand Today</a>
     </div>
-
-    <!-- SLIDE 2 -->
-    <div class="slide" style="background-image:url('page2.png');">
-      <div class="slide-content">
-        <h1>Start Your Own Pharma Business<br>With India's Trusted</h1>
-        <p>Protein Powders • Syrups • Capsules • Sachets</p>
-        <a href="#" class="cta-btnBanner">Become a Franchise Partner</a>
-      </div>
-    </div>
-
-    <!-- SLIDE 3 -->
-    <div class="slide" style="background-image:url('page3.png');">
-      <div class="slide-content">
-        <h1>Become a Part of Nextage Nutrition</h1>
-        <p>Whey Protein • Pre-workout • Plant Based Supplements</p>
-        <a href="#" class="cta-btnBanner">Join Our Franchise</a>
-      </div>
-    </div>
-
   </div>
 
-  <!-- Navigation arrows -->
-  <div id="prevSlide" class="slider-arrow"><i class="fas fa-chevron-left"></i></div>
-  <div id="nextSlide" class="slider-arrow"><i class="fas fa-chevron-right"></i></div>
+  <div class="premium-slide" data-index="1" style="background-image:url('page2.png');" role="group" aria-roledescription="slide" aria-label="Slide 2 of 3">
+    <div class="premium-content">
+      <h1>Start Your Own Pharma Business<br>With India's Trusted</h1>
+      <p>Protein Powders • Syrups • Capsules • Sachets</p>
+      <a class="premium-cta" href="https://docs.google.com/forms/d/e/1FAIpQLScJeyAC8Dzuf6_7s6CimpK43Shwu7S8PL20NfLOin4HyYFiHg/viewform" target="_blank">Become a Franchise Partner</a>
+    </div>
+  </div>
 
-  <!-- Dots -->
-  <div class="slider-dots" id="sliderDots"></div>
+  <div class="premium-slide" data-index="2" style="background-image:url('page3.png');" role="group" aria-roledescription="slide" aria-label="Slide 3 of 3">
+    <div class="premium-content">
+      <h1>Become a Part of Nextage Nutrition</h1>
+      <p>Whey Protein • Pre-workout • Plant Based Supplements</p>
+      <a class="premium-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSdldzEayaeElk86z-UEt-iT0Wg8wZSce6yy3030wWk0XHiPZg/viewform" target="_blank">Join Our Franchise</a>
+    </div>
+  </div>
 
+  <!-- Arrows -->
+  <button class="premium-button premium-prev" id="premiumPrev" aria-label="Previous slide">
+    <i class="fas fa-chevron-left" aria-hidden="true"></i>
+  </button>
+
+  <button class="premium-button premium-next" id="premiumNext" aria-label="Next slide">
+    <i class="fas fa-chevron-right" aria-hidden="true"></i>
+  </button>
+
+  <!-- Play / Pause -->
+  <button class="premium-playpause" id="premiumPlayPause" aria-label="Pause autoplay" title="Pause autoplay">
+    <i id="playPauseIcon" class="fas fa-pause" aria-hidden="true"></i>
+  </button>
+
+  <!-- Thumbnails -->
+  <div class="premium-thumbs" id="premiumThumbs" aria-hidden="false">
+    <div class="premium-thumb active" data-index="0" tabindex="0" aria-label="Show slide 1">
+      <img src="page1.png" alt="Slide 1 thumbnail">
+    </div>
+    <div class="premium-thumb" data-index="1" tabindex="0" aria-label="Show slide 2">
+      <img src="page2.png" alt="Slide 2 thumbnail">
+    </div>
+    <div class="premium-thumb" data-index="2" tabindex="0" aria-label="Show slide 3">
+      <img src="page3.png" alt="Slide 3 thumbnail">
+    </div>
+  </div>
 </div>
 
 <script>
-  const wrapper = document.getElementById("sliderWrapper");
-  const dotsContainer = document.getElementById("sliderDots");
+  (function () {
+    const slides = Array.from(document.querySelectorAll('.premium-slide'));
+    const thumbs = Array.from(document.querySelectorAll('.premium-thumb'));
+    const prevBtn = document.getElementById('premiumPrev');
+    const nextBtn = document.getElementById('premiumNext');
+    const playPauseBtn = document.getElementById('premiumPlayPause');
+    const playPauseIcon = document.getElementById('playPauseIcon');
+    const slider = document.getElementById('premiumSlider');
 
-  let current = 0;
-  const totalSlides = document.querySelectorAll(".slide").length;
+    let current = 0;
+    const total = slides.length;
+    let autoplay = true;            // default autoplay on
+    const AUTO_DELAY = 4500;        // ms between slides
+    let autoplayTimer = null;
+    let userInteracted = false;
 
-  // Create dots
-  for (let i = 0; i < totalSlides; i++) {
-    const dot = document.createElement("div");
-    if (i === 0) dot.classList.add("active");
-    dot.addEventListener("click", () => goToSlide(i));
-    dotsContainer.appendChild(dot);
-  }
-  const dots = dotsContainer.querySelectorAll("div");
+    // Helper: go to slide
+    function goTo(index, userTriggered = false) {
+      if (index === current) return;
+      slides[current].classList.remove('active');
+      thumbs[current].classList.remove('active');
+      current = ((index % total) + total) % total;
+      slides[current].classList.add('active');
+      thumbs[current].classList.add('active');
 
-  function updateSlider() {
-    wrapper.style.transform = `translateX(-${current * 100}%)`;
-    dots.forEach((d, i) => d.classList.toggle("active", i === current));
-  }
+      // announce to screen readers by updating aria-hidden maybe (kept minimal)
+      slides.forEach((s, i) => s.setAttribute('aria-hidden', i === current ? 'false' : 'true'));
 
-  function nextSlide() {
-    current = (current + 1) % totalSlides;
-    updateSlider();
-  }
+      // if user triggered, pause autoplay for a while (UX)
+      if (userTriggered) {
+        pauseAutoplayTemporary();
+      }
+    }
 
-  function prevSlide() {
-    current = (current - 1 + totalSlides) % totalSlides;
-    updateSlider();
-  }
+    // Prev / Next
+    function next() { goTo(current + 1, true); }
+    function prev() { goTo(current - 1, true); }
 
-  function goToSlide(index) {
-    current = index;
-    updateSlider();
-  }
+    // Thumbs click / keyboard
+    thumbs.forEach(t => {
+      t.addEventListener('click', () => goTo(Number(t.dataset.index), true));
+      t.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goTo(Number(t.dataset.index), true); }
+      });
+    });
 
-  document.getElementById("nextSlide").onclick = nextSlide;
-  document.getElementById("prevSlide").onclick = prevSlide;
+    // Buttons
+    nextBtn.addEventListener('click', next);
+    prevBtn.addEventListener('click', prev);
+
+    // Keyboard navigation (left/right, space to toggle)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { next(); }
+      if (e.key === 'ArrowLeft') { prev(); }
+      if (e.key === ' ' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+        e.preventDefault();
+        toggleAutoplay();
+      }
+    });
+
+    // Autoplay control
+    function startAutoplay() {
+      stopAutoplay();
+      autoplay = true;
+      playPauseIcon.classList.remove('fa-play'); playPauseIcon.classList.add('fa-pause');
+      playPauseBtn.setAttribute('aria-label', 'Pause autoplay');
+      autoplayTimer = setInterval(() => {
+        goTo(current + 1);
+      }, AUTO_DELAY);
+    }
+
+    function stopAutoplay() {
+      autoplay = false;
+      playPauseIcon.classList.remove('fa-pause'); playPauseIcon.classList.add('fa-play');
+      playPauseBtn.setAttribute('aria-label', 'Start autoplay');
+      if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; }
+    }
+
+    function toggleAutoplay() {
+      if (autoplayTimer) { stopAutoplay(); } else { startAutoplay(); }
+    }
+
+    // Play/pause button
+    playPauseBtn.addEventListener('click', () => {
+      toggleAutoplay();
+      // If user toggles, treat as interaction so we won't auto resume
+      userInteracted = true;
+    });
+
+    // Pause on hover (mouse) and resume on leave (if not manually paused)
+    slider.addEventListener('mouseenter', () => {
+      if (autoplayTimer) {
+        clearInterval(autoplayTimer);
+        autoplayTimer = null;
+      }
+    });
+
+    slider.addEventListener('mouseleave', () => {
+      if (!userInteracted) startAutoplay();
+    });
+
+    // After user clicks manual nav, temporary pause then resume
+    let tempPauseTimer = null;
+    function pauseAutoplayTemporary() {
+      if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; }
+      if (tempPauseTimer) clearTimeout(tempPauseTimer);
+      tempPauseTimer = setTimeout(() => {
+        if (!userInteracted) startAutoplay();
+      }, 6000); // 6s resume delay
+    }
+
+    // Initialize aria-hidden correctly
+    slides.forEach((s,i) => s.setAttribute('aria-hidden', i === current ? 'false' : 'true'));
+
+    // Start autoplay initially
+    startAutoplay();
+
+    // Expose small API if needed (not required)
+    window._premiumSlider = { goTo, next, prev, startAutoplay, stopAutoplay };
+
+  })();
 </script>
+<!-- ===================== END PREMIUM SLIDER ===================== -->
 
-<!-- ===================== END CLEAN MANUAL SLIDER ===================== -->
-
-  </section>
-
-  
-    
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #ffffff;
-}
-
-/* === SLIDESHOW CONTAINER === */
-.slideshow-container {
-  position: relative;
-  width: 100%;
-  height: 100vh; /* full screen */
-  overflow: hidden;
-}
-
-/* === HERO BANNERS (each slide) === */
-.hero-banner {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: none; /* hidden by default */
-  justify-content: center;
-  align-items: center;
-  text-align: left;
-  padding: 0 10%;
-  background: linear-gradient(to right, #e8f5e9, #ffffff);
-  background-size: cover;
-  background-position: center;
-  transition: opacity 1s ease-in-out;
-}
-
-.hero-banner.active {
-  display: flex; /* visible slide */
-}
-
-/* === HERO CONTENT === */
-.hero-content {
-  max-width: 700px;
-  color: #062A60;
-  z-index: 2;
-}
-
-.hero-content h1 {
-  font-size: 3.2rem;
-  font-weight: 700;
-  line-height: 1.3;
-  margin-bottom: 20px;
-  color: #0B3D91;
-}
-
-.hero-content .subtitle {
-  font-size: 1.3rem;
-  color: #333;
-  margin-bottom: 30px;
-}
-
-/* === CTA BUTTON === */
-.cta-btn {
-  display: inline-block;
-  background: #0B3D91;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s ease;
-}
-
-.cta-btn:hover {
-  background: #1E6EFF;
-  color: #fff;
-}
-
-/* === FEATURES === */
-.features {
-  margin-top: 35px;
-  display: flex;
-  gap: 25px;
-  flex-wrap: wrap;
-}
-
-.feature-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 1rem;
-  font-weight: 500;
-  color: #0B3D91;
-}
-
-/* === SLIDESHOW DOTS === */
-.dots {
-  text-align: center;
-  position: absolute;
-  bottom: 25px;
-  width: 100%;
-}
-
-.dot {
-  height: 12px;
-  width: 12px;
-  margin: 0 4px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.dot.active {
-  background-color: #0B3D91;
-}
-</style>
-
-    
 
 
 
