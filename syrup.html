@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Syrups & Sachets - Rose Pharmaceuticals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root{
+      --blue-900: #0B3D91;
+      --blue-700: #1B4DBB;
+      --blue-800-hover: #082E6F;
+      --muted: #f8fafc;
+      --text: #1f2937;
+      --card-shadow: rgba(16,24,40,0.06);
+    }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+    }
+
+    html,body{height:100%;}
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--muted);
+      color: var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height: 1.6;
+    }
+
+    /* HERO */
+    .hero-gradient {
+      background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-700) 100%);
+    }
+    .hero-section {
+      padding: 60px 20px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Animated hero heading */
+    .hero-section h1 {
+      font-size: 2.4rem;
+      margin-bottom: 12px;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeInUp 700ms cubic-bezier(.2,.9,.2,1) forwards;
+      animation-delay: 120ms;
+      letter-spacing: -0.3px;
+      font-weight: 700;
+    }
+    .hero-section p {
+      font-size: 1.06rem;
+      opacity: 0;
+      max-width: 920px;
+      margin: 0 auto;
+      animation: fadeInUp 700ms cubic-bezier(.2,.9,.2,1) forwards;
+      animation-delay: 260ms;
+      color: rgba(255,255,255,0.95);
+    }
+
+    /* small decorative underline under hero heading */
+    .hero-underline {
+      width: 92px;
+      height: 6px;
+      border-radius: 6px;
+      margin: 18px auto 26px auto;
+      background: linear-gradient(90deg, rgba(255,255,255,0.95), rgba(255,255,255,0.25));
+      box-shadow: 0 6px 18px rgba(11,61,145,0.12);
+      opacity: 0;
+      transform: translateY(6px);
+      animation: fadeInUp 700ms cubic-bezier(.2,.9,.2,1) forwards;
+      animation-delay: 320ms;
+    }
+
+    /* CONTENT */
+    .content-container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; text-align: center; }
+
+    h2 {
+      color: var(--blue-900);
+      margin-bottom: 10px;
+      font-weight: 700;
+      font-size: 1.6rem;
+      opacity: 0;
+      transform: translateY(8px);
+      animation: fadeInUp 700ms cubic-bezier(.2,.9,.2,1) forwards;
+      animation-delay: 120ms;
+    }
+    .h2-sep {
+      height: 4px;
+      width: 140px;
+      background: linear-gradient(90deg, var(--blue-900), var(--blue-700));
+      border-radius: 8px;
+      margin: 12px auto 28px auto;
+      box-shadow: 0 8px 20px rgba(11,61,145,0.10);
+      opacity: 0;
+      transform: translateY(8px);
+      animation: fadeInUp 700ms cubic-bezier(.2,.9,.2,1) forwards;
+      animation-delay: 200ms;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .product-card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 8px 28px var(--card-shadow);
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      height: 100%;
+      transition: transform .32s cubic-bezier(.2,.9,.2,1), box-shadow .32s ease;
+      will-change: transform;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeInUp 600ms cubic-bezier(.2,.9,.2,1) forwards;
+    }
+    .product-card:nth-child(1){ animation-delay: 240ms; }
+    .product-card:nth-child(2){ animation-delay: 320ms; }
+
+    .product-card:hover {
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 22px 48px rgba(11,61,145,0.10);
+    }
+
+    .product-card img {
+      max-height: 180px;
+      object-fit: contain;
+      margin: 0 auto 14px auto;
+      transition: transform .45s cubic-bezier(.2,.9,.2,1), box-shadow .45s ease;
+      border-radius: 8px;
+      display: block;
+      width: 100%;
+      height: 160px;
+      background: linear-gradient(180deg, rgba(11,61,145,0.02), rgba(27,77,187,0.02));
+    }
+
+    .product-card:hover img {
+      transform: scale(1.04) translateY(-4px);
+      box-shadow: 0 14px 36px rgba(11,61,145,0.08);
+    }
+
+    .product-card h3 {
+      margin: 12px 0 10px 0;
+      font-size: 1.12rem;
+      color: var(--blue-900);
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      font-weight: 600;
+    }
+    .product-card h3 i { color: var(--blue-700); font-size: 1.05rem; width: 28px; text-align: center; display:inline-block; }
+
+    .product-card p {
+      font-size: 0.95rem;
+      color: #374151;
+      line-height: 1.6;
+      margin: 8px 0;
+    }
+
+    .cta-wrap { margin-top: 32px; text-align:center; }
+    .cta-button {
+      display: inline-block;
+      padding: 12px 22px;
+      background: var(--blue-900);
+      color: white;
+      font-weight: 700;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background .18s ease, transform .12s ease;
+    }
+    .cta-button:hover { background: var(--blue-800-hover); transform: translateY(-3px); }
+
+    .muted-note { color: #475569; margin-bottom: 14px; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 880px) {
+      .hero-section { padding: 48px 16px; }
+      .hero-section h1 { font-size: 1.9rem; }
+      .product-card img { height: 140px; }
+      .product-card h3 { font-size: 1.05rem; }
+      .h2-sep { width: 96px; }
+    }
+
+    /* Accessibility focus */
+    .product-card:focus-within { outline: 3px solid rgba(11,61,145,0.08); outline-offset: 4px; }
+    a:focus { outline: 3px solid rgba(11,61,145,0.12); outline-offset: 2px; }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero-gradient hero-section" aria-labelledby="hero-heading">
+    <div class="hero-content">
+      <h1 id="hero-heading">SYRUPS</h1>
+      <div class="hero-underline" aria-hidden="true"></div>
+      <p>Our nutritional syrups and liquid supplements are crafted with advanced liquid processing technology to ensure effectiveness, taste, and safety. We specialize in child-friendly and adult-friendly formulations with enhanced flavors and extended shelf life..</p>
+    </div>
+  </section>
+
+  <!-- Brands / Products -->
+  <div class="content-container" id="brands">
+    <h2>Specialized Product Categories</h2>
+    <div class="h2-sep" aria-hidden="true"></div>
+
+    <div class="product-grid" role="list">
+      <div class="product-card" role="listitem" tabindex="0">
+        <img src="public/assets/images/SYRUP.png" alt="Syrup product image">
+        <h3><i class="fa-solid fa-flask" aria-hidden="true"></i>SYRUPS</h3>
+        <p><strong>Syrups – Trusted Nutraceutical Solutions</strong></p>
+        <p>At Rosepharmaceutical &amp; Healthcare Pvt. Ltd., we specialize in manufacturing high-quality nutraceutical syrups designed to deliver health benefits in a convenient and consumer-friendly form. Syrups are one of the most preferred dosage formats, offering easy consumption, quick absorption, and flexible dosing – making them suitable for all age groups.</p>
+        <p>We offer a wide range of syrup formulations, including:</p>
+        <p>Iron Syrup – Supports hemoglobin & combats anemia.</p>
+        <p>Multivitamin Syrup – Complete daily nutrition in liquid form.</p>
+        <p>Lycopene Syrup – Antioxidant-rich, boosts immunity & wellness.</p>
+        <p>Calcium Syrup – Strengthens bones & prevents deficiencies.</p>
+        <p>ORS Juices & Energy Syrups – Restores hydration & electrolytes.</p>
+        <p>Protein & Glucose Syrups – Quick energy & recovery support.</p>
+        <p>Liver Tonic Syrups – Tricholine Citrate & Sorbitol solution for liver health.</p>
+        <p>With custom formulations, attractive packaging options, and strict quality standards, we provide end-to-end third-party manufacturing solutions to help you launch your own brand of syrups with confidence.</p>
+      </div>
+
+      <div class="product-card" role="listitem" tabindex="0">
+        <img src="public/assets/images/SACHETS.png" alt="Sachets product image">
+        <h3><i class="fa-solid fa-wheat-awn" aria-hidden="true"></i>SACHETS</h3>
+        <p><strong>Private Label Nutraceutical Sachets</strong></p>
+        <p>Expand your product line with our premium range of nutraceutical sachets, designed for convenience, accuracy, and brand customization. We specialize in third-party manufacturing of high-demand sachet formulations including:</p>
+        <p>L-Arginine Sachet – Supports energy & stamina.</p>
+        <p>Lycopene Sachet – Rich in antioxidants for cellular health.</p>
+        <p>Collagen Peptide Sachet – Promotes skin, hair & joint wellness.</p>
+        <p>Multivitamin Sachet – Daily essential nutrients in a single dose.</p>
+        <p>Each sachet comes in plain matte silver/white packaging with dedicated space for YOUR BRAND LABEL, ensuring a professional, ready-to-market solution.</p>
+        <p>With flexible packaging options, precise formulations, and strict quality standards, our sachets deliver both premium appeal and scientific trust.</p>
+      </div>
+    </div>
+
+    <div class="cta-wrap">
+      <p class="muted-note">Contact us to know more about the products</p>
+      <a href="index.html" class="cta-button">Contact Us to Verify</a>
+    </div>
+  </div>
+
+</body>
+</html>
