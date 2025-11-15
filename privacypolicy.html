@@ -1,154 +1,436 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Privacy Policy - Rose Pharmaceuticals</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+
+  <!-- Inter + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
   <style>
+    :root{
+      --blue-900: #0B3D91;
+      --blue-700: #1B4DBB;
+      --blue-800-hover: #082E6F;
+      --bg: #f8fafc;
+      --card-shadow: rgba(11,61,145,0.08);
+      --text: #1f2937;
+    }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *,*::before,*::after{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+    }
+
+    html,body{height:100%;}
+    body {
+      margin:0;
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
+    }
+
+    /* Top gradient header (changed to dark blue) */
     .hero-gradient {
-      background: linear-gradient(135deg, #006A4E 0%, #3b825f 100%);
+      background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-700) 100%);
     }
-    a {
-      color: #006A4E;
-      text-decoration: underline;
+    .page-hero {
+      padding: 64px 20px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
     }
-    a:hover {
-      color: #004733;
+
+    /* Animated main heading */
+    .page-title {
+      font-size: clamp(1.6rem, 3.6vw, 2.75rem);
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: -0.6px;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeInUp 700ms cubic-bezier(.2,.9,.2,1) forwards;
+      animation-delay: 120ms;
     }
-    #chatbot {
+
+    .hero-sub {
+      max-width: 920px;
+      margin: 12px auto 0;
+      color: rgba(255,255,255,0.95);
+      font-size: clamp(0.95rem, 2vw, 1.05rem);
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeInUp 700ms cubic-bezier(.2,.9,.2,1) forwards;
+      animation-delay: 240ms;
+    }
+
+    .hero-underline {
+      width: 92px;
+      height: 6px;
+      border-radius: 8px;
+      margin: 18px auto 0;
+      background: linear-gradient(90deg, rgba(255,255,255,0.95), rgba(255,255,255,0.3));
+      box-shadow: 0 10px 28px rgba(11,61,145,0.08);
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeInUp 700ms cubic-bezier(.2,.9,.2,1) forwards;
+      animation-delay: 320ms;
+    }
+
+    /* Main content area */
+    .content-wrap {
+      max-width: 920px;
+      margin: 40px auto;
+      padding: 0 20px 80px;
+    }
+
+    /* Section heading with icon + separator */
+    .section-head {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:8px;
+      opacity:0;
+      transform: translateY(8px);
+      animation: fadeInUp 700ms cubic-bezier(.2,.9,.2,1) forwards;
+    }
+    .section-head h2 {
+      margin:0;
+      font-size:1.25rem;
+      color:var(--blue-900);
+      font-weight:700;
+    }
+    .section-head i {
+      color:var(--blue-700);
+      font-size:1.05rem;
+      width:28px;
+      text-align:center;
+    }
+    .sep {
+      height:6px;
+      width:140px;
+      border-radius:8px;
+      background: linear-gradient(90deg,var(--blue-900),var(--blue-700));
+      box-shadow: 0 10px 28px var(--card-shadow);
+      margin:14px 0 22px;
+      opacity:0;
+      transform: translateY(8px);
+      animation: fadeInUp 700ms cubic-bezier(.2,.9,.2,1) forwards;
+      animation-delay:160ms;
+    }
+
+    /* Paragraphs with subtle fade-in (staggered) */
+    .fade {
+      opacity:0;
+      transform: translateY(8px);
+      animation: fadeInUp 700ms cubic-bezier(.2,.9,.2,1) forwards;
+    }
+    .fade.delay-1{ animation-delay: 220ms; }
+    .fade.delay-2{ animation-delay: 300ms; }
+    .fade.delay-3{ animation-delay: 380ms; }
+    .fade.delay-4{ animation-delay: 460ms; }
+
+    ul.privacy-list {
+      list-style: disc;
+      padding-left: 1.05rem;
+      margin-top: 8px;
+    }
+    ul.privacy-list li { margin: 8px 0; }
+
+    /* Card-like lists */
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 10px 30px rgba(11,61,145,0.04);
+      margin-top: 12px;
+    }
+
+    /* Back to home CTA (animated gradient border) */
+    .cta {
+      display:inline-block;
+      padding: 12px 20px;
+      border-radius: 12px;
+      color: white;
+      font-weight:700;
+      text-decoration:none;
+      background: linear-gradient(90deg,var(--blue-900),var(--blue-700));
+      box-shadow: 0 12px 34px rgba(11,61,145,0.12);
+      transition: transform .16s ease, box-shadow .16s ease, opacity .16s ease;
+      margin-top: 18px;
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+    }
+    .cta:hover { transform: translateY(-4px); box-shadow: 0 20px 54px rgba(11,61,145,0.16); }
+
+    /* Chat widget (kept but styled in blue) */
+    #chatbot{
       position: fixed;
       bottom: 1.5rem;
       right: 1.5rem;
       width: 20rem;
       height: 24rem;
-      background: white;
-      box-shadow: 0 10px 15px -3px rgba(0, 106, 78, 0.3);
-      border-radius: 0.75rem;
-      display: flex;
-      flex-direction: column;
+      background: #fff;
+      box-shadow: 0 18px 40px rgba(11,61,145,0.12);
+      border-radius: 12px;
+      display:flex;
+      flex-direction:column;
+      overflow:hidden;
+      z-index: 1200;
     }
-    #chatbot .header {
-      background-color: #006A4E;
-      color: white;
-      padding: 0.75rem 1rem;
-      font-weight: 700;
+    #chatbot .header{
+      background: linear-gradient(90deg,var(--blue-900),var(--blue-700));
+      color:white;
+      padding:10px 12px;
+      font-weight:700;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:8px;
     }
-    #chat-messages {
-      flex: 1;
-      overflow-y: auto;
-      padding: 0.75rem 1rem;
-      font-size: 0.875rem;
+    #chatbot .header .title { font-size:0.95rem; }
+    #chat-messages { flex:1; padding:10px; overflow:auto; font-size:0.90rem; background:linear-gradient(180deg,#fbfdff, #f7fbff); }
+    .chat-msg.user { text-align:right; margin:8px 0; }
+    .chat-msg.bot { text-align:left; margin:8px 0; }
+    .bubble { display:inline-block; padding:8px 10px; border-radius:8px; max-width:86%; }
+    .bubble.user { background: linear-gradient(90deg,var(--blue-900),var(--blue-700)); color:#fff; }
+    .bubble.bot { background:#eef2ff; color:var(--text); }
+
+    .chat-controls { display:flex; gap:8px; padding:8px; border-top:1px solid #eef2ff; }
+    #chat-input { flex:1; padding:8px 10px; border-radius:8px; border:1px solid #e6eefc; outline:none; }
+    #chat-send-btn { background:var(--blue-900); color:white; border:none; padding:8px 12px; border-radius:8px; cursor:pointer; }
+
+    /* small utilities */
+    .muted { color:#475569; }
+    .small { font-size:0.95rem; }
+
+    @keyframes fadeInUp {
+      from { opacity:0; transform: translateY(10px); }
+      to { opacity:1; transform: translateY(0); }
     }
-    #chat-input {
-      flex: 1;
-      border: none;
-      padding: 0.5rem 1rem;
-      outline: none;
-    }
-    #chat-send-btn {
-      background-color: #006A4E;
-      color: white;
-      padding: 0 1rem;
-      cursor: pointer;
-    }
-    #chat-send-btn:hover {
-      background-color: #004733;
+
+    /* Responsive */
+    @media (max-width:720px){
+      .content-wrap{ margin:18px auto; padding-bottom:60px;}
+      #chatbot{ right:0.75rem; bottom:0.75rem; width:17.5rem; height:20rem; }
+      .sep{ width:100px; }
     }
   </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body>
 
-  <!-- Gradient Header -->
-  <section class="hero-gradient py-12 px-4 text-white text-center">
-    <h1 class="text-4xl font-bold mb-2">Privacy Policy</h1>
-    <p class="text-lg">Effective Date: August 9, 2025</p>
+  <!-- Gradient header -->
+  <section class="hero-gradient page-hero" aria-labelledby="policy-title">
+    <h1 id="policy-title" class="page-title">Privacy Policy</h1>
+    <div class="hero-underline" aria-hidden="true"></div>
+    <p class="hero-sub">Effective Date: <strong class="small">August 9, 2025</strong></p>
   </section>
 
-  <section class="bg-gray-50 py-16 px-4">
-    <div class="max-w-4xl mx-auto space-y-6 text-gray-700">
+  <!-- Content -->
+  <main class="content-wrap" role="main" aria-labelledby="main-heading">
+    <div class="card">
+      <div class="section-head" aria-hidden="false">
+        <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+        <h2 id="main-heading">Privacy & Data Handling</h2>
+      </div>
+      <div class="sep" aria-hidden="true"></div>
 
-      <p>
-        At <strong>Rose Pharmaceuticals and Healthcare Pvt. Ltd.</strong>, we respect and value your privacy. This Privacy Policy outlines how we collect, use, protect, and disclose your personal information when you interact with our website, request product information, or engage with our third-party nutraceutical manufacturing services, including protein powders, syrups, capsules, sachets, and custom formulations.
+      <p class="fade delay-1">
+        At <strong>Rose Pharmaceuticals and Healthcare Pvt. Ltd.</strong>, we respect and value your privacy. This Privacy Policy explains how we collect, use, protect, and disclose personal information when you interact with our website or use our nutraceutical manufacturing services (protein powders, syrups, capsules, sachets, and custom formulations).
       </p>
 
-      <p>
-        By using our website and services, you agree to the practices described in this policy. Please take a moment to review the following information:
+      <p class="fade delay-2">
+        By using our website and services you consent to the practices described in this policy. Below is a concise overview of the most important points.
+      </p>
+    </div>
+
+    <!-- Sections -->
+    <section class="card" aria-labelledby="collect-heading" style="margin-top:18px;">
+      <div class="section-head" aria-hidden="false">
+        <i class="fa-solid fa-database" aria-hidden="true"></i>
+        <h2 id="collect-heading">1. Information We Collect</h2>
+      </div>
+      <div class="sep" aria-hidden="true"></div>
+
+      <ul class="privacy-list fade delay-2">
+        <li><strong>Personal Information:</strong> Name, email, phone, company name, and other details you provide when contacting us.</li>
+        <li><strong>Non-Personal Information:</strong> Browser, device type, IP address, and analytics (collected automatically).</li>
+        <li><strong>Cookies & Tracking:</strong> Cookies are used to improve experience and analytics. You can disable cookies in your browser (may limit functionality).</li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="use-heading" style="margin-top:18px;">
+      <div class="section-head">
+        <i class="fa-solid fa-gear" aria-hidden="true"></i>
+        <h2 id="use-heading">2. How We Use Your Information</h2>
+      </div>
+      <div class="sep" aria-hidden="true"></div>
+
+      <ul class="privacy-list fade delay-3">
+        <li><strong>To Provide Services:</strong> Manage inquiries, orders, and our manufacturing services.</li>
+        <li><strong>To Improve Experience:</strong> Personalize content and analyze traffic for better performance.</li>
+        <li><strong>Marketing:</strong> With your consent we may send product updates and offers. You can unsubscribe anytime.</li>
+        <li><strong>Compliance:</strong> We may use data to comply with legal obligations where required.</li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="share-heading" style="margin-top:18px;">
+      <div class="section-head">
+        <i class="fa-solid fa-handshake-angle" aria-hidden="true"></i>
+        <h2 id="share-heading">3. Sharing Your Information</h2>
+      </div>
+      <div class="sep" aria-hidden="true"></div>
+
+      <p class="fade delay-2">
+        We share information only as needed: with trusted service providers, for legal compliance, or during business transactions (merger/acquisition). We do not sell personal data.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="security-heading" style="margin-top:18px;">
+      <div class="section-head">
+        <i class="fa-solid fa-lock" aria-hidden="true"></i>
+        <h2 id="security-heading">4. Data Security</h2>
+      </div>
+      <div class="sep" aria-hidden="true"></div>
+
+      <p class="fade delay-2">
+        We use industry-standard technical and organizational measures (encryption, access controls) to protect personal data. No internet transmission is perfectly secure — please be mindful when sharing sensitive data.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="rights-heading" style="margin-top:18px;">
+      <div class="section-head">
+        <i class="fa-solid fa-user-check" aria-hidden="true"></i>
+        <h2 id="rights-heading">5. Your Rights</h2>
+      </div>
+      <div class="sep" aria-hidden="true"></div>
+
+      <ul class="privacy-list fade delay-3">
+        <li>Request access, correction, or deletion of your personal data.</li>
+        <li>Opt-out of marketing communications at any time.</li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="links-heading" style="margin-top:18px;">
+      <div class="section-head">
+        <i class="fa-solid fa-link" aria-hidden="true"></i>
+        <h2 id="links-heading">6. Third-Party Links</h2>
+      </div>
+      <div class="sep" aria-hidden="true"></div>
+
+      <p class="fade delay-2">
+        Our website may link to third-party sites with their own privacy policies. We are not responsible for their practices.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="children-heading" style="margin-top:18px;">
+      <div class="section-head">
+        <i class="fa-solid fa-child-reaching" aria-hidden="true"></i>
+        <h2 id="children-heading">7. Children's Privacy</h2>
+      </div>
+      <div class="sep" aria-hidden="true"></div>
+
+      <p class="fade delay-2">
+        We do not knowingly collect data from children under 13. If discovered, we will promptly remove such data.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="changes-heading" style="margin-top:18px;">
+      <div class="section-head">
+        <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i>
+        <h2 id="changes-heading">8. Changes to This Policy</h2>
+      </div>
+      <div class="sep" aria-hidden="true"></div>
+
+      <p class="fade delay-2">
+        We may update this policy. Updated versions will display a revised effective date at the top of the page.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="contact-heading" style="margin-top:18px;">
+      <div class="section-head">
+        <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+        <h2 id="contact-heading">Contact Us</h2>
+      </div>
+      <div class="sep" aria-hidden="true"></div>
+
+      <p class="fade delay-2">
+        For privacy questions or to exercise your rights, email us at
+        <a href="mailto:support@rosepharma.in">support@rosepharma.in</a>.
       </p>
 
-      <h2 class="text-2xl font-semibold mt-8">1. Information We Collect</h2>
-      <ul class="list-disc pl-6 space-y-2">
-        <li><strong>Personal Information:</strong> Name, email address, phone number, company name, and other details provided when filling out inquiries or registration forms.</li>
-        <li><strong>Non-Personal Information:</strong> Browser type, device information, IP address, and browsing data collected through cookies and analytics.</li>
-        <li><strong>Cookies and Tracking Technologies:</strong> Used to improve user experience and site functionality. Users may disable cookies but this may limit usability.</li>
-      </ul>
-
-      <h2 class="text-2xl font-semibold mt-8">2. How We Use Your Information</h2>
-      <ul class="list-disc pl-6 space-y-2">
-        <li><strong>To Provide Services:</strong> Processing inquiries, managing orders, and supporting our nutraceutical manufacturing services.</li>
-        <li><strong>To Improve User Experience:</strong> Personalizing content and analyzing traffic for better site performance.</li>
-        <li><strong>Marketing and Communication:</strong> Sending information about our products, updates, and offers. You may unsubscribe at any time.</li>
-        <li><strong>Compliance and Legal:</strong> To comply with laws and regulations as required.</li>
-      </ul>
-
-      <h2 class="text-2xl font-semibold mt-8">3. Sharing Your Information</h2>
-      <ul class="list-disc pl-6 space-y-2">
-        <li><strong>Service Providers:</strong> Trusted third-party vendors assisting in service delivery.</li>
-        <li><strong>Legal Obligations:</strong> When legally required, such as court orders or regulatory requests.</li>
-        <li><strong>Business Transactions:</strong> In the event of mergers, acquisitions, or transfers.</li>
-      </ul>
-
-      <h2 class="text-2xl font-semibold mt-8">4. Data Security</h2>
-      <p>We employ industry-standard security measures including encryption and access controls to safeguard your personal information. However, no online transmission can be guaranteed as completely secure.</p>
-
-      <h2 class="text-2xl font-semibold mt-8">5. Your Rights</h2>
-      <ul class="list-disc pl-6 space-y-2">
-        <li>Access, correction, or deletion of your personal data upon request.</li>
-        <li>Opt-out from marketing communications.</li>
-      </ul>
-
-      <h2 class="text-2xl font-semibold mt-8">6. Third-Party Links</h2>
-      <p>Our website may include links to third-party sites which have their own privacy policies. We do not control or accept responsibility for such policies.</p>
-
-      <h2 class="text-2xl font-semibold mt-8">7. Children's Privacy</h2>
-      <p>We do not intentionally collect personal data from children under the age of 13. If discovered, such data will be deleted immediately.</p>
-
-      <h2 class="text-2xl font-semibold mt-8">8. Changes to This Privacy Policy</h2>
-      <p>We reserve the right to update this Privacy Policy. Any changes will be posted on this page with an updated effective date.</p>
-
-      <h2 class="text-2xl font-semibold mt-8">Contact Us</h2>
-      <p>If you have any questions about this Privacy Policy or your data, please contact us at <a href="mailto:support@rosepharma.in">support@rosepharma.in</a>.</p>
-
-      <div class="mt-8 text-center">
-        <a href="index.html" 
-          class="inline-block px-6 py-3 text-white font-semibold rounded-lg shadow-lg hover:opacity-90 transition duration-200 hero-gradient">
-          ← Back to Home
+      <div style="margin-top:14px; text-align:center;">
+        <a class="cta" href="index.html" aria-label="Back to Home">
+          <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+          Back to Home
         </a>
       </div>
+    </section>
+  </main>
 
+  <!-- Lightweight chat widget (non-invasive, same content but blue) -->
+  <div id="chatbot" aria-hidden="false" role="region" aria-label="Site assistant">
+    <div class="header">
+      <div class="title"><i class="fa-regular fa-message"></i> Help</div>
+      <button id="chat-close" aria-label="Close chat" style="background:transparent;border:none;color:rgba(255,255,255,0.95);font-size:14px;cursor:pointer">✕</button>
     </div>
-  </section>
 
- 
+    <div id="chat-messages" aria-live="polite" aria-atomic="false">
+      <div class="chat-msg bot"><div class="bubble bot">Hi — ask about our products or privacy and we'll help!</div></div>
+    </div>
+
+    <div class="chat-controls" role="form" aria-label="Chat controls">
+      <input id="chat-input" placeholder="Type a question..." aria-label="Chat input" />
+      <button id="chat-send-btn" aria-label="Send message">Send</button>
+    </div>
+  </div>
 
   <script>
-    function sendMessage() {
-      const input = document.getElementById("chat-input");
-      const msg = input.value.trim();
-      if (!msg) return;
+    // Chat behavior (simple, no external services)
+    const chatInput = document.getElementById('chat-input');
+    const chatMessages = document.getElementById('chat-messages');
+    const chatSend = document.getElementById('chat-send-btn');
+    const chatClose = document.getElementById('chat-close');
+    const chatbot = document.getElementById('chatbot');
 
-      const chatBox = document.getElementById("chat-messages");
-      chatBox.innerHTML += `<div class="text-right mb-2"><span class="bg-green-100 px-2 py-1 rounded">${msg}</span></div>`;
-
-      // Simulate AI backend response
-      setTimeout(() => {
-        chatBox.innerHTML += `<div class="text-left mb-2"><span class="bg-gray-200 px-2 py-1 rounded">You asked: "${msg}". We'll assist you shortly!</span></div>`;
-        chatBox.scrollTop = chatBox.scrollHeight;
-      }, 800);
-
-      input.value = "";
+    function appendMessage(text, who='bot'){
+      const wrapper = document.createElement('div');
+      wrapper.className = 'chat-msg ' + (who === 'user' ? 'user' : 'bot');
+      const bubble = document.createElement('div');
+      bubble.className = 'bubble ' + (who === 'user' ? 'user' : 'bot');
+      bubble.textContent = text;
+      wrapper.appendChild(bubble);
+      chatMessages.appendChild(wrapper);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
     }
-  </script>
 
+    chatSend.addEventListener('click', () => {
+      const txt = chatInput.value.trim();
+      if(!txt) return;
+      appendMessage(txt, 'user');
+      chatInput.value = '';
+      setTimeout(() => {
+        appendMessage(`You asked: "${txt}". We'll get back to you shortly.`, 'bot');
+      }, 600);
+    });
+
+    chatInput.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter') { e.preventDefault(); chatSend.click(); }
+    });
+
+    chatClose.addEventListener('click', () => chatbot.style.display = 'none');
+
+    // Accessibility: focus the chat input when opened by keyboard shortcut (Shift+/)
+    document.addEventListener('keydown', (e) => {
+      if (e.shiftKey && e.key === '?') { chatInput.focus(); }
+    });
+  </script>
 </body>
 </html>
