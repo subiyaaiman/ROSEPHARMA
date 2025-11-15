@@ -131,20 +131,19 @@
 
 
 
-<!-- ===================== CLEAN MANUAL SLIDER ===================== -->
-
-<!-- ===================== PREMIUM SLIDER: AUTO + MANUAL + FADE + THUMBNAILS ===================== -->
+<!-- ========= MOBILE-FRIENDLY PREMIUM SLIDER (replace existing slider block) ========= -->
 <style>
   /* Container */
   .premium-slider {
     position: relative;
     width: 100%;
+    min-height: 70vh; /* less than 100vh on mobile to avoid clipping browser chrome */
     height: 100vh;
     overflow: hidden;
     background: #fff;
   }
 
-  /* Slides wrapper is positioned; slides stacked for fade */
+  /* Slide */
   .premium-slide {
     position: absolute;
     inset: 0;
@@ -152,9 +151,18 @@
     background-position: center;
     opacity: 0;
     transform: scale(1.01);
-    transition: opacity 800ms ease, transform 800ms ease;
+    transition: opacity 600ms ease, transform 600ms ease;
     display: flex;
     align-items: center;
+  }
+  .premium-slide::after {
+    /* subtle overlay to improve text contrast on all screens */
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(3,10,34,0.28) 0%, rgba(3,10,34,0.10) 30%, rgba(3,10,34,0.28) 100%);
+    pointer-events: none;
+    z-index: 1;
   }
 
   .premium-slide.active {
@@ -173,7 +181,6 @@
     color: #062A60;
     z-index: 5;
   }
-
   .premium-content h1 {
     margin: 0 0 12px 0;
     font-size: clamp(1.8rem, 4vw, 3.2rem);
@@ -181,56 +188,53 @@
     color: #0B3D91;
     font-weight: 700;
   }
-
   .premium-content p {
     margin: 0 0 20px 0;
     font-size: clamp(1rem, 2.2vw, 1.25rem);
-    color: #222;
+    color: #fff; /* white on top of overlay */
   }
-
   .premium-cta {
     display: inline-block;
     background: #0B3D91;
     color: #fff;
-    padding: 12px 28px;
+    padding: 10px 22px;
     border-radius: 10px;
     text-decoration: none;
     font-weight: 600;
     box-shadow: 0 8px 20px rgba(11,61,145,0.14);
-    transition: transform .18s ease, box-shadow .18s ease;
+    transition: transform .14s ease, box-shadow .14s ease;
+    z-index: 6;
   }
-
   .premium-cta:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(11,61,145,0.18); }
 
-  /* Arrows: modern circular */
+  /* Arrows */
   .premium-button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 56px;
-    height: 56px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     display: grid;
     place-items: center;
     cursor: pointer;
     z-index: 10;
-    background: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.95);
     box-shadow: 0 8px 18px rgba(0,0,0,0.12);
     transition: transform .12s ease, background .12s ease;
     color: #0B3D91;
     border: none;
+    backdrop-filter: blur(4px);
   }
-
-  .premium-button:hover { transform: translateY(-3px) scale(1.02); background: #fff; }
-
-  .premium-prev { left: 18px; }
-  .premium-next { right: 18px; }
+  .premium-prev { left: 12px; }
+  .premium-next { right: 12px; }
+  .premium-button:hover { transform: translateY(-3px) scale(1.02); }
 
   /* Play/pause compact control */
   .premium-playpause {
     position: absolute;
-    right: 88px;
-    bottom: 28px;
+    right: 16px;
+    bottom: 84px;
     z-index: 12;
     width: 44px;
     height: 44px;
@@ -243,10 +247,9 @@
     color: #0B3D91;
     font-size: 18px;
   }
-
   .premium-playpause:hover { transform: translateY(-3px); }
 
-  /* Dots/thumbnail strip */
+  /* Thumbs container - centered, scrollable on mobile */
   .premium-thumbs {
     position: absolute;
     left: 50%;
@@ -256,13 +259,20 @@
     display: flex;
     gap: 10px;
     align-items: center;
-    padding: 6px;
-    background: rgba(255,255,255,0.80);
+    padding: 8px;
+    background: rgba(255,255,255,0.86);
     border-radius: 999px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    max-width: calc(100% - 40px);
+    overflow-x: auto; /* allow horizontal scroll on small screens */
+    -webkit-overflow-scrolling: touch;
   }
+  /* hide scrollbar for cleanliness */
+  .premium-thumbs::-webkit-scrollbar { height: 8px; }
+  .premium-thumbs::-webkit-scrollbar-thumb { background: rgba(11,61,145,0.12); border-radius: 8px; }
 
   .premium-thumb {
+    flex: 0 0 auto;
     width: 84px;
     height: 52px;
     border-radius: 8px;
@@ -270,35 +280,36 @@
     cursor: pointer;
     border: 2px solid transparent;
     box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-    transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+    transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease;
   }
-
-  .premium-thumb img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
+  .premium-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
   .premium-thumb:hover { transform: translateY(-4px) scale(1.02); }
   .premium-thumb.active { border-color: #0B3D91; box-shadow: 0 10px 26px rgba(11,61,145,0.12); }
 
-  /* Accessibility focus */
+  /* Focus outline for accessibility */
   .premium-button:focus, .premium-playpause:focus, .premium-thumb:focus { outline: 3px solid rgba(11,61,145,0.12); outline-offset: 2px; }
 
-  /* Mobile adjustments */
+  /* MOBILE-SPECIFIC ADJUSTMENTS */
   @media (max-width: 900px) {
-    .premium-content { left: 6%; right: 6%; max-width: 86%; }
-    .premium-content h1 { font-size: 2rem; }
-    .premium-thumb { width: 64px; height: 40px; }
-    .premium-button { width: 48px; height: 48px; }
-    .premium-playpause { right: 18px; bottom: 18px; }
+    .premium-slider { min-height: 62vh; height: auto; }
+    .premium-slide { position: relative; display: block; min-height: 62vh; }
+    .premium-slide .premium-content { position: relative; left: 50%; top: auto; transform: translateX(-50%); margin-top: 18vh; text-align: center; max-width: 90%; padding: 8px; }
+    .premium-content h1 { font-size: clamp(1.4rem, 5.6vw, 2rem); color: #fff; }
+    .premium-content p { color: rgba(255,255,255,0.92); margin-bottom: 14px; }
+    .premium-cta { padding: 10px 18px; font-size: 0.95rem; }
+    .premium-prev, .premium-next { width: 44px; height: 44px; left: 10px; right: 10px; }
+    .premium-prev { left: 8px; }
+    .premium-next { right: 8px; }
+    .premium-playpause { right: 12px; bottom: 12px; }
+    .premium-thumbs { bottom: 74px; gap: 8px; padding: 6px; }
+    .premium-thumb { width: 64px; height: 44px; }
   }
+
+  /* ensure text doesn't overflow */
+  .premium-content h1, .premium-content p { word-break: break-word; }
 </style>
 
 <div class="premium-slider" role="region" aria-label="Main banner slider" id="premiumSlider">
-
-  <!-- Slides (fade stack) -->
   <div class="premium-slide active" data-index="0" style="background-image:url('page1.png');" role="group" aria-roledescription="slide" aria-label="Slide 1 of 3">
     <div class="premium-content">
       <h1>Your Trusted<br>Nutraceutical Manufacturing Partner</h1>
@@ -323,7 +334,7 @@
     </div>
   </div>
 
-  <!-- Arrows -->
+  <!-- arrows -->
   <button class="premium-button premium-prev" id="premiumPrev" aria-label="Previous slide">
     <i class="fas fa-chevron-left" aria-hidden="true"></i>
   </button>
@@ -332,22 +343,16 @@
     <i class="fas fa-chevron-right" aria-hidden="true"></i>
   </button>
 
-  <!-- Play / Pause -->
+  <!-- play/pause -->
   <button class="premium-playpause" id="premiumPlayPause" aria-label="Pause autoplay" title="Pause autoplay">
     <i id="playPauseIcon" class="fas fa-pause" aria-hidden="true"></i>
   </button>
 
-  <!-- Thumbnails -->
+  <!-- thumbnails (scrollable on small screens) -->
   <div class="premium-thumbs" id="premiumThumbs" aria-hidden="false">
-    <div class="premium-thumb active" data-index="0" tabindex="0" aria-label="Show slide 1">
-      <img src="page1.png" alt="Slide 1 thumbnail">
-    </div>
-    <div class="premium-thumb" data-index="1" tabindex="0" aria-label="Show slide 2">
-      <img src="page2.png" alt="Slide 2 thumbnail">
-    </div>
-    <div class="premium-thumb" data-index="2" tabindex="0" aria-label="Show slide 3">
-      <img src="page3.png" alt="Slide 3 thumbnail">
-    </div>
+    <div class="premium-thumb active" data-index="0" tabindex="0" aria-label="Show slide 1"><img src="page1.png" alt="Slide 1 thumbnail"></div>
+    <div class="premium-thumb" data-index="1" tabindex="0" aria-label="Show slide 2"><img src="page2.png" alt="Slide 2 thumbnail"></div>
+    <div class="premium-thumb" data-index="2" tabindex="0" aria-label="Show slide 3"><img src="page3.png" alt="Slide 3 thumbnail"></div>
   </div>
 </div>
 
@@ -363,34 +368,39 @@
 
     let current = 0;
     const total = slides.length;
-    let autoplay = true;            // default autoplay on
-    const AUTO_DELAY = 4500;        // ms between slides
+    const AUTO_DELAY = 4500;
     let autoplayTimer = null;
-    let userInteracted = false;
+    let manualPause = false;
+    let lastTouchX = null;
+    let touchInProgress = false;
 
-    // Helper: go to slide
-    function goTo(index, userTriggered = false) {
-      if (index === current) return;
-      slides[current].classList.remove('active');
-      thumbs[current].classList.remove('active');
-      current = ((index % total) + total) % total;
-      slides[current].classList.add('active');
-      thumbs[current].classList.add('active');
-
-      // announce to screen readers by updating aria-hidden maybe (kept minimal)
-      slides.forEach((s, i) => s.setAttribute('aria-hidden', i === current ? 'false' : 'true'));
-
-      // if user triggered, pause autoplay for a while (UX)
-      if (userTriggered) {
-        pauseAutoplayTemporary();
+    function updateActive(index) {
+      slides.forEach((s,i)=> s.classList.toggle('active', i === index));
+      thumbs.forEach((t,i)=> t.classList.toggle('active', i === index));
+      slides.forEach((s,i)=> s.setAttribute('aria-hidden', i === index ? 'false' : 'true'));
+      current = index;
+      // ensure active thumb is visible in scrollable thumbs container
+      const activeThumb = thumbs[index];
+      if (activeThumb && activeThumb.scrollIntoView) {
+        activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
       }
     }
 
-    // Prev / Next
+    function goTo(index, userTriggered = false) {
+      index = ((index % total) + total) % total;
+      if (index === current) return;
+      updateActive(index);
+      if (userTriggered) {
+        // if user manually navigates, temporarily pause autoplay
+        pauseAutoplayTemporary();
+        manualPause = true; // treat as user-actioned pause for a while
+      }
+    }
+
     function next() { goTo(current + 1, true); }
     function prev() { goTo(current - 1, true); }
 
-    // Thumbs click / keyboard
+    // init click/keyboard on thumbs
     thumbs.forEach(t => {
       t.addEventListener('click', () => goTo(Number(t.dataset.index), true));
       t.addEventListener('keydown', (e) => {
@@ -398,83 +408,145 @@
       });
     });
 
-    // Buttons
+    // buttons
     nextBtn.addEventListener('click', next);
     prevBtn.addEventListener('click', prev);
 
-    // Keyboard navigation (left/right, space to toggle)
+    // keyboard nav
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight') { next(); }
-      if (e.key === 'ArrowLeft') { prev(); }
-      if (e.key === ' ' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+      if (e.key === 'ArrowRight') next();
+      if (e.key === 'ArrowLeft') prev();
+      if (e.key === ' ' && !['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) {
         e.preventDefault();
         toggleAutoplay();
       }
     });
 
-    // Autoplay control
+    // autoplay management
     function startAutoplay() {
       stopAutoplay();
-      autoplay = true;
       playPauseIcon.classList.remove('fa-play'); playPauseIcon.classList.add('fa-pause');
-      playPauseBtn.setAttribute('aria-label', 'Pause autoplay');
-      autoplayTimer = setInterval(() => {
-        goTo(current + 1);
-      }, AUTO_DELAY);
+      autoplayTimer = setInterval(()=> { goTo(current + 1, false); }, AUTO_DELAY);
     }
-
     function stopAutoplay() {
-      autoplay = false;
-      playPauseIcon.classList.remove('fa-pause'); playPauseIcon.classList.add('fa-play');
-      playPauseBtn.setAttribute('aria-label', 'Start autoplay');
       if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; }
+      playPauseIcon.classList.remove('fa-pause'); playPauseIcon.classList.add('fa-play');
     }
-
     function toggleAutoplay() {
-      if (autoplayTimer) { stopAutoplay(); } else { startAutoplay(); }
+      if (autoplayTimer) { stopAutoplay(); } else { startAutoplay(); manualPause = false; }
     }
 
-    // Play/pause button
     playPauseBtn.addEventListener('click', () => {
       toggleAutoplay();
-      // If user toggles, treat as interaction so we won't auto resume
-      userInteracted = true;
+      manualPause = true; // user explicitly toggled -> treat as manual pause
     });
 
-    // Pause on hover (mouse) and resume on leave (if not manually paused)
+    // pause while hovering (desktop)
     slider.addEventListener('mouseenter', () => {
-      if (autoplayTimer) {
-        clearInterval(autoplayTimer);
-        autoplayTimer = null;
-      }
+      if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; }
     });
-
     slider.addEventListener('mouseleave', () => {
-      if (!userInteracted) startAutoplay();
+      if (!manualPause) startAutoplay();
     });
 
-    // After user clicks manual nav, temporary pause then resume
+    // temporary pause after manual navigation (auto-resume unless user explicitly toggled)
     let tempPauseTimer = null;
     function pauseAutoplayTemporary() {
       if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; }
       if (tempPauseTimer) clearTimeout(tempPauseTimer);
-      tempPauseTimer = setTimeout(() => {
-        if (!userInteracted) startAutoplay();
-      }, 6000); // 6s resume delay
+      tempPauseTimer = setTimeout(()=> {
+        if (!manualPause) startAutoplay();
+      }, 6000);
     }
 
-    // Initialize aria-hidden correctly
-    slides.forEach((s,i) => s.setAttribute('aria-hidden', i === current ? 'false' : 'true'));
+    // touch events for swipe on mobile
+    slider.addEventListener('touchstart', (e) => {
+      if (!e.touches || e.touches.length === 0) return;
+      lastTouchX = e.touches[0].clientX;
+      touchInProgress = true;
+      // pause autoplay while touching
+      if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; }
+    }, { passive: true });
 
-    // Start autoplay initially
+    slider.addEventListener('touchmove', (e) => {
+      if (!touchInProgress || !e.touches || e.touches.length === 0) return;
+      const currentX = e.touches[0].clientX;
+      // small horizontal move won't instantly change slides; we wait for touchend
+      lastTouchX = currentX;
+    }, { passive: true });
+
+    slider.addEventListener('touchend', (e) => {
+      if (!touchInProgress) return;
+      touchInProgress = false;
+      // Determine direction (compare lastTouchX with start)
+      const touch = e.changedTouches && e.changedTouches[0];
+      if (!touch) { if (!manualPause) startAutoplay(); return; }
+      const endX = touch.clientX;
+      // we need startX (we can read from changedTouches previous stored? keep small state)
+      // implement minimal logic: compare to center threshold using viewport width
+      const screenW = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+      // if swipe left enough
+      if (typeof lastTouchX === 'number') {
+        // difference value heuristic: if moved > 40px
+        // We stored lastTouchX as last move; use it vs endX
+      }
+      // For simplicity: use changed touch delta from initial recorded start
+      // We will compute using e.changedTouches[0].clientX compared to the first touch starting stored earlier in a variable.
+    });
+
+    // to get startX precisely, track it separately
+    let touchStartX = null;
+    slider.addEventListener('touchstart', (e) => {
+      if (!e.touches || e.touches.length === 0) return;
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+
+    slider.addEventListener('touchend', (e) => {
+      if (touchStartX === null) {
+        if (!manualPause) startAutoplay();
+        return;
+      }
+      const touchEndX = (e.changedTouches && e.changedTouches[0] && e.changedTouches[0].clientX) || null;
+      if (touchEndX !== null) {
+        const delta = touchStartX - touchEndX;
+        const threshold = Math.min(60, window.innerWidth * 0.08); // require at least small move
+        if (delta > threshold) {
+          // swipe left -> next
+          goTo(current + 1, true);
+        } else if (delta < -threshold) {
+          // swipe right -> prev
+          goTo(current - 1, true);
+        } else {
+          // tap -> do nothing (could trigger CTA if tapped on it naturally)
+        }
+      }
+      touchStartX = null;
+      // resume autoplay unless user manually paused
+      if (!manualPause) startAutoplay();
+    }, { passive: true });
+
+    // initialize aria-hidden and thumbs
+    slides.forEach((s,i)=> s.setAttribute('aria-hidden', i === 0 ? 'false' : 'true'));
+    thumbs.forEach((t,i) => {
+      // keyboard accessibility already added earlier
+      t.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
+    });
+
+    // reflect active thumb aria-pressed whenever slide changes
+    const observer = new MutationObserver(() => {
+      thumbs.forEach((t,i)=> t.setAttribute('aria-pressed', t.classList.contains('active') ? 'true' : 'false'));
+    });
+    thumbs.forEach(t => observer.observe(t, { attributes: true, attributeFilter: ['class'] }));
+
+    // start autoplay
     startAutoplay();
 
-    // Expose small API if needed (not required)
+    // Expose API (optional)
     window._premiumSlider = { goTo, next, prev, startAutoplay, stopAutoplay };
 
   })();
 </script>
-<!-- ===================== END PREMIUM SLIDER ===================== -->
+<!-- ========= END MOBILE-FRIENDLY PREMIUM SLIDER ========= -->
 
 
 
