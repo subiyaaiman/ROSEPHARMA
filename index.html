@@ -131,102 +131,206 @@
 
 
 
-<div class="slideshow-container">
+<!-- ===================== CLEAN MANUAL SLIDER ===================== -->
 
-  <section class="hero-banner active" style="background-image: url('page1.png');">
-      <div class="hero-content">
-    <h1>Your Trusted<br> Nutraceutical Manufacturing Partner</h1>
-    <p class="subtitle">
-      Specializing in Protein Powders • Syrups • Capsules
-    </p>
-<a href="https://docs.google.com/forms/d/e/1FAIpQLSfltbFJhnfkMDyru2q32OaqLgt0O3zHM9FIB6XGIvO_sTaKAg/viewform" 
-         class="cta-btn" target="_blank">
-         Start Your Brand Today
-      </a>
-    <!-- Features with simple SVG icons -->
-    <div class="features">
-      <div class="feature-item">
-        <svg width="20" height="20" fill="#0B3D91" viewBox="0 0 24 24"><path d="M9 16.17l-3.5-3.5L4 14.17 9 19l12-12-1.41-1.41z"/></svg>
-        <span>Lab-tested</span>
-      </div>
-        <div class="feature-item">
-        <svg width="20" height="20" fill="#0B3D91" viewBox="0 0 24 24"><path d="M9 16.17l-3.5-3.5L4 14.17 9 19l12-12-1.41-1.41z"/></svg>
-        <span>FSSAI CERTIFIED</span>
-      </div>
-      <div class="feature-item">
-        <svg width="20" height="20" fill="#0B3D91" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
-        <span>Natural</span>
-      </div>
-      <div class="feature-item">
-        <svg width="20" height="20" fill="#0B3D91" viewBox="0 0 24 24"><path d="M12 2l9 4-9 16-9-16z"/></svg>
-        <span>GMP Certified</span>
+<style>
+  .slider-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .slider-wrapper {
+    display: flex;
+    transition: transform 0.6s ease-in-out;
+    height: 100%;
+  }
+
+  .slide {
+    min-width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  /* Content on banners */
+  .slide-content {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    color: #0B3D91;
+    max-width: 650px;
+  }
+
+  .slide-content h1 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 16px;
+    color: #0B3D91;
+  }
+
+  .slide-content p {
+    font-size: 1.3rem;
+    color: #222;
+    margin-bottom: 25px;
+  }
+
+  .cta-btnBanner {
+    display: inline-block;
+    background: #0B3D91;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s ease;
+  }
+
+  .cta-btnBanner:hover {
+    background: #1E6EFF;
+  }
+
+  /* Navigation arrows */
+  .slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(6px);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 22px;
+    color: #0B3D91;
+    z-index: 20;
+    transition: 0.3s;
+  }
+
+  .slider-arrow:hover {
+    background: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  #prevSlide { left: 20px; }
+  #nextSlide { right: 20px; }
+
+  /* Slider dots */
+  .slider-dots {
+    position: absolute;
+    bottom: 25px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .slider-dots div {
+    width: 12px;
+    height: 12px;
+    background: #bbb;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .slider-dots .active {
+    background: #0B3D91;
+  }
+</style>
+
+<div class="slider-container">
+  
+  <!-- Wrapper -->
+  <div class="slider-wrapper" id="sliderWrapper">
+
+    <!-- SLIDE 1 -->
+    <div class="slide" style="background-image:url('page1.png');">
+      <div class="slide-content">
+        <h1>Your Trusted<br>Nutraceutical Manufacturing Partner</h1>
+        <p>Specializing in Protein Powders • Syrups • Capsules</p>
+        <a href="#" class="cta-btnBanner">Start Your Brand Today</a>
       </div>
     </div>
-  </div>
-  </section>
 
-  <section class="hero-banner" style="background-image: url('page2.png');">
-     <div class="hero-content">
-    <h1>Start Your Own Pharma Business With India's Trusted</h1>
-    <p class="subtitle">
-      Specializing in Protein Powders • Syrups • Capsules •Sachets
-    </p>
-<a href="https://docs.google.com/forms/d/e/1FAIpQLScJeyAC8Dzuf6_7s6CimpK43Shwu7S8PL20NfLOin4HyYFiHg/viewform?usp=header" 
-         class="cta-btn" target="_blank">
-         Become a Franchise Partner
-      </a>
-    <!-- Features with simple SVG icons -->
-    <div class="features">
-      <div class="feature-item">
-        <svg width="20" height="20" fill="#0B3D91" viewBox="0 0 24 24"><path d="M9 16.17l-3.5-3.5L4 14.17 9 19l12-12-1.41-1.41z"/></svg>
-        <span>Lab-tested</span>
-      </div>
-         <div class="feature-item">
-        <svg width="20" height="20" fill="#0B3D91" viewBox="0 0 24 24"><path d="M9 16.17l-3.5-3.5L4 14.17 9 19l12-12-1.41-1.41z"/></svg>
-        <span>FSSAI CERTIFIED</span>
-      </div>
-      <div class="feature-item">
-        <svg width="20" height="20" fill="#0B3D91" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
-        <span>Natural</span>
-      </div>
-      <div class="feature-item">
-        <svg width="20" height="20" fill="#0B3D91" viewBox="0 0 24 24"><path d="M12 2l9 4-9 16-9-16z"/></svg>
-        <span>GMP Certified</span>
+    <!-- SLIDE 2 -->
+    <div class="slide" style="background-image:url('page2.png');">
+      <div class="slide-content">
+        <h1>Start Your Own Pharma Business<br>With India's Trusted</h1>
+        <p>Protein Powders • Syrups • Capsules • Sachets</p>
+        <a href="#" class="cta-btnBanner">Become a Franchise Partner</a>
       </div>
     </div>
-  </div>
-  </section>
 
-  <section class="hero-banner" style="background-image: url('page3.png');">
-     <div class="hero-content">
-    <h1>Become a Part of Nextage Nutrition </h1>
-    <p class="subtitle">
-      Specializing in Whey Protein • Pre-workout • Plant Based Supplements
-    </p>
-<a href="https://docs.google.com/forms/d/e/1FAIpQLSdldzEayaeElk86z-UEt-iT0Wg8wZSce6yy3030wWk0XHiPZg/viewform?usp=header" 
-         class="cta-btn" target="_blank">
-         Join Our Franchise Network
-      </a>
-    <!-- Features with simple SVG icons -->
-    <div class="features">
-      <div class="feature-item">
-        <svg width="20" height="20" fill="#0B3D91" viewBox="0 0 24 24"><path d="M9 16.17l-3.5-3.5L4 14.17 9 19l12-12-1.41-1.41z"/></svg>
-        <span>Lab-tested</span>
-      </div>
-          <div class="feature-item">
-        <svg width="20" height="20" fill="#0B3D91" viewBox="0 0 24 24"><path d="M9 16.17l-3.5-3.5L4 14.17 9 19l12-12-1.41-1.41z"/></svg>
-        <span>FSSAI CERTIFIED</span>
-      </div>
-      <div class="feature-item">
-        <svg width="20" height="20" fill="#0B3D91" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
-        <span>Natural</span>
-      </div>
-      <div class="feature-item">
-        <svg width="20" height="20" fill="#0B3D91" viewBox="0 0 24 24"><path d="M12 2l9 4-9 16-9-16z"/></svg>
-        <span>GMP Certified</span>
+    <!-- SLIDE 3 -->
+    <div class="slide" style="background-image:url('page3.png');">
+      <div class="slide-content">
+        <h1>Become a Part of Nextage Nutrition</h1>
+        <p>Whey Protein • Pre-workout • Plant Based Supplements</p>
+        <a href="#" class="cta-btnBanner">Join Our Franchise</a>
       </div>
     </div>
+
   </div>
+
+  <!-- Navigation arrows -->
+  <div id="prevSlide" class="slider-arrow"><i class="fas fa-chevron-left"></i></div>
+  <div id="nextSlide" class="slider-arrow"><i class="fas fa-chevron-right"></i></div>
+
+  <!-- Dots -->
+  <div class="slider-dots" id="sliderDots"></div>
+
+</div>
+
+<script>
+  const wrapper = document.getElementById("sliderWrapper");
+  const dotsContainer = document.getElementById("sliderDots");
+
+  let current = 0;
+  const totalSlides = document.querySelectorAll(".slide").length;
+
+  // Create dots
+  for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement("div");
+    if (i === 0) dot.classList.add("active");
+    dot.addEventListener("click", () => goToSlide(i));
+    dotsContainer.appendChild(dot);
+  }
+  const dots = dotsContainer.querySelectorAll("div");
+
+  function updateSlider() {
+    wrapper.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle("active", i === current));
+  }
+
+  function nextSlide() {
+    current = (current + 1) % totalSlides;
+    updateSlider();
+  }
+
+  function prevSlide() {
+    current = (current - 1 + totalSlides) % totalSlides;
+    updateSlider();
+  }
+
+  function goToSlide(index) {
+    current = index;
+    updateSlider();
+  }
+
+  document.getElementById("nextSlide").onclick = nextSlide;
+  document.getElementById("prevSlide").onclick = prevSlide;
+</script>
+
+<!-- ===================== END CLEAN MANUAL SLIDER ===================== -->
+
   </section>
 
   <div class="dots">
