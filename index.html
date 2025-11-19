@@ -1,1101 +1,619 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROSE PHARMACEUTICALS | rose pharmaceuticals and healthcare</title>
-    <meta name="description" content="Professional printer repair and support services across the USA for all major printer brands including HP, Epson, Canon, Brother, and more.">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* Custom CSS */
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ROSE PHARMACEUTICALS | rose pharmaceuticals and healthcare</title>
+  <meta name="description" content="Professional nutraceutical manufacturing services. Protein powders, syrups, capsules, and custom formulations.">
 
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style id="rose-min-css">
+    :root{--bg:#ffffff;--panel:#f8fafc;--text:#0f172a;--muted:#6b7280;--brand:#0B3D91;--brand-2:#3b82f6;--accent:rgba(11,61,145,.12);--card-shadow:0 22px 40px rgba(2,6,23,.12)}
+    *{box-sizing:border-box}html,body{height:100%}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.45}
+    a{color:var(--brand)}header{background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,255,255,.9));backdrop-filter:blur(6px);border-bottom:1px solid rgba(2,6,23,.04)}
+    
+    /* Slider Styles */
+    .premium-slider{position:relative;width:100%;height:100vh;overflow:hidden;background:var(--panel)}
+    .premium-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.01);transition:opacity .8s ease,transform .8s ease;display:flex;align-items:center}
+    .premium-slide.active{opacity:1;transform:scale(1);z-index:2}
+    .premium-content{position:absolute;left:8%;top:50%;transform:translateY(-50%);max-width:720px;color:var(--text);z-index:5}
+    .premium-content h1{margin:0 0 .6rem 0;font-weight:700;color:var(--brand);font-size:clamp(1.8rem,4vw,3.2rem);line-height:1.06}
+    .premium-content p{margin:0 0 1rem 0;color:var(--text);font-size: 1.1rem;}
+    
+    .premium-cta{display:inline-block;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;padding:.7rem 1.6rem;border-radius:10px;text-decoration:none;font-weight:600;box-shadow:0 8px 20px rgba(11,61,145,.14);transition:transform .18s,box-shadow .18s}
+    .premium-cta:hover{transform:translateY(-3px); box-shadow:0 12px 28px rgba(11,61,145,0.18);}
+    
+    .premium-button{position:absolute;top:50%;transform:translateY(-50%);width:56px;height:56px;border-radius:50%;display:grid;place-items:center;cursor:pointer;z-index:10;background:rgba(255,255,255,.92);box-shadow:0 8px 18px rgba(0,0,0,.08);transition:transform .12s;color:var(--brand);border:none}
+    .premium-prev{left:18px}.premium-next{right:18px}
+    .premium-playpause{position:absolute;right:88px;bottom:28px;z-index:12;width:44px;height:44px;border-radius:10px;display:grid;place-items:center;cursor:pointer;background:rgba(255,255,255,.95);box-shadow:0 8px 20px rgba(0,0,0,.08)}
+    
+    .premium-thumbs{position:absolute;left:50%;transform:translateX(-50%);bottom:18px;z-index:12;display:flex;gap:10px;align-items:center;padding:6px;background:rgba(255,255,255,.82);border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.06)}
+    .premium-thumb{width:84px;height:52px;border-radius:8px;overflow:hidden;cursor:pointer;border:2px solid transparent;box-shadow:0 6px 18px rgba(0,0,0,.06);transition:transform .15s,border-color .15s,box-shadow .15s}
+    .premium-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    .premium-thumb:hover{transform:translateY(-4px) scale(1.02)}
+    .premium-thumb.active{border-color:var(--brand);box-shadow:0 10px 26px rgba(11,61,145,.12)}
+    
+    .premium-slide::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(255,255,255,0.4) 0%,rgba(255,255,255,0.1) 100%);pointer-events:none;}
+    
+    /* Utility & Animations */
+    .service-card{transition:transform .25s cubic-bezier(.2,.9,.2,1),box-shadow .25s,border-color .2s}
+    .service-card:hover{transform:translateY(-8px);box-shadow:var(--card-shadow);border-color:var(--accent)}
+    .testimonial-card{transition:transform .28s,box-shadow .28s}
+    .testimonial-card:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 20px 40px rgba(3,7,18,.16)}
+    
+    #stickyCTA{position:fixed;left:18px;bottom:24px;z-index:60;border-radius:14px;padding:14px 18px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;font-weight:600;display:flex;align-items:center;gap:8px;box-shadow:0 10px 30px rgba(11,61,145,.18)}
+    #stickyCTA:hover { transform: translateY(-4px); }
+    @media (max-width:640px){#stickyCTA{display:none}}
+    .sr-only{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+    #backToTop{transition:opacity .25s,transform .18s}
+    #backToTop.visible{opacity:1;transform:translateY(0)}
+    
+    @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+  </style>
 
-        .hero-gradient {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-        }
-        .printer-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        .service-card:hover .service-icon {
-            transform: scale(1.1);
-        }
-        .testimonial-card {
-            transition: all 0.3s ease;
-        }
-        .testimonial-card:hover {
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        .animate-bounce-slow {
-            animation: bounce-slow 3s infinite;
-        }
-        @keyframes bounce-slow {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-  picture img {
-    display: block;
-    width: 100%;
-    height: auto;
-    object-fit: cover;
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Rose Pharmaceuticals & Healthcare Pvt. Ltd.",
+    "url": "https://www.rosepharma.in",
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "telephone": "+91-7019731464",
+      "contactType": "customer service",
+      "areaServed": "IN",
+      "availableLanguage": ["English","Hindi"]
+    }]
   }
- 
-
-    </style>
+  </script>
 </head>
 <body class="font-sans antialiased text-gray-800">
 
-<!-- Header -->
-<header class="bg-white shadow-md sticky top-0 z-50 h-16 flex items-center">
-  <div class="container mx-auto px-4 flex justify-between items-center w-full">
-    <!-- Logo -->
-    <a href="#" class="flex items-center">
-      <i class="fas fa-flower text-3xl text-[#0B3D91] mr-2"></i>
-      <span class="text-2xl font-bold text-[#0B3D91]">ROSE PHARMACEUTICALS</span>
-    </a>
+  <header class="bg-white shadow-md sticky top-0 z-50 h-16 flex items-center">
+    <div class="container mx-auto px-4 flex justify-between items-center w-full">
+      <a href="#" class="flex items-center">
+        <i class="fas fa-flower text-3xl text-[#0B3D91] mr-2"></i>
+        <span class="text-2xl font-bold text-[#0B3D91]">ROSE PHARMACEUTICALS</span>
+      </a>
 
-    <!-- Desktop Nav -->
-  <nav class="hidden md:flex space-x-8">
-  <a href="#home" class="text-gray-600 font-medium hover:text-[#0B3D91] transition">Home</a>
-  <a href="Third party m brochure.pdf" class="text-gray-600 font-medium hover:text-[#0B3D91] transition" target="_blank">Third Party</a>
-  <a href="gymsupplementsfranchise.pdf" class="text-gray-600 font-medium hover:text-[#0B3D91] transition" target="_blank">Franchise</a>
-  <a href="pcdpharmafranchise.pdf" class="text-gray-600 font-medium hover:text-[#0B3D91] transition" target="_blank">PCD</a>
-  <a href="contact.html" class="text-gray-600 font-medium hover:text-[#0B3D91] transition">Contact</a>
-  <a href="privacypolicy.html" class="text-gray-600 font-medium hover:text-[#0B3D91] transition">Privacy Policy</a>
-</nav>
+      <nav class="hidden md:flex space-x-8">
+        <a href="#home" class="text-gray-600 font-medium hover:text-[#0B3D91] transition">Home</a>
+        <a href="Third%20party%20m%20brochure.pdf" class="text-gray-600 font-medium hover:text-[#0B3D91] transition" target="_blank">Third Party</a>
+        <a href="gymsupplementsfranchise.pdf" class="text-gray-600 font-medium hover:text-[#0B3D91] transition" target="_blank">Franchise</a>
+        <a href="pcdpharmafranchise.pdf" class="text-gray-600 font-medium hover:text-[#0B3D91] transition" target="_blank">PCD</a>
+        <a href="contact.html" class="text-gray-600 font-medium hover:text-[#0B3D91] transition">Contact</a>
+        <a href="privacypolicy.html" class="text-gray-600 font-medium hover:text-[#0B3D91] transition">Privacy Policy</a>
+      </nav>
 
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="text-gray-600 hover:text-[#0B3D91] focus:outline-none">
+          <i id="menu-icon" class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+    </div>
+  </header>
 
-    <!-- Mobile Menu Button -->
-    <div class="md:hidden">
-      <button id="mobile-menu-button" class="text-gray-600 hover:text-[#0B3D91] focus:outline-none">
-        <i id="menu-icon" class="fas fa-bars text-2xl"></i>
+  <div id="mobile-menu" class="fixed top-0 right-0 h-full w-2/3 max-w-xs bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-50">
+    <div class="flex justify-between items-center p-4 border-b">
+      <span class="text-xl font-semibold text-[#0B3D91]">Menu</span>
+      <button id="close-menu" class="text-gray-600 hover:text-[#0B3D91]">
+        <i class="fas fa-times text-2xl"></i>
       </button>
     </div>
-  </div>
-</header>
 
-<!-- Sidebar Menu (Mobile) -->
-<div id="mobile-menu" class="fixed top-0 right-0 h-full w-2/3 max-w-xs bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-50">
-  <div class="flex justify-between items-center p-4 border-b">
-    <span class="text-xl font-semibold text-[#0B3D91]">Menu</span>
-    <button id="close-menu" class="text-gray-600 hover:text-[#0B3D91]">
-      <i class="fas fa-times text-2xl"></i>
-    </button>
-  </div>
-
-<div class="flex flex-col p-4 space-y-4">
-  <a href="#home" class="text-gray-600 font-medium hover:text-[#0B3D91] transition">Home</a>
-  <a href="Third party m brochure.pdf" class="text-gray-600 font-medium hover:text-[#0B3D91] transition" target="_blank">Third Party</a>
-  <a href="gymsupplementsfranchise.pdf" class="text-gray-600 font-medium hover:text-[#0B3D91] transition" target="_blank">Franchise</a>
-  <a href="pcdpharmafranchise.pdf" class="text-gray-600 font-medium hover:text-[#0B3D91] transition" target="_blank">PCD</a>
-  <a href="contact.html" class="text-gray-600 font-medium hover:text-[#0B3D91] transition">Contact</a>
-  <a href="privacypolicy.html" class="text-gray-600 font-medium hover:text-[#0B3D91] transition">Privacy Policy</a>
-</div>
-
-</div>
-
-<!-- Overlay -->
-<div id="overlay" class="hidden fixed inset-0 bg-black bg-opacity-40 z-40"></div>
-
-<!-- JS Toggle -->
-<script>
-  const menuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const closeMenu = document.getElementById('close-menu');
-  const overlay = document.getElementById('overlay');
-  const menuIcon = document.getElementById('menu-icon');
-
-  menuButton.addEventListener('click', () => {
-    mobileMenu.classList.remove('translate-x-full');
-    overlay.classList.remove('hidden');
-  });
-
-  closeMenu.addEventListener('click', () => {
-    mobileMenu.classList.add('translate-x-full');
-    overlay.classList.add('hidden');
-  });
-
-  overlay.addEventListener('click', () => {
-    mobileMenu.classList.add('translate-x-full');
-    overlay.classList.add('hidden');
-  });
-</script>
-
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-<!-- ===================== CLEAN MANUAL SLIDER ===================== -->
-
-<!-- ===================== PREMIUM SLIDER: AUTO + MANUAL + FADE + THUMBNAILS ===================== -->
-<style>
-  /* Container */
-  .premium-slider {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    background: #fff;
-  }
-
-  /* Slides wrapper is positioned; slides stacked for fade */
-  .premium-slide {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transform: scale(1.01);
-    transition: opacity 800ms ease, transform 800ms ease;
-    display: flex;
-    align-items: center;
-  }
-
-  .premium-slide.active {
-    opacity: 1;
-    transform: scale(1);
-    z-index: 2;
-  }
-
-  /* Overlay content */
-  .premium-content {
-    position: absolute;
-    left: 8%;
-    top: 50%;
-    transform: translateY(-50%);
-    max-width: 680px;
-    color: #062A60;
-    z-index: 5;
-  }
-
-  .premium-content h1 {
-    margin: 0 0 12px 0;
-    font-size: clamp(1.8rem, 4vw, 3.2rem);
-    line-height: 1.12;
-    color: #0B3D91;
-    font-weight: 700;
-  }
-
-  .premium-content p {
-    margin: 0 0 20px 0;
-    font-size: clamp(1rem, 2.2vw, 1.25rem);
-    color: #222;
-  }
-
-  .premium-cta {
-    display: inline-block;
-    background: #0B3D91;
-    color: #fff;
-    padding: 12px 28px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: 600;
-    box-shadow: 0 8px 20px rgba(11,61,145,0.14);
-    transition: transform .18s ease, box-shadow .18s ease;
-  }
-
-  .premium-cta:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(11,61,145,0.18); }
-
-  /* Arrows: modern circular */
-  .premium-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    cursor: pointer;
-    z-index: 10;
-    background: rgba(255,255,255,0.9);
-    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
-    transition: transform .12s ease, background .12s ease;
-    color: #0B3D91;
-    border: none;
-  }
-
-  .premium-button:hover { transform: translateY(-3px) scale(1.02); background: #fff; }
-
-  .premium-prev { left: 18px; }
-  .premium-next { right: 18px; }
-
-  /* Play/pause compact control */
-  .premium-playpause {
-    position: absolute;
-    right: 88px;
-    bottom: 28px;
-    z-index: 12;
-    width: 44px;
-    height: 44px;
-    border-radius: 10px;
-    background: rgba(255,255,255,0.95);
-    display: grid;
-    place-items: center;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-    cursor: pointer;
-    color: #0B3D91;
-    font-size: 18px;
-  }
-
-  .premium-playpause:hover { transform: translateY(-3px); }
-
-  /* Dots/thumbnail strip */
-  .premium-thumbs {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 18px;
-    z-index: 12;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    padding: 6px;
-    background: rgba(255,255,255,0.80);
-    border-radius: 999px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  }
-
-  .premium-thumb {
-    width: 84px;
-    height: 52px;
-    border-radius: 8px;
-    overflow: hidden;
-    cursor: pointer;
-    border: 2px solid transparent;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-    transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
-  }
-
-  .premium-thumb img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .premium-thumb:hover { transform: translateY(-4px) scale(1.02); }
-  .premium-thumb.active { border-color: #0B3D91; box-shadow: 0 10px 26px rgba(11,61,145,0.12); }
-
-  /* Accessibility focus */
-  .premium-button:focus, .premium-playpause:focus, .premium-thumb:focus { outline: 3px solid rgba(11,61,145,0.12); outline-offset: 2px; }
-
-  /* Mobile adjustments */
-  @media (max-width: 900px) {
-    .premium-content { left: 6%; right: 6%; max-width: 86%; }
-    .premium-content h1 { font-size: 2rem; }
-    .premium-thumb { width: 64px; height: 40px; }
-    .premium-button { width: 48px; height: 48px; }
-    .premium-playpause { right: 18px; bottom: 18px; }
-  }
-</style>
-
-<div class="premium-slider" role="region" aria-label="Main banner slider" id="premiumSlider">
-
-  <!-- Slides (fade stack) -->
-  <div class="premium-slide active" data-index="0" style="background-image:url('page1.png');" role="group" aria-roledescription="slide" aria-label="Slide 1 of 3">
-    <div class="premium-content">
-      <h1>Your Trusted<br>Nutraceutical Manufacturing Partner</h1>
-      <p>Specializing in Protein Powders • Syrups • Capsules</p>
-      <a class="premium-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSfltbFJhnfkMDyru2q32OaqLgt0O3zHM9FIB6XGIvO_sTaKAg/viewform" target="_blank">Start Your Brand Today</a>
+    <div class="flex flex-col p-4 space-y-4">
+      <a href="#home" class="text-gray-600 font-medium hover:text-[#0B3D91] transition">Home</a>
+      <a href="Third%20party%20m%20brochure.pdf" class="text-gray-600 font-medium hover:text-[#0B3D91] transition" target="_blank">Third Party</a>
+      <a href="gymsupplementsfranchise.pdf" class="text-gray-600 font-medium hover:text-[#0B3D91] transition" target="_blank">Franchise</a>
+      <a href="pcdpharmafranchise.pdf" class="text-gray-600 font-medium hover:text-[#0B3D91] transition" target="_blank">PCD</a>
+      <a href="contact.html" class="text-gray-600 font-medium hover:text-[#0B3D91] transition">Contact</a>
+      <a href="privacypolicy.html" class="text-gray-600 font-medium hover:text-[#0B3D91] transition">Privacy Policy</a>
     </div>
   </div>
 
-  <div class="premium-slide" data-index="1" style="background-image:url('page2.png');" role="group" aria-roledescription="slide" aria-label="Slide 2 of 3">
-    <div class="premium-content">
-      <h1>Start Your Own Pharma Business<br>With India's Trusted</h1>
-      <p>Protein Powders • Syrups • Capsules • Sachets</p>
-      <a class="premium-cta" href="https://docs.google.com/forms/d/e/1FAIpQLScJeyAC8Dzuf6_7s6CimpK43Shwu7S8PL20NfLOin4HyYFiHg/viewform" target="_blank">Become a Franchise Partner</a>
-    </div>
-  </div>
+  <div id="overlay" class="hidden fixed inset-0 bg-black bg-opacity-40 z-40"></div>
 
-  <div class="premium-slide" data-index="2" style="background-image:url('page3.png');" role="group" aria-roledescription="slide" aria-label="Slide 3 of 3">
-    <div class="premium-content">
-      <h1>Become a Part of Nextage Nutrition</h1>
-      <p>Whey Protein • Pre-workout • Plant Based Supplements</p>
-      <a class="premium-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSdldzEayaeElk86z-UEt-iT0Wg8wZSce6yy3030wWk0XHiPZg/viewform" target="_blank">Join Our Franchise</a>
-    </div>
-  </div>
+  <script>
+    (function () {
+      const menuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const closeMenu = document.getElementById('close-menu');
+      const overlay = document.getElementById('overlay');
 
-  <!-- Arrows -->
-  <button class="premium-button premium-prev" id="premiumPrev" aria-label="Previous slide">
-    <i class="fas fa-chevron-left" aria-hidden="true"></i>
-  </button>
-
-  <button class="premium-button premium-next" id="premiumNext" aria-label="Next slide">
-    <i class="fas fa-chevron-right" aria-hidden="true"></i>
-  </button>
-
-  <!-- Play / Pause -->
-  <button class="premium-playpause" id="premiumPlayPause" aria-label="Pause autoplay" title="Pause autoplay">
-    <i id="playPauseIcon" class="fas fa-pause" aria-hidden="true"></i>
-  </button>
-
-  <!-- Thumbnails -->
-  <div class="premium-thumbs" id="premiumThumbs" aria-hidden="false">
-    <div class="premium-thumb active" data-index="0" tabindex="0" aria-label="Show slide 1">
-      <img src="page1.png" alt="Slide 1 thumbnail">
-    </div>
-    <div class="premium-thumb" data-index="1" tabindex="0" aria-label="Show slide 2">
-      <img src="page2.png" alt="Slide 2 thumbnail">
-    </div>
-    <div class="premium-thumb" data-index="2" tabindex="0" aria-label="Show slide 3">
-      <img src="page3.png" alt="Slide 3 thumbnail">
-    </div>
-  </div>
-</div>
-
-<script>
-  (function () {
-    const slides = Array.from(document.querySelectorAll('.premium-slide'));
-    const thumbs = Array.from(document.querySelectorAll('.premium-thumb'));
-    const prevBtn = document.getElementById('premiumPrev');
-    const nextBtn = document.getElementById('premiumNext');
-    const playPauseBtn = document.getElementById('premiumPlayPause');
-    const playPauseIcon = document.getElementById('playPauseIcon');
-    const slider = document.getElementById('premiumSlider');
-
-    let current = 0;
-    const total = slides.length;
-    let autoplay = true;            // default autoplay on
-    const AUTO_DELAY = 4500;        // ms between slides
-    let autoplayTimer = null;
-    let userInteracted = false;
-
-    // Helper: go to slide
-    function goTo(index, userTriggered = false) {
-      if (index === current) return;
-      slides[current].classList.remove('active');
-      thumbs[current].classList.remove('active');
-      current = ((index % total) + total) % total;
-      slides[current].classList.add('active');
-      thumbs[current].classList.add('active');
-
-      // announce to screen readers by updating aria-hidden maybe (kept minimal)
-      slides.forEach((s, i) => s.setAttribute('aria-hidden', i === current ? 'false' : 'true'));
-
-      // if user triggered, pause autoplay for a while (UX)
-      if (userTriggered) {
-        pauseAutoplayTemporary();
+      function openMenu() {
+        mobileMenu.classList.remove('translate-x-full');
+        overlay.classList.remove('hidden');
       }
-    }
+      function closeMenuFunc() {
+        mobileMenu.classList.add('translate-x-full');
+        overlay.classList.add('hidden');
+      }
 
-    // Prev / Next
-    function next() { goTo(current + 1, true); }
-    function prev() { goTo(current - 1, true); }
+      if (menuButton) menuButton.addEventListener('click', openMenu);
+      if (closeMenu) closeMenu.addEventListener('click', closeMenuFunc);
+      if (overlay) overlay.addEventListener('click', closeMenuFunc);
+    })();
+  </script>
 
-    // Thumbs click / keyboard
-    thumbs.forEach(t => {
-      t.addEventListener('click', () => goTo(Number(t.dataset.index), true));
-      t.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goTo(Number(t.dataset.index), true); }
+  <div class="premium-slider" role="region" aria-label="Main banner slider" id="premiumSlider">
+
+    <div class="premium-slide active" data-index="0" style="background-image:url('p1a.png');" role="group" aria-roledescription="slide" aria-label="Slide 1 of 3">
+      <div class="premium-content">
+        <h1>Your Trusted Nutraceutical Manufacturing Partner</h1>
+        <p>Specializing in Protein Powders • Syrups • Capsules</p>
+        <a class="premium-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSfltbFJhnfkMDyru2q32OaqLgt0O3zHM9FIB6XGIvO_sTaKAg/viewform" target="_blank">Start Your Brand Today</a>
+      </div>
+    </div>
+
+    <div class="premium-slide" data-index="1" style="background-image:url('p1.png');" role="group" aria-roledescription="slide" aria-label="Slide 2 of 3">
+      <div class="premium-content">
+        <h1>Start Your Own Pharma Business With Trusted Pharma</h1>
+        <p>Protein Powders • Syrups • Capsules • Sachets</p>
+        <a class="premium-cta" href="https://docs.google.com/forms/d/e/1FAIpQLScJeyAC8Dzuf6_7s6CimpK43Shwu7S8PL20NfLOin4HyYFiHg/viewform" target="_blank">Become a Franchise Partner</a>
+      </div>
+    </div>
+
+    <div class="premium-slide" data-index="2" style="background-image:url('pa3.png');" role="group" aria-roledescription="slide" aria-label="Slide 3 of 3">
+      <div class="premium-content">
+        <h1>Become a Part of Nextage Nutrition</h1>
+        <p>Whey Protein • Pre-workout • Plant Based Supplements</p>
+        <a class="premium-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSdldzEayaeElk86z-UEt-iT0Wg8wZSce6yy3030wWk0XHiPZg/viewform" target="_blank">Join Our Franchise</a>
+      </div>
+    </div>
+
+    <button class="premium-button premium-prev" id="premiumPrev" aria-label="Previous slide">
+      <i class="fas fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <button class="premium-button premium-next" id="premiumNext" aria-label="Next slide">
+      <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </button>
+
+    <button class="premium-playpause" id="premiumPlayPause" aria-label="Pause autoplay" title="Pause autoplay">
+      <i id="playPauseIcon" class="fas fa-pause" aria-hidden="true"></i>
+    </button>
+
+    <div class="premium-thumbs" id="premiumThumbs" aria-hidden="false">
+      <div class="premium-thumb active" data-index="0" tabindex="0" aria-label="Show slide 1">
+        <img src="page1.png" alt="Slide 1 thumbnail" loading="lazy">
+      </div>
+      <div class="premium-thumb" data-index="1" tabindex="0" aria-label="Show slide 2">
+        <img src="page2.png" alt="Slide 2 thumbnail" loading="lazy">
+      </div>
+      <div class="premium-thumb" data-index="2" tabindex="0" aria-label="Show slide 3">
+        <img src="page3.png" alt="Slide 3 thumbnail" loading="lazy">
+      </div>
+    </div>
+
+    <div id="sliderStatus" class="absolute left-6 bottom-28 z-20 flex items-center gap-3">
+      <div id="autoplayBadge" class="rounded-full px-3 py-1 text-sm font-semibold bg-white bg-opacity-90 text-[#0B3D91] shadow-sm inline-flex items-center gap-2" role="status">
+        <span id="autoplayDot" style="width:10px;height:10px;border-radius:999px;display:inline-block;background:#0B3D91;box-shadow:0 4px 10px rgba(11,61,145,0.18)"></span>
+        <span id="autoplayLabel">Autoplay</span>
+      </div>
+      <div id="slideProgress" class="rounded-full px-3 py-1 text-sm bg-white bg-opacity-90 text-gray-700 shadow-sm">
+        <span id="slideCount">1 / 3</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const slides = Array.from(document.querySelectorAll('.premium-slide'));
+      const thumbs = Array.from(document.querySelectorAll('.premium-thumb'));
+      const prevBtn = document.getElementById('premiumPrev');
+      const nextBtn = document.getElementById('premiumNext');
+      const playPauseBtn = document.getElementById('premiumPlayPause');
+      const playPauseIcon = document.getElementById('playPauseIcon');
+      const slider = document.getElementById('premiumSlider');
+
+      let current = 0;
+      const total = slides.length;
+      let autoplay = true;
+      const AUTO_DELAY = 4500;
+      let autoplayTimer = null;
+      let userInteracted = false;
+
+      function goTo(index, userTriggered = false) {
+        const target = ((index % total) + total) % total;
+        if (target === current) return;
+        slides[current].classList.remove('active');
+        thumbs[current].classList.remove('active');
+        current = target;
+        slides[current].classList.add('active');
+        thumbs[current].classList.add('active');
+        updateUI();
+        if (userTriggered) pauseAutoplayTemporary();
+      }
+
+      function next() { goTo(current + 1, true); }
+      function prev() { goTo(current - 1, true); }
+
+      thumbs.forEach(t => {
+        t.addEventListener('click', () => goTo(Number(t.dataset.index), true));
       });
-    });
 
-    // Buttons
-    nextBtn.addEventListener('click', next);
-    prevBtn.addEventListener('click', prev);
+      if (nextBtn) nextBtn.addEventListener('click', next);
+      if (prevBtn) prevBtn.addEventListener('click', prev);
 
-    // Keyboard navigation (left/right, space to toggle)
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight') { next(); }
-      if (e.key === 'ArrowLeft') { prev(); }
-      if (e.key === ' ' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
-        e.preventDefault();
-        toggleAutoplay();
+      function startAutoplay() {
+        stopAutoplay();
+        autoplay = true;
+        if (playPauseIcon) { playPauseIcon.classList.remove('fa-play'); playPauseIcon.classList.add('fa-pause'); }
+        autoplayTimer = setInterval(() => { goTo(current + 1); }, AUTO_DELAY);
+        updateUI();
       }
-    });
-
-    // Autoplay control
-    function startAutoplay() {
-      stopAutoplay();
-      autoplay = true;
-      playPauseIcon.classList.remove('fa-play'); playPauseIcon.classList.add('fa-pause');
-      playPauseBtn.setAttribute('aria-label', 'Pause autoplay');
-      autoplayTimer = setInterval(() => {
-        goTo(current + 1);
-      }, AUTO_DELAY);
-    }
-
-    function stopAutoplay() {
-      autoplay = false;
-      playPauseIcon.classList.remove('fa-pause'); playPauseIcon.classList.add('fa-play');
-      playPauseBtn.setAttribute('aria-label', 'Start autoplay');
-      if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; }
-    }
-
-    function toggleAutoplay() {
-      if (autoplayTimer) { stopAutoplay(); } else { startAutoplay(); }
-    }
-
-    // Play/pause button
-    playPauseBtn.addEventListener('click', () => {
-      toggleAutoplay();
-      // If user toggles, treat as interaction so we won't auto resume
-      userInteracted = true;
-    });
-
-    // Pause on hover (mouse) and resume on leave (if not manually paused)
-    slider.addEventListener('mouseenter', () => {
-      if (autoplayTimer) {
-        clearInterval(autoplayTimer);
-        autoplayTimer = null;
+      function stopAutoplay() {
+        autoplay = false;
+        if (playPauseIcon) { playPauseIcon.classList.remove('fa-pause'); playPauseIcon.classList.add('fa-play'); }
+        if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; }
+        updateUI();
       }
-    });
+      function toggleAutoplay() { if (autoplayTimer) { stopAutoplay(); } else { startAutoplay(); } }
 
-    slider.addEventListener('mouseleave', () => {
-      if (!userInteracted) startAutoplay();
-    });
+      if (playPauseBtn) {
+        playPauseBtn.addEventListener('click', () => {
+          toggleAutoplay();
+          userInteracted = true;
+        });
+      }
 
-    // After user clicks manual nav, temporary pause then resume
-    let tempPauseTimer = null;
-    function pauseAutoplayTemporary() {
-      if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; }
-      if (tempPauseTimer) clearTimeout(tempPauseTimer);
-      tempPauseTimer = setTimeout(() => {
-        if (!userInteracted) startAutoplay();
-      }, 6000); // 6s resume delay
-    }
+      // Pause on hover
+      if (slider) {
+        slider.addEventListener('mouseenter', () => { if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; } });
+        slider.addEventListener('mouseleave', () => { if (!userInteracted) startAutoplay(); });
+      }
 
-    // Initialize aria-hidden correctly
-    slides.forEach((s,i) => s.setAttribute('aria-hidden', i === current ? 'false' : 'true'));
+      let tempPauseTimer = null;
+      function pauseAutoplayTemporary() {
+        if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; }
+        if (tempPauseTimer) clearTimeout(tempPauseTimer);
+        tempPauseTimer = setTimeout(() => { if (!userInteracted) startAutoplay(); }, 6000);
+      }
 
-    // Start autoplay initially
-    startAutoplay();
+      // UI Updates
+      const autoplayDot = document.getElementById('autoplayDot');
+      const autoplayLabel = document.getElementById('autoplayLabel');
+      const slideCount = document.getElementById('slideCount');
 
-    // Expose small API if needed (not required)
-    window._premiumSlider = { goTo, next, prev, startAutoplay, stopAutoplay };
+      function updateUI() {
+        const playing = !!autoplayTimer;
+        if (slideCount) slideCount.textContent = (current + 1) + ' / ' + total;
+        if (autoplayLabel) autoplayLabel.textContent = playing ? 'Autoplay' : 'Paused';
+        if (autoplayDot) {
+           autoplayDot.style.background = playing ? '#0B3D91' : '#D1D5DB';
+        }
+      }
 
-  })();
-</script>
-<!-- ===================== END PREMIUM SLIDER ===================== -->  
+      startAutoplay();
+    })();
+  </script>
 
+  <section id="services" class="py-20 bg-white">
+    <div class="container mx-auto px-6 lg:px-10">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Manufacturing Expertise</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">With world class manufacturing facilities, adhering to strict quality standards, Rose Pharmaceuticals & Healthcare Pvt Ltd ensures every supplement is produced with precision, safety, and pharmaceutical grade excellence.</p>
+      </div>
 
-    <!-- Stats Section -->
-
-    <!-- Services Section -->
-    <section id="services" class="py-20 bg-white">
-        <div class="container mx-auto px-10">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Manufacturing Expertise</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    With world class manufacturing facilities, adhering to strict quality standards, Rose Pharmaceuticals & Healthcare Pvt Ltd ensures every supplement is produced with precision, safety, and pharmaceutical grade excellence.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-                <!-- Service Card 1 -->
-                <div class="service-card bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300 p-6 h-full">
-                    <div class="service-icon bg-[#0B3D91] w-16 h-16 rounded-full flex items-center justify-center mb-6 transition duration-300">
-                    <i class="fas fa-bone"></i> 
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Protein Powder</h3>
-                    <p class="text-gray-600 mb-4">
-                        Premium quality protein powders manufactured with state-of-the-art equipment and the highest quality standards.
-                    </p>
-                    <p>* Whey Protein</p>
-                    <p>* Plant-based Proteins</p>
-                    <p>* General Protein Powder (for daily nutrition & wellness)</p>
-                    <p>* Custom Flavoring Options</p>
-                    <p>* Multiple Packaging Sizes</p>
-                    <a href="remote-support.html" class="text-[#0B3D91] font-medium hover:text-[#0B3D91] flex items-center mt-auto">
-                        Learn more <i class="fas fa-chevron-right ml-2 text-sm"></i>
-                    </a>
-                </div>
-
-                <!-- Service Card 2 -->
-                <div class="service-card bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300 p-6 h-full">
-                    <div class="service-icon bg-[#0B3D91] w-16 h-16 rounded-full flex items-center justify-center mb-6 transition duration-300">
-                        <i class="fa-capsules"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Capsules</h3>
-                    <p class="text-gray-600 mb-4">
-                        Precision-manufactured capsules and tablets designed for high-quality nutritional supplements and health products.
-                    </p>
-                    <p>* Multivitamin Capsules – for overall wellness and immunity</p>
-                    <p>* Vitamin D3 Capsules – for bone strength and energy support</p>
-                    <p>* Moringa Capsules – rich in natural antioxidants and nutrients</p>
-                    <p>* Custom formulations available on request</p>
-                    <p>* Precise dosage control</p>
-                    <a href="onsite-repairs.html" class="text-[#0B3D91] font-medium hover:text-[#0B3D91] flex items-center mt-auto">
-                        Learn more <i class="fas fa-chevron-right ml-2 text-sm"></i>
-                    </a>
-                </div>
-
-                <!-- Service Card 3 -->
-                <div class="service-card bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300 p-6 h-full">
-                    <div class="service-icon bg-[#0B3D91] w-16 h-16 rounded-full flex items-center justify-center mb-6 transition duration-300">
-                    <i class="fas fa-dumbbell"></i> 
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Gym Supplements</h3>
-                    <p class="text-gray-600 mb-4">
-                        Premium Sports Nutrition Supplements. Our gym supplement range is specially designed to fuel your workouts, enhance recovery, and support muscle growth. From high-quality whey proteins to advanced pre-workouts and amino blends, every product is formulated with performance and purity in mind.
-                    </p>
-                    <p>* Whey Iso Con / Iso Gold – 100% whey protein isolate & concentrate blend for lean muscle growth and faster recovery.</p>
-                    <p>* Advanced Mass Gainer – High-calorie formula with 54g protein + 25 essential nutrients to build size and strength.</p>
-                    <a href="Gymsupp.html" class="text-[#0B3D91] font-medium hover:text-[#0B3D91] flex items-center mt-auto">
-                        Learn more <i class="fas fa-chevron-right ml-2 text-sm"></i>
-                    </a>
-                </div>
-
-                <!-- Service Card 4 -->
-                <div class="service-card bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300 p-6 h-full">
-                    <div class="service-icon bg-[#0B3D91] w-16 h-16 rounded-full flex items-center justify-center mb-6 transition duration-300">
-                    <i class="fas fa-seedling"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Plant Proteins</h3>
-                    <p class="text-gray-600 mb-4">
-                        At Rose Pharmaceuticals & Healthcare Pvt. Ltd., we specialize in the development and manufacturing of high-quality food-grade vitamin and mineral premixes tailored to meet the nutritional demands of modern consumers. Our premixes are carefully formulated using science-backed ingredients such as Vitamin C, Vitamin D, Iron, and Zinc to support immunity, energy, and overall well-being.
-                    </p>
-                    <a href="PlantPro.html" class="text-[#0B3D91] font-medium hover:text-[#0B3D91] flex items-center mt-auto">
-                        Learn more <i class="fas fa-chevron-right ml-2 text-sm"></i>
-                    </a>
-                </div>
-
-                <!-- Service Card 5 -->
-                <div class="service-card bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300 p-6 h-full">
-                    <div class="service-icon bg-[#0B3D91] w-16 h-16 rounded-full flex items-center justify-center mb-6 transition duration-300">
-                    <i class="fas fa-flask"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Your Own Formulation</h3>
-                    <p class="text-gray-600 mb-4">
-                        Our food-grade vitamin and mineral premixes are expertly crafted with essential nutrients like Vitamin C, Vitamin D, Iron, and Zinc to support everyday wellness. Backed by advanced technology and strict quality standards, we offer customized third-party manufacturing solutions that help you create trusted nutrition products under your own brand.
-                    </p>
-                    <a href="Premix.html" class="text-[#0B3D91] font-medium hover:text-[#0B3D91] flex items-center mt-auto">
-                        Learn more <i class="fas fa-chevron-right ml-2 text-sm"></i>
-                    </a>
-                </div>
-
-                <!-- Service Card 6 -->
-                <div class="service-card bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300 p-6 h-full">
-                    <div class="service-icon bg-[#0B3D91] w-16 h-16 rounded-full flex items-center justify-center mb-6 transition duration-300">
-                    <i class="fas fa-prescription-bottle-alt"></i> 
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Syrups & Sachets</h3>
-                    <p class="text-gray-600 mb-4">
-                        Nutritional syrups and liquid supplements crafted with advanced liquid processing technology.
-                    </p>
-                    <p>* Vitamin & mineral syrups</p>
-                    <p>* Natural flavor enhancement</p>
-                    <p>* Extended shelf life</p>
-                    <p>* Child-friendly formulations</p>
-                    <p>* Precise dosage control</p>
-                    <a href="parts-replacement.html" class="text-[#0B3D91] font-medium hover:text-[#0B3D91] flex items-center mt-auto">
-                        Learn more <i class="fas fa-chevron-right ml-2 text-sm"></i>
-                    </a>
-                </div>
-            </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+        <div class="service-card bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300 p-6 h-full flex flex-col">
+          <div class="service-icon bg-[#0B3D91] w-16 h-16 rounded-full flex items-center justify-center mb-6 text-white text-2xl">
+            <i class="fas fa-bone"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">Protein Powder</h3>
+          <p class="text-gray-600 mb-4 flex-grow">Premium quality protein powders manufactured with state-of-the-art equipment and the highest quality standards. Includes Whey, Plant-based, and general wellness proteins.</p>
+          <a href="remote-support.html" class="text-[#0B3D91] font-medium hover:text-[#0B3D91] flex items-center mt-auto">Learn more <i class="fas fa-chevron-right ml-2 text-sm"></i></a>
         </div>
-    </section>
 
-   <section class="py-16 bg-white">
-  <div class="max-w-6xl mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-10">Specialized Product Categories</h2>
-    <div class="grid gap-6 md:grid-cols-3">
-      <!-- Gym Supplements -->
-      <div class="bg-blue-50 rounded-xl p-8 flex flex-col items-center text-center shadow-sm">
-        <span class="text-5xl mb-4">🏋️‍♂️</span>
-        <h3 class="font-bold text-lg mb-2">Gym Supplements</h3>
-        <p class="text-gray-600 text-sm">High-performance pre-workout, post-workout, and performance enhancement supplements designed for serious athletes and fitness enthusiasts.</p>
-      </div>
-      <!-- Kids Nutrition -->
-      <div class="bg-blue-50 rounded-xl p-8 flex flex-col items-center text-center shadow-sm">
-        <span class="text-5xl mb-4">🧒</span>
-        <h3 class="font-bold text-lg mb-2">Kids Nutrition</h3>
-        <p class="text-gray-600 text-sm">Safe, tasty, and nutritious supplements specially formulated for children's growth and development needs with appealing flavors.</p>
-      </div>
-      <!-- Women's Health -->
-      <div class="bg-blue-50 rounded-xl p-8 flex flex-col items-center text-center shadow-sm">
-        <span class="text-5xl mb-4">👩‍🦰</span>
-        <h3 class="font-bold text-lg mb-2">Women's Health</h3>
-        <p class="text-gray-600 text-sm">Specialized nutritional supplements addressing women's unique health requirements including prenatal, postnatal, and general wellness products.</p>
-      </div>
-      <!-- Men's Wellness -->
-      <div class="bg-blue-50 rounded-xl p-8 flex flex-col items-center text-center shadow-sm">
-        <span class="text-5xl mb-4">🧑</span>
-        <h3 class="font-bold text-lg mb-2">Men's Wellness</h3>
-        <p class="text-gray-600 text-sm">Targeted supplements for men's health focusing on strength, stamina, and overall vitality with scientifically-backed formulations.</p>
-      </div>
-      <!-- Senior Care -->
-      <div class="bg-blue-50 rounded-xl p-8 flex flex-col items-center text-center shadow-sm">
-        <span class="text-5xl mb-4">🧓</span>
-        <h3 class="font-bold text-lg mb-2">Senior Care</h3>
-        <p class="text-gray-600 text-sm">Gentle yet effective nutritional supplements designed for elderly adults, focusing on bone health, immunity, and cognitive support.</p>
-      </div>
-      <!-- Natural & Organic -->
-      <div class="bg-blue-50 rounded-xl p-8 flex flex-col items-center text-center shadow-sm">
-        <span class="text-5xl mb-4">🌱</span>
-        <h3 class="font-bold text-lg mb-2">Natural & Organic</h3>
-        <p class="text-gray-600 text-sm">Organic and natural supplement manufacturing using certified organic ingredients and sustainable production methods.</p>
+        <div class="service-card bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300 p-6 h-full flex flex-col">
+          <div class="service-icon bg-[#0B3D91] w-16 h-16 rounded-full flex items-center justify-center mb-6 text-white text-2xl"><i class="fas fa-capsules"></i></div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">Capsules</h3>
+          <p class="text-gray-600 mb-4 flex-grow">Precision-manufactured capsules and tablets including Multivitamins, Vitamin D3, and Moringa. Custom formulations available with precise dosage control.</p>
+          <a href="onsite-repairs.html" class="text-[#0B3D91] font-medium hover:text-[#0B3D91] flex items-center mt-auto">Learn more <i class="fas fa-chevron-right ml-2 text-sm"></i></a>
+        </div>
+
+        <div class="service-card bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300 p-6 h-full flex flex-col">
+          <div class="service-icon bg-[#0B3D91] w-16 h-16 rounded-full flex items-center justify-center mb-6 text-white text-2xl"><i class="fas fa-dumbbell"></i></div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">Gym Supplements</h3>
+          <p class="text-gray-600 mb-4 flex-grow">Premium Sports Nutrition. Whey Iso Con, Iso Gold, and Advanced Mass Gainers designed to fuel workouts and enhance recovery.</p>
+          <a href="Gymsupp.html" class="text-[#0B3D91] font-medium hover:text-[#0B3D91] flex items-center mt-auto">Learn more <i class="fas fa-chevron-right ml-2 text-sm"></i></a>
+        </div>
+
+        <div class="service-card bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300 p-6 h-full flex flex-col">
+          <div class="service-icon bg-[#0B3D91] w-16 h-16 rounded-full flex items-center justify-center mb-6 text-white text-2xl"><i class="fas fa-seedling"></i></div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">Plant Proteins</h3>
+          <p class="text-gray-600 mb-4 flex-grow">Development and manufacturing of high-quality food-grade plant protein blends and premixes tailored to modern consumer demands.</p>
+          <a href="PlantPro.html" class="text-[#0B3D91] font-medium hover:text-[#0B3D91] flex items-center mt-auto">Learn more <i class="fas fa-chevron-right ml-2 text-sm"></i></a>
+        </div>
+
+        <div class="service-card bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300 p-6 h-full flex flex-col">
+          <div class="service-icon bg-[#0B3D91] w-16 h-16 rounded-full flex items-center justify-center mb-6 text-white text-2xl"><i class="fas fa-flask"></i></div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">Your Own Formulation</h3>
+          <p class="text-gray-600 mb-4 flex-grow">Expertly crafted vitamin and mineral premixes (Vitamin C, D, Iron, Zinc) to support everyday wellness. We bring your unique formulas to life.</p>
+          <a href="Premix.html" class="text-[#0B3D91] font-medium hover:text-[#0B3D91] flex items-center mt-auto">Learn more <i class="fas fa-chevron-right ml-2 text-sm"></i></a>
+        </div>
+
+        <div class="service-card bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300 p-6 h-full flex flex-col">
+          <div class="service-icon bg-[#0B3D91] w-16 h-16 rounded-full flex items-center justify-center mb-6 text-white text-2xl"><i class="fas fa-prescription-bottle-alt"></i></div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">Syrups & Sachets</h3>
+          <p class="text-gray-600 mb-4 flex-grow">Nutritional syrups and liquid supplements crafted with advanced processing technology. Features natural flavor enhancement and extended shelf life.</p>
+          <a href="parts-replacement.html" class="text-[#0B3D91] font-medium hover:text-[#0B3D91] flex items-center mt-auto">Learn more <i class="fas fa-chevron-right ml-2 text-sm"></i></a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-10">Specialized Product Categories</h2>
+      <div class="grid gap-6 md:grid-cols-3">
+        <div class="bg-blue-50 rounded-xl p-8 flex flex-col items-center text-center shadow-sm">
+          <span class="text-5xl mb-4">🏋️‍♂️</span>
+          <h3 class="font-bold text-lg mb-2">Gym Supplements</h3>
+          <p class="text-gray-600 text-sm">High-performance pre-workout and post-workout supplements for athletes.</p>
+        </div>
+        <div class="bg-blue-50 rounded-xl p-8 flex flex-col items-center text-center shadow-sm">
+          <span class="text-5xl mb-4">🧒</span>
+          <h3 class="font-bold text-lg mb-2">Kids Nutrition</h3>
+          <p class="text-gray-600 text-sm">Safe, tasty, and nutritious supplements formulated for children's growth.</p>
+        </div>
+        <div class="bg-blue-50 rounded-xl p-8 flex flex-col items-center text-center shadow-sm">
+          <span class="text-5xl mb-4">👩‍🦰</span>
+          <h3 class="font-bold text-lg mb-2">Women's Health</h3>
+          <p class="text-gray-600 text-sm">Specialized supplements for prenatal, postnatal, and general wellness.</p>
+        </div>
+        <div class="bg-blue-50 rounded-xl p-8 flex flex-col items-center text-center shadow-sm">
+          <span class="text-5xl mb-4">🧑</span>
+          <h3 class="font-bold text-lg mb-2">Men's Wellness</h3>
+          <p class="text-gray-600 text-sm">Targeted supplements for strength, stamina, and vitality.</p>
+        </div>
+        <div class="bg-blue-50 rounded-xl p-8 flex flex-col items-center text-center shadow-sm">
+          <span class="text-5xl mb-4">🧓</span>
+          <h3 class="font-bold text-lg mb-2">Senior Care</h3>
+          <p class="text-gray-600 text-sm">Gentle, effective supplements for bone health and immunity in seniors.</p>
+        </div>
+        <div class="bg-blue-50 rounded-xl p-8 flex flex-col items-center text-center shadow-sm">
+          <span class="text-5xl mb-4">🌱</span>
+          <h3 class="font-bold text-lg mb-2">Natural & Organic</h3>
+          <p class="text-gray-600 text-sm">Manufacturing using certified organic ingredients and sustainable methods.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Testimonials Section -->
-   <section class="py-20 bg-[#0B3D91] text-white">
+  <section class="py-20 bg-[#0B3D91] text-white">
     <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">What Our Customers Say</h2>
-            <p class="text-xl opacity-90 max-w-3xl mx-auto">Millions of customers have trusted our products.</p>
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">What Our Customers Say</h2>
+        <p class="text-xl opacity-90 max-w-3xl mx-auto">Millions of customers have trusted our products.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="testimonial-card bg-[#062A60] rounded-lg p-6">
+          <div class="flex items-center mb-4"><div class="text-yellow-400 text-2xl mr-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div>
+          <p class="mb-6 opacity-90">"Working with this team was the best decision for my nutrition brand. The products are high quality, and the packaging looks very professional."</p>
+          <div class="flex items-center"><div class="bg-white text-[#062A60] rounded-full w-12 h-12 flex items-center justify-center mr-4"><span class="font-bold">RS</span></div><div><h4 class="font-bold">Rohit S</h4></div></div>
         </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Testimonial 1 -->
-            <div class="testimonial-card bg-[#062A60] rounded-lg p-6">
-                <div class="flex items-center mb-4">
-                    <div class="text-yellow-400 text-2xl mr-2">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                </div>
-                <p class="mb-6 opacity-90">"Working with this team was the best decision for my nutrition brand. The products are high quality, and the packaging looks very professional."</p>
-                <div class="flex items-center">
-                    <div class="bg-[#062A60] rounded-full w-12 h-12 flex items-center justify-center mr-4">
-                        <span class="font-bold">MS</span>
-                    </div>
-                    <div>
-                        <h4 class="font-bold">Rohit S</h4>
-                    </div>
-                </div>
-            </div>
-            <!-- Testimonial 2 -->
-            <div class="testimonial-card bg-[#062A60] rounded-lg p-6">
-                <div class="flex items-center mb-4">
-                    <div class="text-yellow-400 text-2xl mr-2">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                </div>
-                <p class="mb-6 opacity-90">"Exceptional customer service! The team was responsive and attentive from our first inquiry through to delivery."</p>
-                <div class="flex items-center">
-                    <div class="bg-[#062A60] rounded-full w-12 h-12 flex items-center justify-center mr-4">
-                        <span class="font-bold">AP</span>
-                    </div>
-                    <div>
-                        <h4 class="font-bold">Aarti P</h4>
-                    </div>
-                </div>
-            </div>
-            <!-- Testimonial 3 -->
-            <div class="testimonial-card bg-[#062A60] rounded-lg p-6">
-                <div class="flex items-center mb-4">
-                    <div class="text-yellow-400 text-2xl mr-2">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                </div>
-                <p class="mb-6 opacity-90">"Impressed with the strict quality standards and reliable turnaround times. Highly recommended for anyone starting their supplement brand."</p>
-                <div class="flex items-center">
-                    <div class="bg-[#062A60] rounded-full w-12 h-12 flex items-center justify-center mr-4">
-                        <span class="font-bold">NK</span>
-                    </div>
-                    <div>
-                        <h4 class="font-bold">Nitin K</h4>
-                    </div>
-                </div>
-            </div>
-            <!-- Testimonial 4 -->
-            <div class="testimonial-card bg-[#062A60] rounded-lg p-6">
-                <div class="flex items-center mb-4">
-                    <div class="text-yellow-400 text-2xl mr-2">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                </div>
-                <p class="mb-6 opacity-90">"The custom formulations exceeded our expectations, and our clients love the new flavors."</p>
-                <div class="flex items-center">
-                    <div class="bg-[#062A60] rounded-full w-12 h-12 flex items-center justify-center mr-4">
-                        <span class="font-bold">SD</span>
-                    </div>
-                    <div>
-                        <h4 class="font-bold">Sonia D</h4>
-                    </div>
-                </div>
-            </div>
-            <!-- Testimonial 5 -->
-            <div class="testimonial-card bg-[#062A60] rounded-lg p-6">
-                <div class="flex items-center mb-4">
-                    <div class="text-yellow-400 text-2xl mr-2">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                </div>
-                <p class="mb-6 opacity-90">"I have worked with several manufacturers but none matched the professionalism and quality of Rose Pharmaceuticals."</p>
-                <div class="flex items-center">
-                    <div class="bg-[#062A60] rounded-full w-12 h-12 flex items-center justify-center mr-4">
-                        <span class="font-bold">RK</span>
-                    </div>
-                    <div>
-                        <h4 class="font-bold">Rajesh K</h4>
-                    </div>
-                </div>
-            </div>
-            <!-- Testimonial 6 -->
-            <div class="testimonial-card bg-[#062A60] rounded-lg p-6">
-                <div class="flex items-center mb-4">
-                    <div class="text-yellow-400 text-2xl mr-2">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                </div>
-                <p class="mb-6 opacity-90">"Trusted partner for years—timely delivery and great support every step of the way!"</p>
-                <div class="flex items-center">
-                    <div class="bg-[#062A60] rounded-full w-12 h-12 flex items-center justify-center mr-4">
-                        <span class="font-bold">PS</span>
-                    </div>
-                    <div>
-                        <h4 class="font-bold">Priya S</h4>
-                    </div>
-                </div>
-            </div>
+        <div class="testimonial-card bg-[#062A60] rounded-lg p-6">
+          <div class="flex items-center mb-4"><div class="text-yellow-400 text-2xl mr-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div>
+          <p class="mb-6 opacity-90">"Exceptional customer service! The team was responsive and attentive from our first inquiry through to delivery."</p>
+          <div class="flex items-center"><div class="bg-white text-[#062A60] rounded-full w-12 h-12 flex items-center justify-center mr-4"><span class="font-bold">AP</span></div><div><h4 class="font-bold">Aarti P</h4></div></div>
         </div>
+        <div class="testimonial-card bg-[#062A60] rounded-lg p-6">
+          <div class="flex items-center mb-4"><div class="text-yellow-400 text-2xl mr-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div>
+          <p class="mb-6 opacity-90">"Impressed with the strict quality standards and reliable turnaround times. Highly recommended for anyone starting their supplement brand."</p>
+          <div class="flex items-center"><div class="bg-white text-[#062A60] rounded-full w-12 h-12 flex items-center justify-center mr-4"><span class="font-bold">NK</span></div><div><h4 class="font-bold">Nitin K</h4></div></div>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
 
-
-    <!-- About Us Section -->
-    <section id="about" class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">About Rose Pharmaceuticals</h2>
-                    <p class="text-lg text-gray-600 mb-6">
-                        Rose Pharmaceuticals & Healthcare Pvt. Ltd., established in 2008, is a trusted name in nutraceutical third-party manufacturing. We specialize in protein powders, syrups, capsules, tablets, sachets, and custom formulations crafted with safety, quality, and innovation. Our GMP, ISO, and FSSAI-certified facility ensures excellence from R&D to packaging. With 15+ years of expertise, we provide end-to-end solutions, flexible MOQs, and timely delivery. We are committed to building strong, reliable health brands through quality, trust, and innovation.
-                    </p>
-                    <div class="flex items-center">
-                        <div class="bg-[#DDE9FF] text-[#0B3D91] rounded-full p-3 mr-4">
-                            <i class="fas fa-award text-xl"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-gray-800">Certified Technicians</h4>
-                            <p class="text-gray-600">All our technicians are manufacturer-certified</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="md:w-1/2">
-                    <img src="public/assets/images/HOME.png" alt="Technician repairing printer" class="rounded-lg shadow-lg w-half">
-                </div>
-            </div>
+  <section id="about" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">About Rose Pharmaceuticals</h2>
+          <p class="text-lg text-gray-600 mb-6">Rose Pharmaceuticals & Healthcare Pvt. Ltd., established in 2008, is a trusted name in nutraceutical third-party manufacturing. We specialize in protein powders, syrups, capsules, tablets, sachets, and custom formulations crafted with safety, quality, and innovation. Our GMP, ISO, and FSSAI-certified facility ensures excellence from R&D to packaging.</p>
+          <div class="flex items-center">
+            <div class="bg-[#DDE9FF] text-[#0B3D91] rounded-full p-3 mr-4"><i class="fas fa-award text-xl"></i></div>
+            <div><h4 class="font-bold text-gray-800">Certified Excellence</h4><p class="text-gray-600">GMP, ISO, and FSSAI Certified Facility</p></div>
+          </div>
         </div>
-    </section>
+        <div class="md:w-1/2">
+          <img src="public/assets/images/HOME.png" alt="Manufacturing Facility" class="rounded-lg shadow-lg w-full">
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- CTA Section -->
-    <section class="py-16 bg-gray-900 text-[#0B3D91]">
+  <section class="py-16 bg-gray-900 text-white">
     <div class="container mx-auto px-4 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">to know more about the products?</h2>
-        <p class="text-xl opacity-90 mb-8 max-w-3xl mx-auto">contact us and say about your product and know about our product</p>
-        <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <a href="contact.html" class="bg-transparent border-2 border-[#0B3D91] hover:bg-[#0B3D91] hover:text-white font-bold py-3 px-8 rounded-lg inline-block transition duration-300">
-                <i class="fas fa-envelope mr-2"></i> Email Us
-            </a>
-        </div>
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Ready to launch your product line?</h2>
+      <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">Contact us today to discuss your manufacturing needs and request a quote.</p>
+      <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+        <a href="contact.html" class="bg-transparent border-2 border-[#0B3D91] text-white hover:bg-[#0B3D91] hover:text-white font-bold py-3 px-8 rounded-lg inline-block transition duration-300">
+          <i class="fas fa-envelope mr-2"></i> Email Us
+        </a>
+      </div>
     </div>
-</section>
+  </section>
 
-    <!-- FAQ Section -->
-    <section class="py-20 bg-white">
-  <div class="container mx-auto px-4">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h2>
-      <p class="text-xl text-gray-600 max-w-3xl mx-auto">Get answers to common questions about Rose Pharmaceuticals and our nutraceutical manufacturing services.</p>
-    </div>
-    <div class="max-w-4xl mx-auto">
-      <div class="mb-6 border-b border-gray-200 pb-6">
-        <button class="faq-question flex justify-between items-center w-full text-left font-bold text-lg text-gray-800 focus:outline-none">
-          <span>What product categories do you manufacture?</span>
-          <i class="fas fa-chevron-down text-[#0B3D91] transition-transform duration-300"></i>
-        </button>
-        <div class="faq-answer mt-4 text-gray-600 hidden">
-          <p>We manufacture a wide range of nutraceutical products including protein powders, syrups, capsules, sachets, and customized formulations tailored for various consumer needs.</p>
-        </div>
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Get answers to common questions about Rose Pharmaceuticals and our nutraceutical manufacturing services.</p>
       </div>
-
-      <div class="mb-6 border-b border-gray-200 pb-6">
-        <button class="faq-question flex justify-between items-center w-full text-left font-bold text-lg text-gray-800 focus:outline-none">
-          <span>What quality certifications does Rose Pharmaceuticals have?</span>
-          <i class="fas fa-chevron-down text-[#0B3D91] transition-transform duration-300"></i>
-        </button>
-        <div class="faq-answer mt-4 text-gray-600 hidden">
-          <p>Our facilities are GMP and ISO certified, ensuring strict compliance with quality, safety, and efficacy standards throughout the manufacturing process.</p>
-        </div>
-      </div>
-
-      <div class="mb-6 border-b border-gray-200 pb-6">
-        <button class="faq-question flex justify-between items-center w-full text-left font-bold text-lg text-gray-800 focus:outline-none">
-          <span>Can we customize formulations and packaging?</span>
-          <i class="fas fa-chevron-down text-[#0B3D91] transition-transform duration-300"></i>
-        </button>
-        <div class="faq-answer mt-4 text-gray-600 hidden">
-          <p>Yes, we offer complete customization options for product formulations, flavors, and packaging to meet your brand requirements and market preferences.</p>
-        </div>
-      </div>
-
-      <div class="mb-6 border-b border-gray-200 pb-6">
-        <button class="faq-question flex justify-between items-center w-full text-left font-bold text-lg text-gray-800 focus:outline-none">
-          <span>Do you provide private labeling services?</span>
-          <i class="fas fa-chevron-down text-[#0B3D91] transition-transform duration-300"></i>
-        </button>
-        <div class="faq-answer mt-4 text-gray-600 hidden">
-          <p>Absolutely. We specialize in private labeling, allowing you to launch nutraceutical products under your own brand with full support from formulation to packaging.</p>
-        </div>
-      </div>
-
-      <div class="mb-6 border-b border-gray-200 pb-6">
-        <button class="faq-question flex justify-between items-center w-full text-left font-bold text-lg text-gray-800 focus:outline-none">
-          <span>What is the minimum order quantity (MOQ)?</span>
-          <i class="fas fa-chevron-down text-[#0B3D91] transition-transform duration-300"></i>
-        </button>
-        <div class="faq-answer mt-4 text-gray-600 hidden">
-          <p>Our MOQ varies depending on the product type, packaging, and customization level. Please contact us directly to discuss your specific requirements.</p>
-        </div>
-      </div>
-
-      <div class="mb-6 border-b border-gray-200 pb-6">
-        <button class="faq-question flex justify-between items-center w-full text-left font-bold text-lg text-gray-800 focus:outline-none">
-          <span>What markets does Rose Pharmaceuticals serve?</span>
-          <i class="fas fa-chevron-down text-[#0B3D91] transition-transform duration-300"></i>
-        </button>
-        <div class="faq-answer mt-4 text-gray-600 hidden">
-          <p>We cater primarily to the Indian market, but also serve international clients with export-quality nutraceutical products and private labeling solutions.</p>
-        </div>
-      </div>
-
-      <div class="mb-6 border-b border-gray-200 pb-6">
-        <button class="faq-question flex justify-between items-center w-full text-left font-bold text-lg text-gray-800 focus:outline-none">
-          <span>How do you ensure product safety and efficacy?</span>
-          <i class="fas fa-chevron-down text-[#0B3D91] transition-transform duration-300"></i>
-        </button>
-        <div class="faq-answer mt-4 text-gray-600 hidden">
-          <p>Our manufacturing process follows stringent quality control protocols with regular testing and validation to guarantee safety, stability, and efficacy of every product batch.</p>
-        </div>
-      </div>
-
-      <div class="mb-6 border-b border-gray-200 pb-6">
-        <button class="faq-question flex justify-between items-center w-full text-left font-bold text-lg text-gray-800 focus:outline-none">
-          <span>Can you assist with regulatory compliance?</span>
-          <i class="fas fa-chevron-down text-[#0B3D91] transition-transform duration-300"></i>
-        </button>
-        <div class="faq-answer mt-4 text-gray-600 hidden">
-          <p>Yes, our team helps clients navigate regulatory requirements including labeling, certifications, and approvals to ensure market access and compliance.</p>
-        </div>
-      </div>
-
-      <!-- Add more FAQs as needed -->
-    </div>
-  </div>
-</section>
-
-    <!-- Footer -->
-    <section class="py-16 bg-gray-900 text-[#0B3D91]">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-                
-                <!-- Column 1 -->
-                <div>
-                    <h3 class="text-xl font-bold mb-6">Rose Pharmaceuticals</h3>
-                    <p class="text-gray-400 mb-6">
-                        We are a leading Third-Party Nutraceutical Manufacturing Company in India, 
-                        specializing in protein powders, syrups, capsules, sachets, and more. 
-                        With GMP & ISO-certified facilities, we deliver high-quality products under your brand name.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Column 2 -->
-                <div>
-                    <h3 class="text-xl font-bold mb-6">Quick Links</h3>
-                    <ul class="space-y-3">
-                        <li><a href="#home" class="text-gray-400 hover:text-white transition">Home</a></li>
-                        <li><a href="#about" class="text-gray-400 hover:text-white transition">About Us</a></li>
-                        <li><a href="#products" class="text-gray-400 hover:text-white transition">Products</a></li>
-                        <li><a href="#services" class="text-gray-400 hover:text-white transition">Services</a></li>
-                        <li><a href="#faq" class="text-gray-400 hover:text-white transition">FAQ</a></li>
-                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Contact Us</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Column 3 -->
-                <div>
-                    <h3 class="text-xl font-bold mb-6">Our Products</h3>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Protein Powders</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Syrups</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Capsules</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Sachets</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Custom Formulations</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Column 4 -->
-                <div>
-                    <h3 class="text-xl font-bold mb-6">Contact Information</h3>
-                    <ul class="space-y-3 text-gray-400">
-                        <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-[#0B3D91]"></i>
-                            <span>No.26-P-2, Road No.5, Koorgally Industrial Area,<br>Mysore – 18, India</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-phone mr-3 text-[#0B3D91]"></i>
-                            <span>+91-7019731464 / +91-7975576714</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-headset mr-3 text-[#0B3D91]"></i>
-                            <span>Customer Care: 1800-8890-235</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-envelope mr-3 text-[#0B3D91]"></i>
-                            <span>rosepharmaceuticals@gmail.com</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-globe mr-3 text-[#0B3D91]"></i>
-                            <a href="https://www.rosepharma.in" target="_blank" class="hover:text-white">www.rosepharma.in</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Bottom bar -->
-            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400 mb-4 md:mb-0">© 2025 Rose Pharmaceuticals & Healthcare Pvt Ltd. All Rights Reserved.</p>
-                <div class="flex space-x-6">
-                    <a href="privacypolicy.html" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">Terms & Conditions</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-
-
-    <!-- Back to Top Button -->
-    <button id="backToTop" class="fixed bottom-8 right-8 bg-blue-600 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition opacity-0 invisible hover:bg-blue-700">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- Success Modal -->
-    <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
-            <div class="text-center">
-                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-check text-green-600 text-2xl"></i>
-                </div>
-                <h3 class="text-2xl font-bold text-gray-800 mb-2">Thank You!</h3>
-                <p class="text-gray-600 mb-6">Your message has been sent successfully. Our support team will contact you shortly.</p>
-                <button id="closeModal" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300">Close</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
+      <div class="max-w-4xl mx-auto">
         
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        <div class="mb-6 border-b border-gray-200 pb-6">
+          <button class="faq-question flex justify-between items-center w-full text-left font-bold text-lg text-gray-800 focus:outline-none">
+            <span>What product categories do you manufacture?</span>
+            <i class="fas fa-chevron-down text-[#0B3D91] transition-transform duration-300"></i>
+          </button>
+          <div class="faq-answer mt-4 text-gray-600 hidden"><p>We manufacture a wide range of nutraceutical products including protein powders, syrups, capsules, sachets, and customized formulations tailored for various consumer needs.</p></div>
+        </div>
 
-        // FAQ Accordion
-        const faqQuestions = document.querySelectorAll('.faq-question');
-        
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', () => {
-                const answer = question.nextElementSibling;
-                const icon = question.querySelector('i');
-                
-                // Toggle answer visibility
-                answer.classList.toggle('hidden');
-                
-                // Rotate icon
-                if (answer.classList.contains('hidden')) {
-                    icon.style.transform = 'rotate(0deg)';
-                } else {
-                    icon.style.transform = 'rotate(180deg)';
-                }
-                
-                // Close other open answers
-                faqQuestions.forEach(q => {
-                    if (q !== question) {
-                        q.nextElementSibling.classList.add('hidden');
-                        q.querySelector('i').style.transform = 'rotate(0deg)';
-                    }
-                });
-            });
-        });
+        <div class="mb-6 border-b border-gray-200 pb-6">
+          <button class="faq-question flex justify-between items-center w-full text-left font-bold text-lg text-gray-800 focus:outline-none">
+            <span>What quality certifications do you have?</span>
+            <i class="fas fa-chevron-down text-[#0B3D91] transition-transform duration-300"></i>
+          </button>
+          <div class="faq-answer mt-4 text-gray-600 hidden"><p>Our facilities are GMP and ISO certified, ensuring strict compliance with quality, safety, and efficacy standards throughout the manufacturing process.</p></div>
+        </div>
 
-        // Back to Top Button
-        const backToTopButton = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.remove('opacity-0', 'invisible');
-                backToTopButton.classList.add('opacity-100', 'visible');
-            } else {
-                backToTopButton.classList.remove('opacity-100', 'visible');
-                backToTopButton.classList.add('opacity-0', 'invisible');
+        <div class="mb-6 border-b border-gray-200 pb-6">
+          <button class="faq-question flex justify-between items-center w-full text-left font-bold text-lg text-gray-800 focus:outline-none">
+            <span>Do you provide private labeling?</span>
+            <i class="fas fa-chevron-down text-[#0B3D91] transition-transform duration-300"></i>
+          </button>
+          <div class="faq-answer mt-4 text-gray-600 hidden"><p>Absolutely. We specialize in private labeling, allowing you to launch nutraceutical products under your own brand with full support from formulation to packaging.</p></div>
+        </div>
+
+        <div class="mb-6 border-b border-gray-200 pb-6">
+          <button class="faq-question flex justify-between items-center w-full text-left font-bold text-lg text-gray-800 focus:outline-none">
+            <span>What is the minimum order quantity (MOQ)?</span>
+            <i class="fas fa-chevron-down text-[#0B3D91] transition-transform duration-300"></i>
+          </button>
+          <div class="faq-answer mt-4 text-gray-600 hidden"><p>Our MOQ varies depending on the product type, packaging, and customization level. Please contact us directly to discuss your specific requirements.</p></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-16 bg-gray-900 text-[#0B3D91]">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div>
+          <h3 class="text-xl font-bold mb-6 text-white">Rose Pharmaceuticals</h3>
+          <p class="text-gray-400 mb-6">We are a leading Third-Party Nutraceutical Manufacturing Company in India. With GMP & ISO-certified facilities, we deliver high-quality products under your brand name.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-bold mb-6 text-white">Quick Links</h3>
+          <ul class="space-y-3">
+            <li><a href="#home" class="text-gray-400 hover:text-white transition">Home</a></li>
+            <li><a href="#about" class="text-gray-400 hover:text-white transition">About Us</a></li>
+            <li><a href="#services" class="text-gray-400 hover:text-white transition">Services</a></li>
+            <li><a href="#faq" class="text-gray-400 hover:text-white transition">FAQ</a></li>
+            <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-bold mb-6 text-white">Our Products</h3>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Protein Powders</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Syrups & Capsules</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Sachets</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Custom Formulations</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-bold mb-6 text-white">Contact Information</h3>
+          <ul class="space-y-3 text-gray-400">
+            <li class="flex items-start"><i class="fas fa-map-marker-alt mt-1 mr-3 text-[#0B3D91]"></i><span>No.26-P-2, Road No.5, Koorgally Industrial Area,<br>Mysore – 18, India</span></li>
+            <li class="flex items-center"><i class="fas fa-phone mr-3 text-[#0B3D91]"></i><span>+91-7019731464 / +91-7975576714</span></li>
+            <li class="flex items-center"><i class="fas fa-headset mr-3 text-[#0B3D91]"></i><span>Customer Care: 1800-8890-235</span></li>
+            <li class="flex items-center"><i class="fas fa-envelope mr-3 text-[#0B3D91]"></i><span>rosepharmaceuticals@gmail.com</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-400 mb-4 md:mb-0">© 2025 Rose Pharmaceuticals & Healthcare Pvt Ltd. All Rights Reserved.</p>
+        <div class="flex space-x-6">
+          <a href="privacypolicy.html" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
+          <a href="#" class="text-gray-400 hover:text-white transition">Terms & Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="fixed bottom-8 right-8 bg-blue-600 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition opacity-0 invisible hover:bg-blue-700 z-40">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <a href="contact.html" id="stickyCTA" aria-label="Contact us (quick enquiry)"><i class="fas fa-phone-alt"></i><span>Quick Enquiry</span></a>
+
+  <script>
+    (function () {
+      // FAQ Accordion
+      const faqQuestions = document.querySelectorAll('.faq-question');
+      faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+          const answer = question.nextElementSibling;
+          const icon = question.querySelector('i');
+          if (!answer) return;
+          
+          // Toggle current
+          answer.classList.toggle('hidden');
+          if (answer.classList.contains('hidden')) { 
+              icon.style.transform = 'rotate(0deg)'; 
+          } else { 
+              icon.style.transform = 'rotate(180deg)'; 
+          }
+
+          // Close others
+          faqQuestions.forEach(q => {
+            if (q !== question) {
+              const ans = q.nextElementSibling;
+              if (ans) ans.classList.add('hidden');
+              const ic = q.querySelector('i');
+              if (ic) ic.style.transform = 'rotate(0deg)';
             }
+          });
         });
-        
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+      });
 
-        // Contact Form Submission
-        const contactForm = document.getElementById('contactForm');
-        const successModal = document.getElementById('successModal');
-        const closeModal = document.getElementById('closeModal');
-        
-        contactForm.addEventListener('submit', (e) => {
+      // Back to Top Button
+      const backToTopButton = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => {
+        if (!backToTopButton) return;
+        if (window.pageYOffset > 300) {
+          backToTopButton.classList.remove('opacity-0', 'invisible');
+          backToTopButton.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopButton.classList.remove('opacity-100', 'visible');
+          backToTopButton.classList.add('opacity-0', 'invisible');
+        }
+      });
+      
+      if (backToTopButton) {
+          backToTopButton.addEventListener('click', () => {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+      }
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          const targetId = this.getAttribute('href');
+          if (!targetId || targetId === '#') return;
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
             e.preventDefault();
+            targetElement.scrollIntoView({ behavior: 'smooth' });
             
-            // Here you would typically send the form data to your server
-            // For this example, we'll just show the success modal
-            
-            // Reset form
-            contactForm.reset();
-            
-            // Show success modal
-            successModal.classList.remove('hidden');
+            // Close mobile menu if open
+            const mobileMenu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('overlay');
+            if (mobileMenu && !mobileMenu.classList.contains('translate-x-full')) {
+               mobileMenu.classList.add('translate-x-full');
+               overlay.classList.add('hidden');
+            }
+          }
         });
-        
-        closeModal.addEventListener('click', () => {
-            successModal.classList.add('hidden');
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    mobileMenu.classList.add('hidden');
-                }
-            });
-        });
-    </script>
-
-
+      });
+    })();
+  </script>
 
 </body>
 </html>
