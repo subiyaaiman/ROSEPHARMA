@@ -108,7 +108,7 @@
     /* GRID */
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 25px;
       margin-top: 40px;
     }
@@ -132,8 +132,11 @@
 
     /* stagger delays for each product-card via nth-child */
     .product-card:nth-child(1){ animation-delay: 240ms; }
-    .product-card:nth-child(2){ animation-delay: 340ms; }
-    .product-card:nth-child(3){ animation-delay: 440ms; }
+    .product-card:nth-child(2){ animation-delay: 320ms; }
+    .product-card:nth-child(3){ animation-delay: 400ms; }
+    .product-card:nth-child(4){ animation-delay: 480ms; }
+    .product-card:nth-child(5){ animation-delay: 560ms; }
+    .product-card:nth-child(6){ animation-delay: 640ms; }
 
     .product-card:hover {
       transform: translateY(-8px) scale(1.01);
@@ -142,14 +145,14 @@
 
     /* IMAGE styling & hover effect */
     .product-card img {
-      max-height: 250px;
+      max-height: 220px;
       object-fit: contain;
       margin: 0 auto 14px auto;
       transition: transform .45s cubic-bezier(.2,.9,.2,1), box-shadow .45s ease;
       border-radius: 8px;
       display: block;
       width: 100%;
-      height: 220px;
+      height: 180px;
       background: linear-gradient(180deg, rgba(11,61,145,0.02), rgba(27,77,187,0.02));
     }
 
@@ -161,7 +164,7 @@
     /* Title with icon */
     .product-card h3 {
       margin: 12px 0 10px 0;
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       color: var(--blue-900);
       display: flex;
       gap: 12px;
@@ -213,8 +216,8 @@
     @media (max-width: 880px) {
       .hero-section { padding: 48px 16px; }
       .hero-section h1 { font-size: 2rem; }
-      .product-card img { height: 180px; }
-      .product-card h3 { font-size: 1.05rem; }
+      .product-card img { height: 140px; }
+      .product-card h3 { font-size: 1.02rem; }
     }
 
     /* Accessibility: focus styles */
@@ -235,23 +238,62 @@
   </section>
 
   <!-- Brands Section -->
-  <section id="brands" style="padding:60px 20px; background:#f9fafb;" aria-labelledby="brands-heading">
+  <section id="brands" class="content-section" aria-labelledby="brands-heading">
     <div class="content-container">
       <h2 id="brands-heading">Specialized Product Categories</h2>
       <div class="h2-sep" aria-hidden="true"></div>
 
+      <!-- Product Grid -->
       <div class="product-grid" role="list">
-        <div class="product-card" role="listitem" tabindex="0">
-          <img src="public/assets/images/gym supplement.png" alt="Gym Supplements product image" />
-          <h3><i class="fa-solid fa-dumbbell" aria-hidden="true"></i>Gym Supplements</h3>
 
-          <p class="fade-delay-2">*Whey Iso Con / Iso Gold – 100% whey protein isolate & concentrate blend for lean muscle growth and faster recovery.</p>
+        <!-- Whey Protein -->
+        <article class="product-card" role="listitem" tabindex="0" aria-labelledby="whey-title">
+          <img src="public/assets/images/whey-protein.png" alt="Whey Protein - product placeholder" />
+          <h3 id="whey-title"><i class="fa-solid fa-flask" aria-hidden="true"></i>Whey Protein</h3>
+          <p>*Whey Iso Con / Iso Gold – 100% whey protein isolate &amp; concentrate blend for lean muscle growth and faster recovery.</p>
+          <p>*Available in multiple flavours and sizes; ideal post-workout and daily protein top-up.</p>
+        </article>
+
+        <!-- Mass Gainer -->
+        <article class="product-card" role="listitem" tabindex="0" aria-labelledby="mass-title">
+          <img src="public/assets/images/mass-gainer.png" alt="Mass Gainer - product placeholder" />
+          <h3 id="mass-title"><i class="fa-solid fa-weight-scale" aria-hidden="true"></i>Mass Gainer</h3>
           <p>*Advanced Mass Gainer – High-calorie formula with 54g protein + 25 essential nutrients to build size and strength.</p>
-          <p>*Super Creatine – Micronized creatine for explosive power, endurance, and improved performance.</p>
+          <p>*Designed for hard-gainers who need extra calories and clean macros.</p>
+        </article>
+
+        <!-- Pre-Workout -->
+        <article class="product-card" role="listitem" tabindex="0" aria-labelledby="pre-title">
+          <img src="public/assets/images/pre-workout.png" alt="Pre-Workout - product placeholder" />
+          <h3 id="pre-title"><i class="fa-solid fa-bolt" aria-hidden="true"></i>Pre-Workout</h3>
           <p>*Pre-Workout – Boosts energy, focus, and stamina with a powerful blend of L-Arginine, Citrulline, Caffeine, and vitamins.</p>
+          <p>*Formulated for explosive sessions, improved pump and mental clarity.</p>
+        </article>
+
+        <!-- Creatine -->
+        <article class="product-card" role="listitem" tabindex="0" aria-labelledby="creatine-title">
+          <img src="public/assets/images/creatine.png" alt="Creatine - product placeholder" />
+          <h3 id="creatine-title"><i class="fa-solid fa-dna" aria-hidden="true"></i>Creatine</h3>
+          <p>*Super Creatine – Micronized creatine for explosive power, endurance, and improved performance.</p>
+          <p>*Pure monohydrate and advanced blends to support strength gains and recovery.</p>
+        </article>
+
+        <!-- Aminos (EAA + BCAA) -->
+        <article class="product-card" role="listitem" tabindex="0" aria-labelledby="amino-title">
+          <img src="public/assets/images/aminos.png" alt="Aminos - product placeholder" />
+          <h3 id="amino-title"><i class="fa-solid fa-vial" aria-hidden="true"></i>Aminos (EAA + BCAA)</h3>
           <p>*Aminos (EAA + BCAA) – Essential amino acids for faster recovery, hydration, and reduced fatigue.</p>
-          <p class="fade-delay-3">*Collagen Peptide – Supports joint health, skin, and overall recovery with added vitamins and bioactive ingredients.</p>
-        </div>
+          <p>*Formulated for intra/post-workout use to keep you performing and recovering quicker.</p>
+        </article>
+
+        <!-- Collagen Peptide -->
+        <article class="product-card" role="listitem" tabindex="0" aria-labelledby="collagen-title">
+          <img src="public/assets/images/collagen-peptide.png" alt="Collagen Peptide - product placeholder" />
+          <h3 id="collagen-title"><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i>Collagen Peptide</h3>
+          <p>*Collagen Peptide – Supports joint health, skin, and overall recovery with added vitamins and bioactive ingredients.</p>
+          <p>*Ideal for athletes seeking joint support and improved recovery long-term.</p>
+        </article>
+
       </div>
 
       <div style="margin-top:50px; text-align:center;">
