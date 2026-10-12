@@ -11,13 +11,13 @@
 
   <style>
     :root{
-      --blue-900: #0B3D91;
-      --blue-700: #1B4DBB;
-      --blue-800-hover: #082E6F;
-      --bg: #f8fafc;
-      --card-shadow: rgba(11,61,145,0.08);
-      --text: #1f2937;
-    }
+  --blue-900: #174f3f;
+  --blue-700: #246b57;
+  --blue-800-hover: #103b30;
+  --bg: #f7f4ec;
+  --card-shadow: rgba(23,79,63,0.08);
+  --text: #182a24;
+}
 
     /* Respect reduced motion */
     @media (prefers-reduced-motion: reduce) {
@@ -60,28 +60,28 @@
     }
 
     .hero-sub {
-      max-width: 920px;
-      margin: 12px auto 0;
-      color: rgba(255,255,255,0.95);
-      font-size: clamp(0.95rem, 2vw, 1.05rem);
-      opacity: 0;
-      transform: translateY(12px);
-      animation: fadeInUp 700ms cubic-bezier(.2,.9,.2,1) forwards;
-      animation-delay: 240ms;
-    }
+  max-width: 920px;
+  margin: 12px auto 0;
+  color: #68736e;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeInUp 700ms cubic-bezier(.2,.9,.2,1) forwards;
+  animation-delay: 240ms;
+}
 
     .hero-underline {
-      width: 92px;
-      height: 6px;
-      border-radius: 8px;
-      margin: 18px auto 0;
-      background: linear-gradient(90deg, rgba(255,255,255,0.95), rgba(255,255,255,0.3));
-      box-shadow: 0 10px 28px rgba(11,61,145,0.08);
-      opacity: 0;
-      transform: translateY(12px);
-      animation: fadeInUp 700ms cubic-bezier(.2,.9,.2,1) forwards;
-      animation-delay: 320ms;
-    }
+  width: 92px;
+  height: 6px;
+  border-radius: 8px;
+  margin: 18px auto 0;
+  background: linear-gradient(90deg, #174f3f, #7fa99a);
+  box-shadow: 0 10px 28px rgba(23,79,63,0.08);
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeInUp 700ms cubic-bezier(.2,.9,.2,1) forwards;
+  animation-delay: 320ms;
+}
 
     /* Main content area */
     .content-wrap {
@@ -222,6 +222,105 @@
       #chatbot{ right:0.75rem; bottom:0.75rem; width:17.5rem; height:20rem; }
       .sep{ width:100px; }
     }
+    /* =========================================================
+   ROSE — PRIVACY POLICY NEW UI
+========================================================= */
+
+:root {
+  --rose-green: #174f3f;
+  --rose-dark: #103b30;
+  --rose-cream: #f7f4ec;
+  --rose-text: #182a24;
+  --rose-muted: #68736e;
+  --rose-border: #e3e5df;
+}
+
+body {
+  background: var(--rose-cream) !important;
+  color: var(--rose-text) !important;
+}
+
+/* Header */
+header {
+  background: #ffffff !important;
+  border-bottom: 1px solid var(--rose-border) !important;
+  box-shadow: none !important;
+}
+
+header a {
+  color: var(--rose-muted) !important;
+}
+
+header a:hover {
+  color: var(--rose-green) !important;
+}
+
+/* Privacy content */
+main,
+article,
+section {
+  color: var(--rose-text);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--rose-green) !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  letter-spacing: -0.04em !important;
+}
+
+p,
+li {
+  color: var(--rose-muted) !important;
+  line-height: 1.8 !important;
+}
+
+a {
+  color: var(--rose-green);
+}
+
+a:hover {
+  color: var(--rose-dark);
+}
+
+/* Content panels */
+.bg-white,
+.card {
+  border-color: var(--rose-border) !important;
+  box-shadow: none !important;
+  border-radius: 18px !important;
+}
+
+/* Footer */
+footer {
+  background: var(--rose-dark) !important;
+}
+
+footer h3,
+footer h4 {
+  color: #ffffff !important;
+}
+
+footer p,
+footer a {
+  color: rgba(255,255,255,.72) !important;
+}
+
+footer a:hover {
+  color: #d7e86b !important;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem !important;
+  }
+
+  h2 {
+    font-size: 2.1rem !important;
+  }
+}
   </style>
 </head>
 <body>
