@@ -86,6 +86,131 @@ body {
   font-size: 0.95rem;
   color: #4b5563;
 }
+/* =========================================================
+   ROSE — BUSINESS SOLUTIONS NEW UI
+========================================================= */
+
+:root {
+  --rose-green: #174f3f;
+  --rose-dark: #103b30;
+  --rose-cream: #f7f4ec;
+  --rose-text: #182a24;
+  --rose-muted: #68736e;
+  --rose-border: #e3e5df;
+}
+
+/* Page */
+body {
+  background: var(--rose-cream) !important;
+  color: var(--rose-text) !important;
+}
+
+/* Header */
+header {
+  background: #ffffff !important;
+  border-bottom: 1px solid var(--rose-border) !important;
+  box-shadow: none !important;
+}
+
+header a {
+  color: var(--rose-muted) !important;
+}
+
+header a:hover {
+  color: var(--rose-green) !important;
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
+  color: var(--rose-green) !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  letter-spacing: -0.04em !important;
+}
+
+/* Body text */
+p {
+  color: var(--rose-muted) !important;
+  line-height: 1.75 !important;
+}
+
+/* Main cards */
+.card,
+[class*="card"],
+.bg-white {
+  border-color: var(--rose-border) !important;
+  box-shadow: none !important;
+  border-radius: 18px !important;
+  transition: transform .3s ease, box-shadow .3s ease !important;
+}
+
+.card:hover,
+[class*="card"]:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 40px rgba(23,79,63,.10) !important;
+}
+
+/* Old blue → green */
+.bg-blue-50 {
+  background: #ffffff !important;
+}
+
+.bg-blue-600,
+.bg-blue-700,
+.bg-\[\#0B3D91\],
+.bg-\[\#1B4DBB\] {
+  background: var(--rose-green) !important;
+}
+
+.text-blue-600,
+.text-blue-700,
+.text-\[\#0B3D91\] {
+  color: var(--rose-green) !important;
+}
+
+/* Buttons */
+button,
+.btn,
+a[class*="btn"] {
+  border-radius: 999px !important;
+}
+
+/* Images */
+img {
+  border-radius: 18px !important;
+}
+
+/* Footer */
+footer {
+  background: var(--rose-dark) !important;
+}
+
+footer h3,
+footer h4 {
+  color: #ffffff !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+}
+
+footer p,
+footer a {
+  color: rgba(255,255,255,.72) !important;
+}
+
+footer a:hover {
+  color: #d7e86b !important;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.6rem !important;
+  }
+
+  h2 {
+    font-size: 2.2rem !important;
+  }
+}
 </style>
 
 
