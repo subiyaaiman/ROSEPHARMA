@@ -9,11 +9,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <style>
     :root{
-      --blue-900: #0B3D91;
-      --blue-700: #1B4DBB;
-      --blue-800-hover: #082E6F;
-      --muted: #f8fafc;
-      --text: #1f2937;
+      --blue-900: #145C4A;
+      --blue-700: #6b8b6c;
+      --blue-800-hover: #9bc993;
+      --muted: #252f3a;
+      --text: #0c0f14;
       --card-shadow: rgba(11,61,145,0.06);
     }
 
@@ -35,12 +35,17 @@
 
     /* HERO */
     .hero-gradient {
-      background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-700) 100%);
-    }
+  background: linear-gradient(
+    110deg,
+    #eaf5f0 0%,
+    #ffffff 50%,
+    #fdf1f5 100%
+  ) !important;
+}
     .hero-section {
       padding: 60px 20px;
       text-align: center;
-      color: white;
+      color: rgb(2, 2, 2);
       position: relative;
       overflow: hidden;
     }
@@ -53,12 +58,14 @@
       transform: translateY(10px);
       animation: fadeInUp 700ms cubic-bezier(.2,.9,.2,1) forwards;
       animation-delay: 120ms;
+      color: #174f3f !important;
     }
-    .hero-section p {
-      font-size: 1.03rem;
-      max-width: 920px;
-      margin: 0 auto;
-      color: rgba(255,255,255,0.95);
+    
+      .hero-section p {
+  font-size: 1.03rem;
+  max-width: 920px;
+  margin: 0 auto;
+  color: #68736e !important;
       opacity: 0;
       transform: translateY(10px);
       animation: fadeInUp 700ms cubic-bezier(.2,.9,.2,1) forwards;
@@ -69,7 +76,7 @@
       height: 6px;
       border-radius: 8px;
       margin: 18px auto 22px auto;
-      background: linear-gradient(90deg, rgba(255,255,255,0.95), rgba(255,255,255,0.3));
+     background: linear-gradient(90deg, #174f3f, #c94f73);
       box-shadow: 0 8px 24px rgba(11,61,145,0.08);
       opacity: 0;
       transform: translateY(8px);
@@ -210,6 +217,129 @@
     /* Accessibility focus */
     .product-card:focus-within { outline: 3px solid rgba(11,61,145,0.08); outline-offset: 4px; }
     a:focus { outline: 3px solid rgba(11,61,145,0.12); outline-offset: 2px; }
+  /* =========================================================
+   ROSE — INNER PAGE NEW UI
+========================================================= */
+
+:root {
+  --rose-green: #174f3f;
+  --rose-dark: #103b30;
+  --rose-cream: #f7f4ec;
+  --rose-text: #182a24;
+  --rose-muted: #68736e;
+  --rose-border: #e3e5df;
+}
+
+body {
+  background: var(--rose-cream) !important;
+  color: var(--rose-text) !important;
+}
+
+/* Header */
+header {
+  background: #ffffff !important;
+  border-bottom: 1px solid var(--rose-border) !important;
+  box-shadow: none !important;
+}
+
+header a {
+  color: var(--rose-muted) !important;
+}
+
+header a:hover {
+  color: var(--rose-green) !important;
+}
+
+/* Typography */
+h1,
+h2,
+h3 {
+  color: var(--rose-green) !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  letter-spacing: -0.04em !important;
+}
+
+p {
+  color: var(--rose-muted) !important;
+  line-height: 1.75 !important;
+}
+
+/* Cards / content blocks */
+.bg-white,
+.card,
+[class*="card"] {
+  border-color: var(--rose-border) !important;
+  border-radius: 18px !important;
+  box-shadow: none !important;
+  transition: transform .3s ease, box-shadow .3s ease !important;
+}
+
+.card:hover,
+[class*="card"]:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 40px rgba(23,79,63,.10) !important;
+}
+
+/* Old blue → new green */
+.bg-blue-50 {
+  background: #ffffff !important;
+}
+
+.bg-blue-600,
+.bg-blue-700,
+.bg-\[\#145C4A\],
+.bg-\[\#1B4DBB\] {
+  background: var(--rose-green) !important;
+}
+
+.text-blue-600,
+.text-blue-700,
+.text-\[\#145C4A\] {
+  color: var(--rose-green) !important;
+}
+
+/* Buttons */
+button,
+.btn,
+a[class*="btn"] {
+  border-radius: 999px !important;
+}
+
+/* Images */
+img {
+  border-radius: 18px !important;
+}
+
+/* Footer */
+footer {
+  background: var(--rose-dark) !important;
+}
+
+footer h3,
+footer h4 {
+  color: #ffffff !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+}
+
+footer p,
+footer a {
+  color: rgba(255,255,255,.72) !important;
+}
+
+footer a:hover {
+  color: #d7e86b !important;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.6rem !important;
+  }
+
+  h2 {
+    font-size: 2.2rem !important;
+  }
+}
   </style>
 </head>
 <body>
