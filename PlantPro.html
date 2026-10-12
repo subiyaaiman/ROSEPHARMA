@@ -33,8 +33,13 @@
 
     /* HERO */
     .hero-gradient {
-      background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-700) 100%);
-    }
+    background: linear-gradient(
+        110deg,
+        #eaf5f0 0%,
+        #ffffff 50%,
+        #fdf1f5 100%
+    ) !important;
+}
     .hero-section {
       padding: 60px 20px;
       text-align: center;
@@ -46,6 +51,7 @@
     /* Animated hero heading */
     .hero-section h1 {
       font-size: 2.5rem;
+      color: #174f3f !important;
       margin-bottom: 12px;
       opacity: 0;
       transform: translateY(10px);
@@ -60,7 +66,7 @@
       margin: 0 auto;
       animation: fadeInUp 700ms cubic-bezier(.2,.9,.2,1) forwards;
       animation-delay: 260ms;
-      color: rgba(255,255,255,0.95);
+      color: #68736e !important;
       line-height: 1.6;
     }
 
@@ -70,7 +76,7 @@
       height: 6px;
       border-radius: 6px;
       margin: 18px auto 26px auto;
-      background: linear-gradient(90deg, rgba(255,255,255,0.95), rgba(255,255,255,0.25));
+     background: linear-gradient(90deg, #174f3f, #c94f73);
       box-shadow: 0 6px 18px rgba(11,61,145,0.12);
       opacity: 0;
       transform: translateY(6px);
@@ -221,6 +227,121 @@
     /* Accessibility: focus styles */
     .product-card:focus-within { outline: 3px solid rgba(11,61,145,0.08); outline-offset: 4px; }
     a:focus { outline: 3px solid rgba(11,61,145,0.12); outline-offset: 2px; }
+  /* =========================================================
+   ROSE — PLANT PRO NEW UI
+========================================================= */
+
+:root {
+  --blue-900: #174f3f;
+  --blue-700: #174f3f;
+  --blue-800-hover: #103b30;
+  --muted: #68736e;
+  --text: #182a24;
+}
+
+/* Page background */
+body {
+  background: #f7f4ec !important;
+  color: #182a24 !important;
+}
+
+/* Header */
+header {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e3e5df !important;
+  box-shadow: none !important;
+}
+
+header a {
+  color: #68736e !important;
+}
+
+header a:hover {
+  color: #174f3f !important;
+}
+
+/* Main headings */
+h1,
+h2,
+h3 {
+  color: #174f3f !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  letter-spacing: -0.04em;
+}
+
+/* Paragraphs */
+p {
+  color: #68736e !important;
+  line-height: 1.7;
+}
+
+/* Cards */
+.card,
+.product-card,
+.bg-white,
+[class*="card"] {
+  border-color: #e3e5df !important;
+  box-shadow: none !important;
+  transition: transform .3s ease, box-shadow .3s ease !important;
+}
+
+.card:hover,
+.product-card:hover,
+[class*="card"]:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 40px rgba(23,79,63,.10) !important;
+}
+
+/* Buttons */
+button,
+.btn,
+a[class*="btn"] {
+  border-radius: 999px !important;
+}
+
+.bg-blue-600,
+.bg-blue-700,
+.bg-\[\#0B3D91\],
+.bg-\[\#1B4DBB\] {
+  background: #174f3f !important;
+}
+
+.text-blue-600,
+.text-blue-700,
+.text-\[\#0B3D91\] {
+  color: #174f3f !important;
+}
+
+/* Images */
+img {
+  border-radius: 16px;
+}
+
+/* Footer */
+footer {
+  background: #103b30 !important;
+  color: white !important;
+}
+
+footer p,
+footer a {
+  color: rgba(255,255,255,.72) !important;
+}
+
+footer a:hover {
+  color: #d7e86b !important;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.6rem !important;
+  }
+
+  h2 {
+    font-size: 2.2rem !important;
+  }
+}
   </style>
 </head>
 <body>
