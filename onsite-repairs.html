@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Protein Powder - Rose Pharmaceuticals</title>
+  <title>Capsules - Rose Pharmaceuticals</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <style>
     :root{
-      --blue-900: #145C4A;
-      --blue-700: #6b8b6c;
-      --blue-800-hover: #9bc993;
-      --muted: #252f3a;
-      --text: #0c0f14;
+      --blue-900: #0b9153;
+      --blue-700: #424c60;
+      --blue-800-hover: #082E6F;
+      --muted: #f8fafc;
+      --text: #1f2937;
       --card-shadow: rgba(11,61,145,0.06);
     }
 
-    /* Respect reduced motion preferences */
+    /* Respect reduced motion */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
     }
@@ -35,22 +35,24 @@
 
     /* HERO */
     .hero-gradient {
-  background: linear-gradient(
-    110deg,
-    #eaf5f0 0%,
-    #ffffff 50%,
-    #fdf1f5 100%
-  ) !important;
+    background: linear-gradient(
+        110deg,
+        #eaf5f0 0%,
+        #ffffff 50%,
+        #fdf1f5 100%
+    ) !important;
 }
     .hero-section {
       padding: 60px 20px;
       text-align: center;
-      color: rgb(2, 2, 2);
+      color: white;
       position: relative;
       overflow: hidden;
     }
+
     .hero-section h1 {
       font-size: 2.4rem;
+      color: #174f3f !important;
       margin-bottom: 12px;
       text-transform: uppercase;
       letter-spacing: -0.6px;
@@ -58,25 +60,26 @@
       transform: translateY(10px);
       animation: fadeInUp 700ms cubic-bezier(.2,.9,.2,1) forwards;
       animation-delay: 120ms;
-      color: #174f3f !important;
     }
-    
-      .hero-section p {
-  font-size: 1.03rem;
-  max-width: 920px;
-  margin: 0 auto;
-  color: #68736e !important;
+
+    .hero-section p {
+      font-size: 1.03rem;
+      max-width: 920px;
+      margin: 0 auto;
+      color: #68736e !important;
       opacity: 0;
       transform: translateY(10px);
       animation: fadeInUp 700ms cubic-bezier(.2,.9,.2,1) forwards;
       animation-delay: 260ms;
+      line-height: 1.6;
     }
+
     .hero-underline {
       width: 92px;
       height: 6px;
       border-radius: 8px;
       margin: 18px auto 22px auto;
-     background: linear-gradient(90deg, #174f3f, #c94f73);
+      background: linear-gradient(90deg, #174f3f, #c94f73);
       box-shadow: 0 8px 24px rgba(11,61,145,0.08);
       opacity: 0;
       transform: translateY(8px);
@@ -141,7 +144,6 @@
     .product-card:nth-child(1){ animation-delay: 240ms; }
     .product-card:nth-child(2){ animation-delay: 320ms; }
     .product-card:nth-child(3){ animation-delay: 400ms; }
-    .product-card:nth-child(4){ animation-delay: 480ms; }
 
     .product-card:hover {
       transform: translateY(-8px) scale(1.01);
@@ -199,7 +201,6 @@
     }
     .cta-button:hover { background: var(--blue-800-hover); transform: translateY(-3px); }
 
-    /* small utility */
     .muted-note { color: #475569; margin-bottom: 14px; }
 
     @keyframes fadeInUp {
@@ -217,7 +218,8 @@
     /* Accessibility focus */
     .product-card:focus-within { outline: 3px solid rgba(11,61,145,0.08); outline-offset: 4px; }
     a:focus { outline: 3px solid rgba(11,61,145,0.12); outline-offset: 2px; }
-  /* =========================================================
+  
+/* =========================================================
    ROSE — INNER PAGE NEW UI
 ========================================================= */
 
@@ -287,14 +289,14 @@ p {
 
 .bg-blue-600,
 .bg-blue-700,
-.bg-\[\#145C4A\],
+.bg-\[\#0B3D91\],
 .bg-\[\#1B4DBB\] {
   background: var(--rose-green) !important;
 }
 
 .text-blue-600,
 .text-blue-700,
-.text-\[\#145C4A\] {
+.text-\[\#0B3D91\] {
   color: var(--rose-green) !important;
 }
 
@@ -339,17 +341,16 @@ footer a:hover {
   h2 {
     font-size: 2.2rem !important;
   }
-}
-  </style>
+}  </style>
 </head>
 <body>
 
   <!-- Hero Section -->
   <section class="hero-gradient hero-section" aria-labelledby="hero-heading">
     <div class="hero-content">
-      <h1 id="hero-heading">PROTEIN POWDER</h1>
+      <h1 id="hero-heading">Capsules</h1>
       <div class="hero-underline" aria-hidden="true"></div>
-      <p>At Rose Pharmaceuticals, we specialize in third-party manufacturing of premium Whey Protein supplements. Our formulations are crafted with high-quality ingredients to deliver fast absorption, superior muscle recovery, and strength support for athletes and fitness enthusiasts. We offer: Whey Isolate – Ultra-pure protein with minimal carbs and fats, ideal for lean muscle growth. Whey Concentrate – Balanced nutrition with high protein content for performance and wellness.</p>
+      <p>Precision-manufactured capsules and tablets designed for high-quality nutritional supplements and health products.</p>
     </div>
   </section>
 
@@ -362,43 +363,24 @@ footer a:hover {
       <!-- Grid -->
       <div class="product-grid" role="list">
         <div class="product-card" role="listitem" tabindex="0">
-          <img src="public/assets/images/DEV_2054 copy 2.jpg" alt="Protein For Kids">
-          <h3><i class="fa-solid fa-child"></i>Protein For Kids</h3>
-          <p><strong>Protein Powder for Children</strong></p>
-          <p>Our child-friendly protein powder provides safe and balanced nutrition to growing kids. With easy-to-digest proteins, DHA, vitamins, and minerals, it supports growth, brain function, stronger bones, and immunity. Available in tasty flavors kids love, it’s the perfect daily nutrition partner.</p>
-          <p><strong>Flavor Options:</strong> Chocolate, Mango, Vanilla, Strawberry</p>
-          <p><strong>Key Ingredients:</strong> Whey protein concentrate, skimmed milk powder, DHA, calcium, iron, vitamin D, vitamin C, probiotics, and natural sweeteners</p>
-          <p><strong>Packaging Styles:</strong> Small jars and Tin Packaging (200g–500g), stand-up pouches, and fun sachets</p>
+          <img src="public/assets/images/multivitamin multimineral capsule.jpg" alt="Multivitamin Capsules">
+          <h3><i class="fa-solid fa-capsules" aria-hidden="true"></i>Multivitamin</h3>
+          <p><strong>Multivitamin Capsules</strong></p>
+          <p>Our Multivitamin Capsules are scientifically formulated to provide a balanced blend of essential vitamins and minerals that support daily health, energy, and immunity. Manufactured in a GMP-certified facility using high-quality raw materials. Custom formulations and packaging are available — reliable third-party manufacturing solutions.</p>
         </div>
 
         <div class="product-card" role="listitem" tabindex="0">
-          <img src="public/assets/images/DEV_2050 copy 2.jpg" alt="Protein For Women">
-          <h3><i class="fa-solid fa-female"></i>Protein For Women</h3>
-          <p><strong>Protein Powder for Women</strong></p>
-          <p>A premium blend designed to support women’s bone strength, energy, and hormonal balance. Enriched with biotin and collagen boosters for skin, hair, and nail health, it also aids recovery and overall wellness. Specialized formulas are available for pregnant and lactating women, with added calcium, iron, folic acid, DHA, and essential micronutrients for maternal care and postnatal recovery.</p>
-          <p><strong>Flavors:</strong> Chocolate Fudge, Vanilla, Kesar Elaichi, Almond, Strawberry, Cookies & Cream</p>
-          <p><strong>Key Ingredients:</strong> Whey isolate, casein, soy protein, calcium, iron, folic acid, biotin, collagen peptides, DHA, vitamins</p>
-          <p><strong>Packaging:</strong> Jars (500g–1kg), pouches, sachets, tin packs</p>
+          <img src="public/assets/images/VIT D3.jpg" alt="Vitamin D3 Capsules">
+          <h3><i class="fa-solid fa-sun" aria-hidden="true"></i>Vitamin D3</h3>
+          <p><strong>Vitamin D3 Capsules</strong></p>
+          <p>Designed to support strong bones, teeth, and overall immunity by improving calcium absorption. Made with premium-grade Vitamin D3 for accurate dosage and high bioavailability. GMP-certified and quality tested. Available in custom strengths & pack sizes.</p>
         </div>
 
         <div class="product-card" role="listitem" tabindex="0">
-          <img src="public/assets/images/DIET.jpg" alt="Protein For All Ages">
-          <h3><i class="fa-solid fa-users"></i>Protein For All Age Group</h3>
-          <p><strong>Protein Powder for All Ages</strong></p>
-          <p>Our all-age protein formula is designed to meet the daily nutritional needs of men, women, and young adults. Enriched with whey and plant-based proteins, it provides a balanced amino acid profile to support strength, stamina, and recovery. Fortified with essential vitamins and minerals, it boosts immunity, energy, and overall wellness, making it ideal for the entire family.</p>
-          <p><strong>Flavor Options:</strong> Chocolate, Vanilla, Strawberry, Banana</p>
-          <p><strong>Key Ingredients:</strong> Whey protein concentrate, soy protein isolate, skimmed milk powder, vitamins (A, C, D, E, B-complex), calcium, zinc, and antioxidants</p>
-          <p><strong>Packaging Styles:</strong> PET jars (200g–2kg), stand-up zipper pouches, single-serve sachets, and Tin packaging</p>
-        </div>
-
-        <div class="product-card" role="listitem" tabindex="0">
-          <img src="public/assets/images/DEV_2045 copy 2.jpg" alt="Protein For Diabetics Care">
-          <h3><i class="fa-solid fa-heart-pulse"></i>Protein For Diabetics Care</h3>
-          <p><strong>Protein Powder for Diabetes Care</strong></p>
-          <p>Specially formulated for individuals with diabetes, this protein blend is low in carbohydrates and designed to release energy slowly, supporting stable blood sugar levels. Enriched with fiber, chromium, and magnesium, it aids in healthy metabolism, muscle maintenance, and overall wellness—without spiking glucose.</p>
-          <p><strong>Flavor Options:</strong> Sugar-Free Chocolate, Sugar-Free Vanilla, Kesar Pista</p>
-          <p><strong>Key Ingredients:</strong> Whey protein isolate, pea protein, dietary fiber, chromium, magnesium, zinc, vitamins B & D, and natural low-calorie sweeteners (stevia/sucralose)</p>
-          <p><strong>Packaging Styles:</strong> Jars (400g–1kg), resealable pouches, and portion-control sachets</p>
+          <img src="public/assets/images/Moringa.jpg" alt="Moringa Capsules">
+          <h3><i class="fa-solid fa-seedling" aria-hidden="true"></i>Moringa</h3>
+          <p><strong>Moringa Capsules</strong></p>
+          <p>Our Moringa Capsules are made from pure Moringa oleifera leaf extract — rich in vitamins, minerals, antioxidants, and amino acids. They boost energy, immunity, and support metabolism. Manufactured in a GMP-certified facility for maximum safety and bioavailability.</p>
         </div>
       </div>
 
