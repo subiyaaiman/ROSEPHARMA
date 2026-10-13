@@ -118,10 +118,20 @@
         touch-action: pan-y;
       }
 
+.premium-content h1.tech-hero-text span {
+  display: block;
+  color: #174f3f;
+}
+
+.premium-content h1.tech-hero-text span:last-child {
+  color: #e78ba5;
+}
+
       #techHeroCanvas {
-        display: block;
+        display: none;
         width: 100%;
-        height: 100%;
+       height: auto;
+        min-height: 0;
         cursor: default;
       }
 
@@ -357,7 +367,7 @@
       /* Mobile */
       @media (max-width: 768px) {
         .premium-content h1.tech-hero-text {
-          height: 210px;
+          height: auto;
         }
       }
       .premium-content p {
@@ -2051,7 +2061,11 @@
             <span class="tech-hero-accessible">
               Build better health products with confidence.
             </span>
-            <canvas id="techHeroCanvas"></canvas>
+          <h1 class="tech-hero-text">
+  <span>Build better health</span>
+  <span>products with</span>
+  <span>confidence.</span>
+</h1>
           </h1>
 
           <p>
