@@ -107,7 +107,33 @@
       }
       /* ===== TECHTEXT HERO EFFECT ===== */
 
-      .premium-content h1.tech-hero-text {
+     
+.premium-content h1.tech-hero-text {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  margin: 0 0 22px !important;
+  padding: 0 !important;
+  overflow: visible;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: clamp(42px, 5vw, 72px) !important;
+  font-weight: 800 !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.04em !important;
+  color: #174f3f !important;
+  user-select: text;
+}
+
+.premium-content h1.tech-hero-text span {
+  display: block;
+  color: #174f3f;
+}
+
+.premium-content h1.tech-hero-text span:last-child {
+  color: #e78ba5;
+}
+
         position: relative;
         width: 100%;
         height: 270px;
@@ -115,6 +141,7 @@
         padding: 0 !important;
         overflow: visible;
         user-select: none;
+        
         touch-action: pan-y;
       }
 
@@ -2057,16 +2084,13 @@
           <span>WITH PURPOSE</span>
         </div>
         <div class="premium-content">
-          <h1 class="tech-hero-text" id="techHeroText">
-            <span class="tech-hero-accessible">
-              Build better health products with confidence.
-            </span>
-          <h1 class="tech-hero-text">
+          
+<h1 class="tech-hero-text">
   <span>Build better health</span>
   <span>products with</span>
   <span>confidence.</span>
 </h1>
-          </h1>
+
 
           <p>
             From formulation to finished product, Rose Pharmaceuticals helps
